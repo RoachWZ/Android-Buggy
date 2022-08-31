@@ -1,0 +1,5 @@
+<root>
+    <item name='ioio.lib.util.AbstractIOIOActivity'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>

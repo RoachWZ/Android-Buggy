@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AAV</string>
+    <string name="settings_key">settingsKey</string>
+    <string name="settings">Settings</string>
+    <string name="color_key">colorKey</string>
+	<string name="tracking_color">Tracking color</string>
+</resources>
