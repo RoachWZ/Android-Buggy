@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">可视对讲</string>
+    <string name="action_settings">Settings</string>
+    <string name="txtdecode">解码自</string>
+    <string name="txtencode">编码到</string>
+    <string name="start">开始</string>
+	<string name="stop">停止</string>
+	
+	<string name="app_title"> 可视对讲 演示demo</string>
+	
+	<string name="deffrom">192.168.10.176:5200</string>
+	<string name="defto">192.168.10.176:5100</string>
+<!--  
+	<string name="deffrom">rtp://192.168.10.102:5100</string>
+	<string name="defto">rtp://192.168.10.102:5200</string>
+-->  
+		
+</resources>

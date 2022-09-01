@@ -1,0 +1,52 @@
+8
+
+dir
+5
+https://10.0.24.111/svn/Ffmpeg_csst/FFMpegDemo/res/values
+https://10.0.24.111/svn/Ffmpeg_csst
+
+
+
+2014-06-04T05:51:46.968750Z
+1
+panxing
+
+
+svn:special svn:externals svn:needs-lock
+
+styles.xml
+file
+
+
+
+
+2014-04-11T12:50:50.798000Z
+748d5d6afd774cc31740604f9bc34ab7
+2014-06-04T05:51:46.968750Z
+1
+panxing
+
+strings.xml
+file
+
+
+
+
+2014-06-03T10:04:35.157400Z
+ecf5ee81f47b37c2d3f29479ff325b6c
+2014-06-04T05:51:46.968750Z
+1
+panxing
+
+dimens.xml
+file
+
+
+
+
+2014-04-11T12:50:51.807000Z
+95bafc6e72ab55586d77b38088345fa5
+2014-06-04T05:51:46.968750Z
+1
+panxing
+

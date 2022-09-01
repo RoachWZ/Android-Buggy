@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FaceDetectIrCtrl</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="ir_send1"> </string>
+	<string name="ir_send2"> </string>
+	<string name="ir_send3"> </string>
+	<string name="ir_send4"> </string>
+	
+</resources>

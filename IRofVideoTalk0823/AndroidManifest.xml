@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.csst.videotalk"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="22" />
+    
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />  
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  
+    <uses-permission android:name="android.permission.TRANSMIT_IR" />
+    <uses-feature 	 android:name="android.hardware.ConsumerIrManager" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature    android:name="android.hardware.camera" /> 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>	
+    <uses-permission android:name="android.permission.WAKE_LOCK"/> 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/> 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.softwinner.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.softwinner.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/video_monitor"
+        android:label="@string/app_title" 
+         >
+         
+        <activity
+            android:label="@string/app_title"
+            android:name="com.csst.videotalk.FfmpegActivity" >
+            
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.csst.videotalk.VideoTalkActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"  
+            
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            
+            <intent-filter>
+                <action android:name="com.csst.ffmpeg.video_talk" />
+            </intent-filter>
+            
+        </activity>
+        <service android:name="com.onLineDetect.service.OnLineDetectService">
+            <intent-filter>
+                <action android:name="ZLB.LIVE_TV.OnLineDetectService" />
+            </intent-filter>
+        </service>
+        
+                
+    </application>
+
+
+        
+    
+    
+</manifest>

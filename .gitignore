@@ -1,3 +1,6 @@
+#MobileCamera 以前没记笔记，不知道参考的哪里，不知道这是干甚的工程,装手机上还检测出了病毒,所以不提交
+/MobileCamera/
+
 .gradle/
 build/
 /vendor
@@ -9,7 +12,10 @@ composer.lock
 Thumbs.db
 wandb/
 
-# IDE's
+# eclipse
+.metadata/
+
+# IDE
 .idea/
 /.vscode
 .classpath
@@ -17,6 +23,6 @@ wandb/
 .settings/
 
 # build
-/bin
+bin/
 
 

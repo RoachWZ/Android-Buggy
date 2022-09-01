@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/activity_video_ctrl_view"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <TextView
+            android:id="@+id/tip_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/app_name"/>
+        <FrameLayout
+            android:id="@+id/remote_video_view_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:padding="1dp" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayout2"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="7dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" >
+
+                <FrameLayout
+                    android:id="@+id/local_video_view_container"
+                    android:layout_width="fill_parent"
+                    android:layout_height="120dp"
+                    android:layout_gravity="top" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="1dp"
+                android:textColor="#ffffffff"
+                android:textSize="1sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:onClick="onRemoteVoiceMuteClicked"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/btn_voice" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:onClick="onLocalAudioMuteClicked"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/btn_mute" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:onClick="onSwitchCameraClicked"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/btn_switch_camera" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:onClick="onEncCallClicked"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/btn_end_call" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/send_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/send_button1"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/send_button4"
+            android:text="Back"
+            android:src="@drawable/btn_down"/>
+
+        <ImageButton
+            android:id="@+id/send_button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/send_button3"
+            android:layout_alignBottom="@+id/send_button3"
+            android:layout_toRightOf="@+id/send_button1"
+            android:text="Right"
+            android:src="@drawable/btn_right"/>
+
+        <ImageButton
+            android:id="@+id/send_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/send_button3"
+            android:layout_toRightOf="@+id/send_button3"
+            android:text="Front"
+            android:src="@drawable/btn_up"/>
+
+        <ImageButton
+            android:id="@+id/send_button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/send_button2"
+            android:layout_toLeftOf="@+id/LinearLayout2"
+            android:text="Left"
+            android:src="@drawable/btn_left"/>
+
+        <Button
+            android:id="@+id/send_button_s2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/send_button_s3"
+            android:layout_alignLeft="@+id/send_button_s3"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="51dp"
+            android:text="Speed2" />
+
+        <Button
+            android:id="@+id/send_button_s4"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/send_button2"
+            android:layout_alignBottom="@+id/send_button2"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginBottom="36dp"
+            android:text="Speed4" />
+
+        <Button
+            android:id="@+id/send_button_s3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/send_button_s4"
+            android:layout_alignTop="@+id/send_button3"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="-50dp"
+            android:text="Speed3" />
+
+        <ImageView
+            android:id="@+id/button_VideoMute"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:onClick="onLocalVideoMuteClicked"
+            android:text="VideoMute"
+            android:src="@drawable/btn_close_video"/>
+
+        <ImageButton
+            android:id="@+id/send_button_C"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/button_VideoMute"
+            android:scaleType="centerInside"
+            android:onClick="onRemoteSwitchCamClicked"
+            android:src="@drawable/btn_switch_camera" />
+
+        <ImageView
+            android:id="@+id/send_button_L"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/send_button_C"
+            android:layout_alignParentRight="true"
+            android:onClick="onRemoteLightClicked"
+            android:text="SwitchLight"
+            android:src="@drawable/btn_light"/>
+    </RelativeLayout>
+
+</LinearLayout>

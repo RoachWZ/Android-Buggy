@@ -1,0 +1,8 @@
+#ABNF 1.0 UTF-8;
+language zh-CN; 
+mode voice;
+
+root $main;
+$main = [$call] $name;
+$call = 向|往;
+$name = 前进|后退|左转|右转;

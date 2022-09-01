@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.1'
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+android {
+    compileSdkVersion 23
+    buildToolsVersion '26.0.2'
+
+    defaultConfig {
+        applicationId "com.iflytek.mscv5plusdemo"
+        minSdkVersion 19
+        targetSdkVersion 23
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    allprojects {
+        repositories {
+		
+			// Msc.jar线上maven地址
+		    maven{
+                url 'http://libmsc.xfyun.cn/repository/maven-releases/'
+            }
+            jcenter()
+            mavenCentral()
+        }
+    }
+}
+
+// 保证引用jar包最新，建议使用
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds' // 动态版本 x.x.+
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'//  变化版本 x.x.x
+}
+
+dependencies {
+
+  //  api 'com.iflytek:libMsc:latest.release'    // 引用MSc.jar,当前最新版本1.0.1138
+    //compile project(':MscLibSrc')
+    compile 'com.android.support:support-v4:23.+'
+    compile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    compile files('libs/Msc.jar')
+    //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    //releaseCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+}
+
+repositories {
+    google()
+}
