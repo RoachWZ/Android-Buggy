@@ -1,0 +1,48 @@
+<RelativeLayout 
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  android:orientation="vertical" 
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent" 
+  android:layout_gravity="center_horizontal" 
+> 
+  <SurfaceView 
+    android:id="@+id/mSurfaceView" 
+    android:visibility="visible"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+    android:layout_gravity="center_horizontal"
+  /> 
+	<Button
+        android:id="@+id/send_button1"
+        android:text="@string/ir_send1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
+	<Button
+        android:id="@+id/send_button2"
+        android:text="@string/ir_send2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/send_button1"
+        android:layout_marginTop="50dp"/>
+	<Button
+        android:id="@+id/send_button3"
+        android:text="@string/ir_send3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_button1"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/send_button1"/>
+	<Button
+        android:id="@+id/send_button4"
+        android:text="@string/ir_send4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_button1"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/send_button1"/>
+    
+</RelativeLayout>
