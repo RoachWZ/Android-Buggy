@@ -2,7 +2,7 @@
 =========
 
 此部分是红外遥控小车单片机程序，安卓程序详见https://github.com/RoachWZ/Android-Buggy/tree/master/MonitorAndroidCar-v1.2
-
+RCcar_main.C 是RC遥控车程序，安卓控制端对应选择RC car 控制模式。
 所需软件环境
 
 + KEIL(编译软件)

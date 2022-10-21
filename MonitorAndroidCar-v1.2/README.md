@@ -45,4 +45,4 @@ Android 开发包及其工具的安装和配置
 
 使用时，先将小车上电。将两部手机连接到互联网，打开我们事先编写好的安卓软件，小车上的手机选择小车模式，另一部手机选择控制模式便可以进行操作了，画面右侧控制小车的运动，左侧则是速度的控制。
 ![](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/xc1.2.png)
-![](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/kz1.2.png)
+![](https://github.com/RoachWZ/Android-Buggy/tree/master/MonitorAndroidCar-v1.2/appScreenshot.png)
