@@ -24,4 +24,4 @@ RCcar_main.C 是RC遥控车程序，安卓控制端对应选择RC car 控制模�
 
 ![系统框图](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/xtkt.png)
 ![super_car](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/super_car.png)
-![rc_car](https://github.com/RoachWZ/Android-Buggy/tree/master/51-IR-Car/RCcar.png)
+![rc_car](https://github.com/RoachWZ/Android-Buggy/blob/master/51-IR-Car/RCcar.png)
