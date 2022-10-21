@@ -44,5 +44,55 @@
         android:layout_below="@+id/send_button1"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/send_button1"/>
+
+	<Button
+	    android:id="@+id/buttonStop"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/send_button1"
+	    android:layout_centerHorizontal="true"
+	    android:text="Stop" />
+
+	<Button
+	    android:id="@+id/buttonSpeed2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/send_button2"
+	    android:layout_marginTop="42dp"
+	    android:layout_toLeftOf="@+id/send_button2"
+	    android:text="Speed2" />
+
+	<Button
+	    android:id="@+id/buttonSpeed3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignTop="@+id/buttonSpeed2"
+	    android:layout_marginTop="14dp"
+	    android:layout_toRightOf="@+id/send_button3"
+	    android:text="Speed3" />
+
+	<Button
+	    android:id="@+id/buttonSpeed4"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/buttonSpeed2"
+	    android:layout_toRightOf="@+id/send_button2"
+	    android:text="Speed4" />
+
+	<Button
+	    android:id="@+id/send_button13"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/send_button3"
+	    android:layout_alignLeft="@+id/send_button3"
+	    android:text="left_spin" />
+
+	<Button
+	    android:id="@+id/button14"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/send_button2"
+	    android:layout_toRightOf="@+id/send_button2"
+	    android:text="right_spin" />
     
 </RelativeLayout>
