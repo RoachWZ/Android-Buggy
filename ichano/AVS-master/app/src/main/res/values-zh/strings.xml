@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">众云监控采集端</string>
+    <string name="help">帮助</string>
+    <string name="feedback">用户反馈</string>
+    <string name="about">关于</string>
+    <string name="disclaimer">免责声明</string>
+    <string name="start">知道了</string>
+    <string name="wrong_package_name">如果您要创建自己的应用，请到官网注册并获取授权！</string>
+    <string name="device_name">设备名：</string>
+    <string name="cid">CID:</string>
+    <string name="password">密码:</string>
+    <string name="barcode_tip">请用”众云监控“扫描二维码添加摄像头：</string>
+    <string name="connecting">-- 正在连接 --</string>
+    <string name="connected">-- 已连接 --</string>
+    <string name="disconnected">-- 已断开 --</string>
+    <string name="modify_info_dlg_title">修改采集端信息</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="empty_info">设备名和密码不能为空！</string>
+    <string name="short_pwd">密码长度至少是6位！</string>
+    <string name="invalid_pwd">密码必须包含字母和数字！</string>
+    <string name="invalid_device_name">设备名只能为数字、字母和中文字符！</string>
+    <string name="exit_str">确定要退出吗？</string>
+	<string name="about_str"> %1$s \n版本：%2$s \n南京云恩通讯科技有限公司(C)2011-2015 \ndev.ichano.cn \n开源协议：Apache License 2.0 \nQQ用户群：151981896</string>
+</resources>

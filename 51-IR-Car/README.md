@@ -1,7 +1,7 @@
 51-IR-Car
 =========
 
-此部分是红外遥控小车单片机程序
+此部分是红外遥控小车单片机程序，安卓程序详见https://github.com/RoachWZ/Android-Buggy/tree/master/MonitorAndroidCar-v1.2
 
 所需软件环境
 
@@ -17,10 +17,11 @@
 + VS1838B(红外一体化接收头)
 + 小车底盘（淘宝上面有非常多的小车底盘卖，自己任选）
 + 马达：TT马达 2个
-+ 轮子：2个
-+ 锂电池:2200mAH 两节7.4V + 充电器（可用充电宝代替）
++ 轮子：2个 （马达和轮子可用RC 遥控车代替）
++ 锂电池:2200mAH 两节7.4V + 充电器 （可用充电宝代替，但是当小车长时间不走时没有电流输出充电宝会断电）
 + 杜邦线若干
 + 车载手机支架（有车一族，不用的车载手机支架可以利用）
 
 ![系统框图](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/xtkt.png)
 ![super_car](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/super_car.png)
+![rc_car](https://github.com/RoachWZ/Android-Buggy/tree/master/51-IR-Car/RCcar.png)

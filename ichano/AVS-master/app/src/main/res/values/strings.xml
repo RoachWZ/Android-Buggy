@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iChano Streamer</string>
+    <string name="help">Help</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">About</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="start">I Know</string>
+    <string name="wrong_package_name">If you are a developer, go and sign in our developer web site.</string>
+    <string name="device_name">Device name：</string>
+    <string name="cid">CID:</string>
+    <string name="password">Pwd:</string>
+    <string name="barcode_tip">From ”ZY Monitoring“ app, add camera by scanning QR Code:</string>
+    <string name="connecting">-- Connecting --</string>
+    <string name="connected">-- Connected --</string>
+    <string name="disconnected">-- Disconnected --</string>
+    <string name="modify_info_dlg_title">Modify streamer information</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">cancle</string>
+    <string name="empty_info">Device name and password can not be blank.</string>
+    <string name="short_pwd">Password should be 6 or more characters.</string>
+    <string name="invalid_pwd">Password must contain numbers and letters.</string>
+    <string name="invalid_device_name">device name is alphanumeric.</string>
+    <string name="exit_str">Are you sure to exit?</string>
+	<string name="about_str"> %1$s \nVersion：%2$s \niChano incorporation (C)2011-2015 \ndev.ichano.cn \nLicensed under the Apache License, Version 2.0 \nQQ用户群：151981896</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="video_list_menu_all_video_label">All Videos</string>
+    <string name="menu_change_password_label">Change Streamer Password</string>
+    <string name="warnning_save_successfully">Saved Successfully</string>
+    <string name="warnning_request_failed">Request failed, please check your network.</string>
+    <string name="menu_alarm_settings_label">Motion Alarms</string> 
+    <string name="video_quality_high">High</string>
+    <string name="video_quality_middle">Normal</string>
+    <string name="video_quality_low">Low</string>
+	<string name="motion_controller_open_push_cell_label">Push Notifications</string>
+	<string name="menu_scheduled_recording_label">Scheduled Recording</string>
+    <string name="warnning_delete_fail">Delete failed</string>
+    <string name="video_list_menu_all_camera_label">All Cameras</string>
+    <string name="calendar_all_video_btn">All</string>
+    <string name="alram_setting_controller_motion_cell_label">Motion Detection</string>
+	<string name="record_video_hour_min_sec">%1$02dh%2$02dm%3$02ds</string>
+	<string name="video_list_video_time_duration_label">%1$02dmin%2$02dsec</string>
+	<string name="video_list_video_time_duration_label_sec">%02dsec</string>
+    <string name="video_list_controller_select_date_btn">Choose a date</string>
+    
+    <string name="no_more_data">No more data</string>
+    <string name="sd_edit_warn">SD Card is still busy, please wait until the operation is completed.</string>
+	<string name="recording_video_not_support_seek">This device does not support drag and drop</string>
+	<string name="wifi_setting_start">Start</string>
+	<string name="wifi_setting_stop">Stop</string>
+</resources>

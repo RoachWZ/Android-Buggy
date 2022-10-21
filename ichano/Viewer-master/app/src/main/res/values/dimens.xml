@@ -1,0 +1,18 @@
+<resources>
+
+    <dimen name="camera_thumb_width">96dp</dimen>
+    <dimen name="camera_thumb_height">72dp</dimen>
+    <dimen name="camera_name_size">18dp</dimen>
+    <dimen name="camera_state_size">14dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="about_info_text_size">16dp</dimen>
+</resources>

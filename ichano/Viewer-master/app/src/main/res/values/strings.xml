@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iChano Camera</string>
+    <string name="wait_for_login">login...</string>
+    <string name="online">Online</string>
+    <string name="pwd_wrong">Wrong password</string>
+    <string name="offline">Offline</string>
+    <string name="add_cid">Add Camera</string>
+    <string name="add_cid_by_qr">Add Camera by QR Code</string>
+    <string name="help">Help</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">About</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="business">Contact ichano video open platform</string>
+    <string name="mail_to">Mail: business@ichano.com</string>
+    <string name="start">I Know</string>
+    <string name="delete_camera_dlg_title">Are you sure to delete this streamer?</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancle</string>
+    <string name="add_camera_dlg_title">Add a new Camera</string>
+    <string name="cid">CID</string>
+    <string name="password">New password:</string>
+    <string name="password_confirm">Confirm new password:</string>
+    <string name="empty_info">CID and password can not be blank！</string>
+    <string name="short_pwd">Password should be 6 or more characters.</string>
+    <string name="confirm_pwd_error">Please confirm your password.</string>
+    <string name="invalid_barcode">Only can scan iChano Streamer\'s barcode.</string>
+    <string name="invalid_cid">CID must be numbers！</string>
+    <string name="invalid_pwd">Password must contain numbers and letters.</string>
+    <string name="invalid_device_name">device name is alphanumeric.</string>
+    <string name="change_device_name_fail">Modify device name failed.</string>
+    <string name="change_device_name_success">Modify device name successed.</string>
+    <string name="change_password_fail">Modify password failed.</string>
+    <string name="change_password_success">Modify password successed.</string>
+    <string name="exit_str">Are you sure to exit?</string>
+    <string name="camera_offline">Camera is not online.</string>
+    <string name="camera_link_fail">Link camera failed.</string>
+    <string name="exit_camera">Are you sure to close the video.</string>
+    <string name="exit">Exit</string>
+    <string name="waiting">Live video is buffering…</string>
+    <string name="device_name">Device name：</string>
+    <string name="modify_camera_info">Modify streamer information</string>
+    <string name="sound_on">Sound on</string>
+    <string name="sound_off">Sound off</string>
+    <string name="record">Record video</string>
+    <string name="recording">Recording...</string>
+    <string name="recording_saved">Video saved at %1$s</string>
+    <string name="record_failed">Record video failed.</string>
+    <string name="hold_talk">Hold to Talk</string>
+    
+    <string name="time_up_error">You are not our developer, only can watch for two minutes. Join us, please!</string>
+    <string name="wrong_package_name">If you are a developer, go and sign in our developer web site.</string>
+	<string name="about_str"> %1$s \nVersion：%2$s \niChano incorporation (C)2011-2015 \ndev.ichano.cn \nLicensed under the Apache License, Version 2.0 \nQQ用户群：151981896</string>
+	
+	<string name="video_view_controller_capture_btn">Capture</string>
+    <string name="video_view_controller_flash_switch_btn">Flash</string>
+    <string name="video_view_controller_camera_switch_btn">Switch</string>
+    
+    <string name="savepic_succ">The screenshot was saved successfully in folder /Athome/athome_picture of your SD card.</string>
+    <string name="warnning_save_photo_failed">Failed to save the screenshot.</string>
+    
+    <string name="video_cagetory_timed_recordings">Videos recorded on camera</string>
+    <string name="video_cagetory_alarm_recordings">Motion Video on camera</string>
+	<string name="video_cagetory_local_recordings">Videos saved on this phone</string>
+    <string name="pic_cagetory_local_recordings">Pictures saved on this phone</string>
+    
+    <string name="warnning_no_video_clips">No Video Clips are Available</string>
+
+	<string name="back_nav_item">Back</string>
+	<string name="video_list_controller_delete_all_btn">Delete All</string>
+	<string name="ok_btn">OK</string>
+	<string name="alert_title">Warning</string>
+	<string name="network_disconnect">There is NO Internet connection, please check your network and try again.</string>
+	<string name="confirm_btn">Confirm</string>
+	<string name="cancel_btn">Cancel</string>
+	<string name="warnning_no_picture_clips">No screenshots saved</string>
+	<string name="loading_label">Loading ...</string>
+	<string name="sd_card_not_exist">There was no SD card in your device.</string>
+	<string name="warnning_delete_success">Deleted successfully</string>
+	<string name="warnning_delete_video_file">Are you sure you want to delete this video?</string>
+	<string name="warnning_delete_all_video_file">Are you sure you want to delete all video files?</string>
+	<string name="warnning_delete_pic_file">Are you sure you want to delete this Screenshot?</string>
+	<string name="warnning_delete_all_pic_file">Are you sure you want to delete all Screenshot?</string>
+	<string name="menu_watch_recorded_video_label">Recorded Videos</string>
+	<string name="cloud_video_duration">Duration:</string>
+	<string name="cloud_video_size">Size:</string>
+	<string name="video_list_controller_del_settings_btn">Settings</string>
+	
+    
+    <string-array name="video_quality">
+        <item>High</item>
+        <item>Normal</item>
+        <item>Low</item>
+    </string-array>
+    
+    <string-array name="month_array">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>Aug</item>
+        <item>Sept</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+
+    <string-array name="week_array">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+    </string-array>
+    
+    <string name="qq_login">QQ登陆</string>
+	<string name="wechat_login">微信登陆</string>
+	<string name="not_login">Not log in</string>
+	<string name="login_fail">Log in failed, please check your network.</string>
+	<string name="logout">Log out</string>
+	
+	<string name="week_mon">M</string>
+	<string name="week_tue">T</string>
+	<string name="week_wed">w</string>
+	<string name="week_thu">T</string>
+	<string name="week_fri">F</string>
+	<string name="week_sat">S</string>
+	<string name="week_sun">S</string>
+
+	<string name="delete">delete</string>
+</resources>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhongyun.viewer"
+    android:versionCode="101001"
+    android:versionName="1.01.001" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_OWER_DATA" />
+    <uses-permission android:name="android.permission.WRITE_OWER_DATA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    
+    <!-- getui, begin -->
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.BLUETOOTH"/>  
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+	<uses-permission android:name="getui.permission.GetuiService.com.zhongyun.viewer" />
+	<permission
+	    android:name="getui.permission.GetuiService.com.zhongyun.viewer"
+	    android:protectionLevel="normal" >
+	</permission>
+	<!-- getui, end -->
+	
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/home_theme"
+        >
+<!--         android:theme="@style/Theme.AppCompat.Light" -->
+        <activity
+            android:name=".LoadingActivity"
+            android:screenOrientation="portrait" 
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity 
+            android:name=".GuideActivity"
+             android:screenOrientation="portrait" />
+        
+        <activity 
+            android:name=".login.LoginActivity"
+             android:screenOrientation="portrait" />
+        
+        <activity 
+            android:name=".cameralist.CameraListActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name=".WatchActivity"
+            android:label="@string/app_name" 
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name=".CameraInfoSettingActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait" />
+        
+        <!-- umeng -->
+        <meta-data android:value="56aeb710e0f55a91670012bb" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="qq" android:name="UMENG_CHANNEL"/>
+		<activity android:name="com.umeng.fb.ConversationActivity"
+            android:screenOrientation="portrait"/>
+		<service
+		    android:name="com.umeng.update.net.DownloadingService"
+		    android:process=":DownloadingService" >
+		</service>
+		<activity 
+		    android:name="com.umeng.update.UpdateDialogActivity"
+		    android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+		</activity>
+		
+		<!-- admob -->
+		<!-- activity android:name="com.google.ads.AdActivity"
+          android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/-->
+		
+		<activity
+            android:name="com.zhongyun.viewer.video.RecordingVideoTypeList"
+            android:theme="@style/recordvideo_theme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zhongyun.viewer.video.LocalVideoList"
+            android:theme="@style/recordvideo_theme"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.zhongyun.viewer.setting.CameraSettingsTabActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/app_name" >
+        </activity>
+        
+        <activity
+            android:name="com.zhongyun.viewer.video.AtHomeCameraVideolistNaoCan"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.zhongyun.viewer.video.PlayRtspVideoView"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        
+        <!-- share sdk, begin-->
+        <activity
+	        android:name="com.mob.tools.MobUIShell"
+	        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+	        android:configChanges="keyboardHidden|orientation|screenSize"
+	        android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <!-- share sdk, end-->
+        
+        <!-- getui, begin -->
+	    <meta-data
+	        android:name="PUSH_APPID"
+	        android:value="NfYw1gMZmb7JbMU41qdzp2" />
+	    <meta-data
+	        android:name="PUSH_APPKEY"
+	        android:value="GtV7L0RFxO8IJsCWbiiLf2" />
+	    <meta-data
+	        android:name="PUSH_APPSECRET"
+	        android:value="4oFvPmVzzg97ijSEUjmoZ8" />
+	    <service
+	        android:name="com.igexin.sdk.PushService"
+	        android:exported="true"
+	        android:label="NotificationCenter"
+	        android:process=":pushservice" />
+	    <service
+	        android:name="com.igexin.sdk.PushServiceUser"
+	        android:exported="true"
+	        android:label="NotificationCenterUser" />
+	    <receiver android:name="com.igexin.sdk.PushReceiver" >
+	        <intent-filter>
+	            <action android:name="android.intent.action.BOOT_COMPLETED" />
+	            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+	            <action android:name="android.intent.action.USER_PRESENT" />
+	            <action android:name="com.igexin.sdk.action.refreshls" />
+	            <action android:name="android.intent.action.MEDIA_MOUNTED" />
+	            <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+	            <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+	        </intent-filter>
+	    </receiver>
+	     
+	    <receiver
+	        android:name="com.igexin.sdk.PushManagerReceiver"
+	        android:exported="false" >
+	        <intent-filter>
+	            <action android:name="com.igexin.sdk.action.pushmanager" />
+	        </intent-filter>
+	    </receiver>
+	    <activity
+	        android:name="com.igexin.sdk.PushActivity"
+	        android:excludeFromRecents="true"
+	        android:exported="false"
+	        android:process=":pushservice"
+	        android:taskAffinity="com.igexin.sdk.PushActivityTask"
+	        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+	    <activity
+	        android:name="com.igexin.sdk.GActivity"
+	        android:excludeFromRecents="true"
+	        android:exported="true"
+	        android:process=":pushservice"
+	        android:taskAffinity="com.igexin.sdk.PushActivityTask"
+	        android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+	 
+	    <service
+	        android:name="com.igexin.download.DownloadService"
+	        android:process=":pushservice" />
+	 
+	    <receiver android:name="com.igexin.download.DownloadReceiver" >
+	        <intent-filter>
+	            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+	        </intent-filter>
+	    </receiver>
+	 
+	    <provider
+	        android:name="com.igexin.download.DownloadProvider"
+	        android:exported="true"
+	        android:authorities="downloads.com.zhongyun.viewer"
+	        android:process=":pushservice" />
+	 
+	    <activity   
+	        android:name="com.igexin.getuiext.activity.GetuiExtActivity"   
+	        android:configChanges="orientation|keyboard|keyboardHidden"  
+	        android:excludeFromRecents="true"  
+	        android:exported="false"  
+	        android:process=":pushservice"   
+	        android:taskAffinity="android.task.myServicetask"   
+	        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+	     
+	    <receiver
+	        android:name="com.igexin.getuiext.service.PayloadReceiver"
+	        android:exported="false" >
+	        <intent-filter>
+	            <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+	            <action android:name="com.igexin.sdk.action.NfYw1gMZmb7JbMU41qdzp2" />
+	        </intent-filter>
+	    </receiver>
+	    <service
+	        android:name="com.igexin.getuiext.service.GetuiExtService"
+	        android:process=":pushservice" />
+        <!-- getui, end -->   
+          <activity 
+              	android:name="com.zhongyun.zxing.journeyapps.barcodescanner.CaptureActivity"
+                android:clearTaskOnLaunch="true"
+                android:stateNotNeeded="true"
+                android:theme="@style/zxing_CaptureTheme"
+                android:windowSoftInputMode="stateAlwaysHidden"/>
+    </application>
+
+</manifest>

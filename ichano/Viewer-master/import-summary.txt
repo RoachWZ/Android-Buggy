@@ -1,0 +1,100 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* LICENSE
+* README.md
+* README_CN.md
+* README_EN.md
+* screenshot1.png
+* screenshot1_en.png
+* screenshot2.png
+* screenshot2_en.png
+* screenshot3.png
+* screenshot3_en.png
+* screenshot4.png
+* screenshot4_en.png
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.+
+gson-2.2.4.jar => com.google.code.gson:gson:2.2.4
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.2.4.jar => version 2.2.4 in com.google.code.gson:gson:2.2.4
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\AndroidSwipeLayout-v1.1.8.jar => app\libs\AndroidSwipeLayout-v1.1.8.jar
+* libs\armeabi\libavdecoder.so => app\src\main\jniLibs\armeabi\libavdecoder.so
+* libs\armeabi\libbspatch.so => app\src\main\jniLibs\armeabi\libbspatch.so
+* libs\armeabi\libffmpeg.so => app\src\main\jniLibs\armeabi\libffmpeg.so
+* libs\armeabi\libgetuiext.so => app\src\main\jniLibs\armeabi\libgetuiext.so
+* libs\armeabi\libgnustl_shared.so => app\src\main\jniLibs\armeabi\libgnustl_shared.so
+* libs\armeabi\libichanoaec.so => app\src\main\jniLibs\armeabi\libichanoaec.so
+* libs\armeabi\libsdk30.so => app\src\main\jniLibs\armeabi\libsdk30.so
+* libs\armeabi\libumeng_opustool.so => app\src\main\jniLibs\armeabi\libumeng_opustool.so
+* libs\armeabi\libviewer30.so => app\src\main\jniLibs\armeabi\libviewer30.so
+* libs\armeabi\libwebrtcaec.so => app\src\main\jniLibs\armeabi\libwebrtcaec.so
+* libs\com.umeng.fb.5.4.0.jar => app\libs\com.umeng.fb.5.4.0.jar
+* libs\GetuiExt-2.0.3.jar => app\libs\GetuiExt-2.0.3.jar
+* libs\GetuiSDK2.7.0.0.jar => app\libs\GetuiSDK2.7.0.0.jar
+* libs\ichanousersystem.jar => app\libs\ichanousersystem.jar
+* libs\MobCommons.jar => app\libs\MobCommons.jar
+* libs\MobTools.jar => app\libs\MobTools.jar
+* libs\org.apache.http.legacy.jar => app\libs\org.apache.http.legacy.jar
+* libs\resfinder.jar => app\libs\resfinder.jar
+* libs\ShareSDK-Core-2.6.6.jar => app\libs\ShareSDK-Core-2.6.6.jar
+* libs\ShareSDK-QQ-2.6.6.jar => app\libs\ShareSDK-QQ-2.6.6.jar
+* libs\ShareSDK-Wechat-2.6.6.jar => app\libs\ShareSDK-Wechat-2.6.6.jar
+* libs\ShareSDK-Wechat-Core-2.6.6.jar => app\libs\ShareSDK-Wechat-Core-2.6.6.jar
+* libs\umeng-analytics-v5.6.4.jar => app\libs\umeng-analytics-v5.6.4.jar
+* libs\umeng-update-v2.6.0.1.jar => app\libs\umeng-update-v2.6.0.1.jar
+* libs\viewer_sdk_opensource.jar => app\libs\viewer_sdk_opensource.jar
+* libs\volley.jar => app\libs\volley.jar
+* libs\zxing-core-3.2.2.jar => app\libs\zxing-core-3.2.2.jar
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

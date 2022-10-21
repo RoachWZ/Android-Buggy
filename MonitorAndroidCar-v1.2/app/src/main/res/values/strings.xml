@@ -9,4 +9,9 @@
     <!-- You will need to deploy your own token server for production release -->
     <!-- Leave this value empty if Security keys/Token is not enabled for your project -->
     <string name="agora_access_token"></string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_video_rc_car_ctrl">activity_video_rcCarCtrl</string>
 </resources>

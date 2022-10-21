@@ -519,9 +519,9 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
                             } else if (mstr.equals("04")) {
                                 mCIR.transmit(hz, pattern4);//右
                             } else if (mstr.equals("13")) {
-                                mCIR.transmit(hz, pattern5);//左自转
+                                mCIR.transmit(hz, pattern5);//左自转 rc_car前后停止
                             } else if (mstr.equals("14")) {
-                                mCIR.transmit(hz, pattern6);//右自转
+                                mCIR.transmit(hz, pattern6);//右自转 rc_car左右停止
                             } else if (mstr.equals("s")) {
                                 mCIR.transmit(hz, speed);//全速
                             } else if (mstr.equals("s1")) {

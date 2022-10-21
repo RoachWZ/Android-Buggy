@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="white">#ffffff</color>
+	<color name="title_red">#ff8772</color>
+	<color name="black">#534e48</color>
+	<color name="gray">#cdcdcd</color>
+	<color name="dark_gray">#6d6d6d</color>
+	<color name="transparent">#00ffffff</color>
+	
+	<color name="red_btn_pressed">#cb6450</color>
+	<color name="red_btn_default">#ff8067</color>
+	
+	<color name="btn_white">#fcf1df</color>
+	<color name="btn_login">#ff8067</color>
+	
+	<color name="athome_background">#f5f0ec</color>
+	<color name="athome_title">#ff8067</color>
+	<color name="athome_btn_bg">#ad4430</color>
+	
+	<color name="user_txt">#7d7f7c</color>
+	<color name="cloud_item_divider">#c8c7cc</color>
+	<color name="camera_list_btn">#e6e6e6</color>
+	<color name="blue_text2">#818181</color>
+	<color name="grey_text">#616e7e</color>
+	<color name="cloud_selected_avs_name">#534e48</color>
+	<color name="textcolorhint">#aea79f</color>
+	
+	<color name="main_blue_light">#3F56B5</color>
+    <color name="main_black_grey">#6D6D6D</color>
+    
+    
+    <color name="btn_blue_pressed">#0032FF</color>
+    <color name="btn_blue">#3b8ede</color>
+    <color name="btn_green_pressed">#00ff00</color>
+    <color name="btn_green">#13d12f</color>
+    <color name="btn_dark_blue_pressed">#07abf7</color>
+    <color name="btn_dark_blue">#1facc7</color>
+    
+    <color name="Login_layout_color">#cf6100</color>
+    <color name="userlogin_forget_txt">#ff7f66</color>
+    
+    <color name="add_by_cid_top">#2b3745</color>
+    <color name="user_cell_pressed">#b2b2b2</color>
+    <color name="add_by_cid_bottom">#2f3c4c</color>
+    <color name="search_by_network_bottom">#ff7f66</color>
+    <color name="add_itemtxt_color">#fcf1df</color>
+    
+    <color name="cloud_bg">#f5f0ec</color>
+    <color name="video_play_seekbar_bg">#b2000000</color>
+    <color name="video_play_time">#999999</color>
+    
+    <color name="athome_title_alp_red">#aaff8067</color>
+    <color name="athome_title_alp">#aacdcdcd</color>
+    <color name="title_no_select">#eeeeee</color>
+    <color name="title_text_no_select">#909090</color>
+</resources>

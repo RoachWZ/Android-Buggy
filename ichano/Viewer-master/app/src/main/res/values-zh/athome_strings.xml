@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="video_list_menu_all_video_label">全部视频</string>
+	<string name="loading_label">加载中 ...</string>
+    <string name="cancel_btn">取消</string>
+    <string name="menu_change_password_label">修改采集端密码</string>
+    <string name="warnning_save_successfully">保存成功</string>
+    <string name="warnning_request_failed">请求失败，请检查网络</string>
+    <string name="back_nav_item">返回</string>
+    <string name="video_list_controller_del_settings_btn">删除设置</string>
+    <string name="warnning_no_video_clips">没有视频文件</string>
+    <string name="confirm_btn">确定</string>
+    <string name="ok_btn">确定</string>
+    <string name="alert_title">提示</string>
+    <string name="warnning_delete_video_file">删除该视频文件?</string>
+    <string name="warnning_delete_all_video_file">删除所有视频文件？</string>
+    <string name="menu_alarm_settings_label">报警设置</string>
+	<string name="video_quality_high">高</string>
+    <string name="video_quality_middle">中</string>
+    <string name="video_quality_low">低</string>
+ 	<string name="menu_watch_recorded_video_label">已录制视频</string>   
+    <string name="motion_controller_open_push_cell_label">推送提醒</string>
+    <string name="menu_scheduled_recording_label">定时录制</string>
+    <string name="warnning_delete_success">删除成功</string>
+	<string name="warnning_delete_fail">删除失败</string>
+    <string name="video_list_menu_all_camera_label">全部</string>
+    <string name="calendar_all_video_btn">全部</string>
+    <string name="network_disconnect">未检测到网络，一些功能不能正常使用，请检查后重新连接。</string>
+    <string name="alram_setting_controller_motion_cell_label">运动侦测</string>
+	<string name="record_video_hour_min_sec">%1$02d小时%2$02d分%3$02d秒</string>
+	<string name="video_list_video_time_duration_label">%1$02d分%2$02d秒</string>
+	<string name="video_list_video_time_duration_label_sec">%02d秒</string>
+	<string name="video_cagetory_timed_recordings">定时录制视频(摄像机端)</string>
+    <string name="video_cagetory_alarm_recordings">报警录制视频(摄像机端)</string>
+	<string name="video_cagetory_local_recordings">本地录制视频(本手机上)</string>
+    <string name="video_list_controller_delete_all_btn">全部删除</string>
+    <string name="video_list_controller_select_date_btn">选择日期</string>
+	
+      
+    <string name="no_more_data">没有更多数据</string>
+    <string name="sd_edit_warn">检测到其他设备正在操作sd卡内容，暂时不能操作sd卡</string>
+    <!-- Android 不同 -->
+    <string name="sd_card_not_exist">你的设备没有SD卡.</string>
+	<!-- 设置wifi -->	
+	
+	<!-- 2.1 -->
+	
+	<string name="recording_video_not_support_seek">此设备不支持拖放</string>
+	<string name="pic_cagetory_local_recordings">本地视频截图(本手机上)</string>
+	<string name="warnning_no_picture_clips">没有截图文件</string>
+	
+	<string name="warnning_delete_pic_file">删除该截图文件?</string>
+	<string name="warnning_delete_all_pic_file">删除所有截图文件?</string>
+	<string name="wifi_setting_start">开始</string>
+	<string name="wifi_setting_stop">停止</string>
+	<!-- <string name="sensor_type_smoke_label">烟感传感器</string>
+	<string name="sensor_type_motion_label">人体传感器</string>
+	<string name="sensor_type_contact_1_label">门磁传感器 1</string>
+	<string name="sensor_type_contact_2_label">门磁传感器 2</string> -->
+	
+</resources>

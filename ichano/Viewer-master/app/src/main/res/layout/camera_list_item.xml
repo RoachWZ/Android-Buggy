@@ -1,0 +1,105 @@
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="80dp" >
+
+    <!-- Bottom View Start -->
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="@color/red_btn_default"
+        android:weightSum="1" >
+
+        <TextView 
+            android:id="@+id/delete1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:background="@color/red_btn_default"
+            android:text="@string/delete"/>
+        <!-- What you want to show -->
+    </LinearLayout>
+
+    <!-- Bottom View End -->
+
+
+    <!-- Surface View Start -->
+
+<!--     <LinearLayout -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:background="#ffffff" -->
+<!--         android:padding="10dp" > -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_5" >
+
+            <ImageView
+                android:id="@+id/thumb"
+                android:layout_width="@dimen/camera_thumb_width"
+                android:layout_height="@dimen/camera_thumb_height"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/camera_thumb_height"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5" >
+
+                <TextView
+                    android:id="@+id/cameraName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/camera_name_size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+
+                    <ImageView
+                        android:id="@+id/cameraState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/cameraStateTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/camera_state_size"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit_camera" />
+
+            <TextView
+                android:layout_width="@dimen/dp_1"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp_8"
+                android:background="@color/gray" />
+
+            <ImageView
+                android:id="@+id/video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_5"
+                android:src="@drawable/video" />
+        </LinearLayout>
+<!--     </LinearLayout> -->
+    <!-- Surface View End -->
+
+</com.daimajia.swipe.SwipeLayout>

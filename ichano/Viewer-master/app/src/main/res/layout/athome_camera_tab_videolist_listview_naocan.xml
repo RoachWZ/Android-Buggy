@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/videolist_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/athome_background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp" >
+
+        <com.handmark.pulltorefresh.library.PullToRefreshExpandableListView
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/athome_camera_tab_videolist_expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:fadingEdge="none"
+            ptr:ptrHeaderBackground="@android:color/darker_gray"
+            ptr:ptrMode="pullUpFromBottom" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relayout_selectTime"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/athome_camera_list_listview_cell_selector" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line1" />
+
+        <TextView
+            android:id="@+id/select_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:text="@string/video_list_controller_select_date_btn"
+            android:textColor="@color/athome_title"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/not_viedeoList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="55dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/not_network_icon" />
+
+        <TextView
+            style="@style/black_16_txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/warnning_no_video_clips" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/relayout_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:background="@color/add_by_cid_top"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/relayout_alert_cell1"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@drawable/add_cid_bg" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/video_list_menu_all_camera_label"
+                android:textColor="@color/add_itemtxt_color"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:src="@color/add_by_cid_bottom" />
+        </RelativeLayout>
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:persistentDrawingCache="animation|scrolling" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:src="@color/search_by_network_bottom" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dip"
+        android:background="@color/athome_title"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:id="@+id/back_linlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_control_selector"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/back_icon" />
+
+            <TextView style="@style/textView_back" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp" >
+
+            <RelativeLayout
+                android:id="@+id/athome_up_down"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_control_selector"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:singleLine="true"
+                    android:text="@string/video_list_menu_all_video_label"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/athome_up_down2"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/title"
+                    android:src="@drawable/more_avs_hint_icon" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/opt_linlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_control_selector"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <TextView
+                style="@style/btn_opt"
+                android:text="@string/video_list_controller_delete_all_btn" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

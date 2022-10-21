@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toggle="http://schemas.android.com/apk/res/com.zhongyun.viewer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/text_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/alram_setting_controller_motion_cell_label"
+                android:textSize="20dp" />
+
+            <com.zhongyun.viewer.widget.ToggleButton
+                android:id="@+id/open_btn1"
+                android:layout_width="54dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                toggle:isDefaultOn="true"
+                toggle:onColor="@color/athome_title" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <!-- <LinearLayout -->
+        <!-- android:id="@+id/time_zone" -->
+        <!-- android:layout_width="match_parent" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:orientation="vertical" > -->
+
+
+        <!-- <RelativeLayout -->
+        <!-- android:id="@+id/start_time_zone" -->
+        <!-- android:layout_width="match_parent" -->
+        <!-- android:layout_height="70dp" > -->
+
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/start_time_txt" -->
+        <!-- android:layout_width="50dp" -->
+        <!-- android:layout_height="20dp" -->
+        <!-- android:layout_marginLeft="10dp" -->
+        <!-- android:layout_alignParentBottom="true" -->
+        <!-- android:text="@string/wifi_setting_start" -->
+        <!-- android:textSize="18dp" /> -->
+
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/show_start_time_txt" -->
+        <!-- android:layout_width="180dp" -->
+        <!-- android:layout_height="60dp" -->
+        <!-- android:layout_alignParentBottom="true" -->
+        <!-- android:layout_toRightOf="@id/start_time_txt" -->
+        <!-- android:text="02:00" -->
+        <!-- android:textSize="55dp" /> -->
+        <!-- </RelativeLayout> -->
+
+
+        <!-- <RelativeLayout -->
+        <!-- android:id="@+id/end_time_zone" -->
+        <!-- android:layout_width="match_parent" -->
+        <!-- android:layout_height="70dp" -->
+        <!-- android:layout_marginTop="30dp" > -->
+
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/end_time_txt" -->
+        <!-- android:layout_width="50dp" -->
+        <!-- android:layout_height="20dp" -->
+        <!-- android:layout_marginLeft="10dp" -->
+        <!-- android:layout_alignParentBottom="true" -->
+        <!-- android:layout_marginBottom="10dp" -->
+        <!-- android:text="@string/wifi_setting_stop" -->
+        <!-- android:textSize="18dp" /> -->
+
+
+        <!-- <TextView -->
+        <!-- android:id="@+id/show_end_time_txt" -->
+        <!-- android:layout_width="180dp" -->
+        <!-- android:layout_height="60dp" -->
+        <!-- android:layout_alignParentBottom="true" -->
+        <!-- android:layout_marginBottom="10dp" -->
+        <!-- android:layout_toRightOf="@id/end_time_txt" -->
+        <!-- android:text="23:00" -->
+        <!-- android:textSize="55dp" /> -->
+        <!-- </RelativeLayout> -->
+        <!-- </LinearLayout> -->
+
+        <LinearLayout
+            android:id="@+id/time_zone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/start_time_txt"
+                    android:layout_width="35dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/wifi_setting_start"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/show_start_time_txt"
+                    android:layout_width="145dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/start_time_txt"
+                    android:text="02:00"
+                    android:textColor="@color/athome_title"
+                    android:textSize="42dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/end_time_txt"
+                    android:layout_width="35dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/wifi_setting_stop"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/show_end_time_txt"
+                    android:layout_width="145dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/end_time_txt"
+                    android:text="23:00"
+                    android:textColor="@color/athome_title"
+                    android:textSize="42dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/week_zone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/sun_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_sun"
+                    android:textOn="@string/week_sun" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/mon_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_mon"
+                    android:textOn="@string/week_mon" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/tue_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_tue"
+                    android:textOn="@string/week_tue" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/wed_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_wed"
+                    android:textOn="@string/week_wed" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/thu_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_thu"
+                    android:textOn="@string/week_thu" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/fri_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_fri"
+                    android:textOn="@string/week_fri" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:padding="4dp" >
+
+                <ToggleButton
+                    android:id="@+id/sat_btn"
+                    style="@style/toggleButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:checked="true"
+                    android:textOff="@string/week_sat"
+                    android:textOn="@string/week_sat" />
+            </FrameLayout>
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/sun_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_sun" -->
+            <!-- android:textOn="@string/week_sun" /> -->
+
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/mon_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_mon" -->
+            <!-- android:textOn="@string/week_mon" /> -->
+
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/tue_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_tue" -->
+            <!-- android:textOn="@string/week_tue" /> -->
+
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/wed_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_wed" -->
+            <!-- android:textOn="@string/week_wed" /> -->
+
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/thu_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_thu" -->
+            <!-- android:textOn="@string/week_thu" /> -->
+
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/fri_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_fri" -->
+            <!-- android:textOn="@string/week_fri" /> -->
+
+
+            <!-- <ToggleButton -->
+            <!-- android:id="@+id/sat_btn" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:layout_weight="1" -->
+            <!-- android:checked="true" -->
+            <!-- style="@style/toggleButton" -->
+            <!-- android:textOff="@string/week_sat" -->
+            <!-- android:textOn="@string/week_sat" /> -->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sen_zone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_vertical"
+                android:text="灵敏度"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/sensit"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:text="低"
+                android:textColor="@color/athome_title"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

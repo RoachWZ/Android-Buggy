@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ichano.example.streamer.MainActivity" >
+
+    <item
+        android:id="@+id/add_cid"
+        android:orderInCategory="1"
+        android:title="@string/add_cid"/>
+    <item
+        android:id="@+id/add_cid_by_qr"
+        android:orderInCategory="2"
+        android:title="@string/add_cid_by_qr"/>
+
+</menu>

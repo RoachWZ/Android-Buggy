@@ -52,7 +52,7 @@
 
         <ImageView
             android:id="@+id/slaveImageView1"
-            android:layout_width="421dp"
+            android:layout_width="match_parent"
             android:layout_height="16dp"
             android:layout_weight="1"
             android:onClick="onSlaveModelClicked"
@@ -60,36 +60,50 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="100dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="小车模式"
                 android:textAlignment="center"
                 android:textSize="36sp" />
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/masterImageView"
-            android:layout_width="421dp"
-            android:layout_height="16dp"
-            android:layout_weight="1"
-            android:onClick="onMasterModelClicked"
-            app:srcCompat="@drawable/master_remote" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/masterImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="onMasterModelClicked"
+                app:srcCompat="@drawable/master_remote" />
+
+            <ImageView
+                android:id="@+id/slaveRCcarImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:onClick="onMasterRCcarModelClicked"
+                app:srcCompat="@drawable/rc_car" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="100dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="控制模式"
                 android:textAlignment="center"
                 android:textSize="36sp" />

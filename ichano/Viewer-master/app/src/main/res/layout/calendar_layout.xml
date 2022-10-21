@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Login_layout_color" />
+
+    <LinearLayout
+        android:id="@+id/calendar_close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="1dp"
+        android:clickable="true"
+        android:background="@drawable/athome_camera_list_listview_cell_selector" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="@string/cancel_btn"
+            android:textColor="@color/userlogin_forget_txt"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/calendar_all_time_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:background="@drawable/athome_camera_list_listview_cell_selector" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="@string/calendar_all_video_btn"
+            android:textColor="@color/userlogin_forget_txt"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/calendar_arrow_left"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="37dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/calendar_arrow_left" />
+
+    <ImageView
+        android:id="@+id/calendar_arrow_right"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="37dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/calendar_arrow_right" />
+
+    <TextView
+        android:id="@+id/calendar_month_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:textColor="@color/userlogin_forget_txt"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/calendar_year_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendar_month_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/userlogin_forget_txt"
+        android:textSize="15sp" />
+
+    <com.zhongyun.viewer.video.CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="fill_parent"
+        android:layout_height="272dp"
+        android:layout_below="@+id/calendar_year_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="15dp" />
+
+</RelativeLayout>

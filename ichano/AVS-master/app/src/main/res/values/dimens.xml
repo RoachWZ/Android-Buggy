@@ -1,0 +1,16 @@
+<resources>
+    
+    <dimen name="title_text_size">18dp</dimen>
+    <dimen name="info_text_size">14dp</dimen>
+    <dimen name="cid_text_size">16dp</dimen>
+    <dimen name="device_text_size">12dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_130">130dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="qr_size">96dp</dimen>
+
+</resources>

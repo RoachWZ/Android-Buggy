@@ -1,0 +1,69 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* LICENSE
+* README.md
+* README_CN.md
+* README_EN.md
+* screenshot1.png
+* screenshot1_en.png
+* screenshot2.png
+* screenshot2_en.png
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:28.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\armeabi\libaaccodec.so => app\src\main\jniLibs\armeabi\libaaccodec.so
+* libs\armeabi\libbspatch.so => app\src\main\jniLibs\armeabi\libbspatch.so
+* libs\armeabi\libgnustl_shared.so => app\src\main\jniLibs\armeabi\libgnustl_shared.so
+* libs\armeabi\libpvcodec.so => app\src\main\jniLibs\armeabi\libpvcodec.so
+* libs\armeabi\libsdk30.so => app\src\main\jniLibs\armeabi\libsdk30.so
+* libs\armeabi\libstreamer30.so => app\src\main\jniLibs\armeabi\libstreamer30.so
+* libs\armeabi\libumeng_opustool.so => app\src\main\jniLibs\armeabi\libumeng_opustool.so
+* libs\armeabi\libx264.so => app\src\main\jniLibs\armeabi\libx264.so
+* libs\armeabi\libx264codec.so => app\src\main\jniLibs\armeabi\libx264codec.so
+* libs\avs_sdk_opensource.jar => app\libs\avs_sdk_opensource.jar
+* libs\com.umeng.fb.5.4.0.jar => app\libs\com.umeng.fb.5.4.0.jar
+* libs\umeng-analytics-v5.6.4.jar => app\libs\umeng-analytics-v5.6.4.jar
+* libs\umeng-update-v2.6.0.1.jar => app\libs\umeng-update-v2.6.0.1.jar
+* libs\zxing-core-3.2.2.jar => app\libs\zxing-core-3.2.2.jar
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

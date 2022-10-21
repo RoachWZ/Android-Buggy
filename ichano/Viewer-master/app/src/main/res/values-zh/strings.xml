@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">众云监控</string>
+    <string name="wait_for_login">登陆中...</string>
+    <string name="online">在线</string>
+    <string name="pwd_wrong">密码错误</string>
+    <string name="offline">离线</string>
+    <string name="add_cid">添加摄像头</string>
+    <string name="add_cid_by_qr">扫描二维码添加摄像头</string>
+    <string name="help">帮助</string>
+    <string name="feedback">用户反馈</string>
+    <string name="about">关于</string>
+    <string name="disclaimer">免责声明</string>
+    <string name="business">联系众云视频开放平台</string>
+    <string name="mail_to">邮箱: business@ichano.com</string>
+    <string name="start">知道了</string>
+    <string name="delete_camera_dlg_title">你确定要删除此摄像头？</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="add_camera_dlg_title">添加新摄像头</string>
+    <string name="cid">CID</string>
+    <string name="password">新密码：</string>
+    <string name="password_confirm">确认新密码：</string>
+    <string name="empty_info">CID和密码不能为空！</string>
+    <string name="short_pwd">密码长度至少是6位！</string>
+    <string name="confirm_pwd_error">两次输入的密码不一致！</string>
+    <string name="invalid_barcode">只可以扫描“众云监控采集端”的二维码！</string>
+    <string name="invalid_cid">CID必须为数字！</string>
+    <string name="invalid_pwd">密码必须包含字母和数字！</string>
+    <string name="invalid_device_name">设备名只能为数字、字母和中文字符！</string>
+    <string name="change_device_name_fail">修改设备名失败！</string>
+    <string name="change_device_name_success">修改设备名成功！</string>
+    <string name="change_password_fail">修改密码失败！</string>
+    <string name="change_password_success">修改密码成功！</string>
+    <string name="exit_str">确定要退出吗？</string>
+    <string name="camera_offline">摄像头不在线！</string>
+    <string name="camera_link_fail">摄像头连接失败</string>
+    <string name="exit_camera">确定要关闭视频吗？</string>
+    <string name="exit">退出</string>
+    <string name="waiting">实时视频等待中...</string>
+    <string name="device_name">设备名：</string>
+    <string name="modify_camera_info">修改采集端信息</string>
+    <string name="sound_on">打开声音</string>
+    <string name="sound_off">关闭声音</string>
+    <string name="record">录制视频</string>
+    <string name="recording">正在录制...</string>
+    <string name="recording_saved">录制视频存放在 %1$s</string>
+    <string name="record_failed">录制视频失败。</string>
+    <string name="hold_talk">按住说话</string>
+    
+    <string name="time_up_error">您还没有注册成为我们的开发者，所以只能观看2分钟视频，快来注册吧！</string>
+    <string name="wrong_package_name">如果您要创建自己的应用，请到官网注册并获取授权！</string>
+	<string name="about_str"> %1$s \n版本：%2$s \n南京云恩通讯科技有限公司(C)2011-2015 \ndev.ichano.cn \n开源协议：Apache License 2.0 \nQQ用户群：151981896</string>
+
+	<string name="video_view_controller_capture_btn">截屏</string>
+    <string name="video_view_controller_flash_switch_btn">闪光灯</string>
+    <string name="video_view_controller_camera_switch_btn">切换摄像头</string>
+    <string name="savepic_succ">截图被成功保存到SD卡根目录 /AtHome/athome_picture</string>
+    <string name="warnning_save_photo_failed">截图保存失败</string>
+    
+    <string-array name="video_quality">
+        <item>高</item>
+        <item>中</item>
+        <item>低</item>
+     </string-array>
+        
+        <string-array name="month_array">
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+        <item>七</item>
+        <item>八</item>
+        <item>九</item>
+        <item>十</item>
+        <item>十一</item>
+        <item>十二</item>
+    </string-array>
+    
+    <string name="qq_login">QQ登陆</string>
+	<string name="wechat_login">微信登陆</string>
+	<string name="not_login">免登陆</string>
+	<string name="login_fail">登陆失败，请检查网络！</string>
+	<string name="logout">注销</string>
+	
+	<string name="cloud_video_duration">时长 : </string>
+    <string name="cloud_video_size"> 大小 : </string>
+    
+    <string name="week_mon">一</string>
+    <string name="week_tue">二</string>
+    <string name="week_wed">三</string>
+    <string name="week_thu">四</string>
+    <string name="week_sat">六</string>
+    <string name="week_fri">五</string>
+    <string name="week_sun">日</string>
+    <string name="delete">删除</string>
+</resources>

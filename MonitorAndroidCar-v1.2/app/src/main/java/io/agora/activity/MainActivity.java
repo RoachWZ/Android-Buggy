@@ -39,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onMasterRCcarModelClicked(View view) {
+        appID = textAppIDName.getText().toString();
+        if(!appID.matches(regex)){
+            showLongToast("illegal appID");
+        }else {
+            Intent intent = new Intent(MainActivity.this, VideoRCcarSendChatViewActivity.class);
+            intent.putExtra("appID", appID);
+            startActivity(intent);
+        }
+    }
     public void onMasterModelClicked(View view) {
 
         appID = textAppIDName.getText().toString();

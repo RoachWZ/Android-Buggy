@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhongyun.avs"
+    android:versionCode="110001"
+    android:versionName="1.10.001" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+	  <uses-feature android:name="android.hardware.camera" android:required="false" />
+	  <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+	  <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+	  
+	  <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+	  <uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
+	  <uses-permission android:name="android.permission.CAMERA" />
+	  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	  <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+	  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	  <uses-permission android:name="android.permission.INTERNET" />
+	  <uses-permission android:name="android.permission.VIBRATE" />
+	  <uses-permission android:name="android.permission.READ_LOGS" />
+	  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	  <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+	  <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+	  <uses-permission android:name="android.permission.WAKE_LOCK" />
+	  <uses-permission android:name="android.permission.FLASHLIGHT" />
+	  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+	  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	  <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+	  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />  
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/android:Theme.Light">
+        <activity
+            android:name=".LoadingActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GuideActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".AvsActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
+        </activity>
+        
+        <!-- umeng -->
+        <meta-data android:value="56aeb742e0f55abadf002418" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="360" android:name="UMENG_CHANNEL"/>
+		<activity android:name="com.umeng.fb.ConversationActivity"
+            android:screenOrientation="landscape"/>
+		<service
+		    android:name="com.umeng.update.net.DownloadingService"
+		    android:process=":DownloadingService" >
+		</service>
+		<activity 
+		    android:name="com.umeng.update.UpdateDialogActivity"
+		    android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+		</activity>
+		
+		<!-- admob -->
+<!-- 		<activity android:name="com.google.ads.AdActivity" -->
+<!--           android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/> -->
+    </application>
+
+</manifest>

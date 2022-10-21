@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">眾云監控採集端</string>
+    <string name="help">幫助</string>
+    <string name="feedback">用戶反饋</string>
+    <string name="about">關於</string>
+    <string name="disclaimer">免責聲明</string>
+    <string name="start">知道了</string>
+    <string name="wrong_package_name">如果您要創建自己的應用，請到官網註冊并獲取授權！</string>
+    <string name="device_name">設備名：</string>
+    <string name="cid">CID:</string>
+    <string name="password">密碼:</string>
+    <string name="barcode_tip">請用“眾云監控”掃描二維碼添加攝像頭：</string>
+    <string name="connecting">-- 正在連接 --</string>
+    <string name="connected">-- 已連接 --</string>
+    <string name="disconnected">-- 已斷開 --</string>
+    <string name="modify_info_dlg_title">修改採集端信息</string>
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
+    <string name="empty_info">設備名和密碼不能為空！</string>
+    <string name="short_pwd">密碼長度至少是6位！</string>
+    <string name="invalid_pwd">密碼必須包含字母和數字！</string>
+    <string name="invalid_device_name">設備名只能為數字、字母和中文字符！</string>
+    <string name="exit_str">確定要退出嗎？</string>
+	<string name="about_str"> %1$s \n版本：%2$s \n南京云恩通訊科技有限公司(C)2011-2015 \ndev.ichano.cn \n開源協議：Apache License 2.0 \nQQ用户群：151981896</string>
+</resources>

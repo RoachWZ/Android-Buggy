@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/athome_list_cell"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@drawable/athome_camera_list_listview_cell_selector"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/videolist_cell_icon"
+        android:layout_width="92dp"
+        android:layout_height="69dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="15dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/cloud_snap_default"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/videolist_cell_arrow"
+        android:layout_toRightOf="@id/videolist_cell_icon"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/videolist_cell_date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:singleLine="true"
+            android:text="2012-01-01 15:16:17"
+            android:textColor="@color/cloud_selected_avs_name"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/camera_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:singleLine="true"
+                android:text="@string/cloud_video_duration"
+                android:textColor="@color/textcolorhint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/videolist_cell_camera_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/textcolorhint"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:singleLine="true"
+                android:text="@string/cloud_video_size"
+                android:textColor="@color/textcolorhint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/videolist_cell_video_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:singleLine="true"
+                android:textColor="@color/textcolorhint"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/videolist_cell_arrow"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/athome_server_cell_opt_selector" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/line1" />
+
+</RelativeLayout>

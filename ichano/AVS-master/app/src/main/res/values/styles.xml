@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="title_text"> 
+	    <item name="android:textColor">@color/white</item>
+	    <item name="android:textSize">@dimen/title_text_size</item>
+	    <item name="android:padding">@dimen/dp_5</item>
+	    <item name="android:layout_margin">@dimen/dp_5</item>
+    </style>
+    
+    <style name="info_text"> 
+	    <item name="android:textColor">@color/gray</item>
+	    <item name="android:textSize">@dimen/info_text_size</item>
+    </style>
+    
+    <style name="cid_text"> 
+	    <item name="android:textColor">@color/white</item>
+	    <item name="android:textSize">@dimen/cid_text_size</item>
+	    <item name="android:singleLine">true</item>
+	    <item name="android:layout_marginTop">@dimen/dp_2</item>
+	    <item name="android:layout_marginBottom">@dimen/dp_2</item>
+    </style>
+    
+    <style name="line_text"> 
+	    <item name="android:background">@color/white</item>
+	    <item name="android:layout_height">@dimen/dp_2</item>
+	    <item name="android:layout_marginTop">@dimen/dp_5</item>
+	    <item name="android:layout_marginBottom">@dimen/dp_5</item>
+    </style>
+    
+    <style name="device_text"> 
+	    <item name="android:textColor">@color/white</item>
+	    <item name="android:textSize">@dimen/device_text_size</item>
+	    <item name="android:singleLine">true</item>
+    </style>
+</resources>

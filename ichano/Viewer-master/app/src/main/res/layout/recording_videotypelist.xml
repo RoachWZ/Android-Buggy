@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/athome_background">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/relayout_time_recording_video"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp" 
+            android:background="@drawable/athome_camera_list_listview_cell_selector">
+			<ImageView 
+			    android:layout_width="40dp"
+			    android:layout_height="40dp"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="20dp"
+			    android:src="@drawable/time_recording_video"/>
+            <TextView
+                style="@style/user_cell_txt"
+                android:textSize="18sp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/video_cagetory_timed_recordings" />
+        </RelativeLayout>
+
+		<ImageView
+			style="@style/line_image"/>
+
+        <RelativeLayout
+            android:id="@+id/relayout_alarm_video"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/athome_camera_list_listview_cell_selector" >
+			<ImageView 
+			    android:layout_width="40dp"
+			    android:layout_height="40dp"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="20dp"
+			    android:src="@drawable/alarm_video"/>
+            <TextView
+                style="@style/user_cell_txt"
+                android:textSize="18sp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/video_cagetory_alarm_recordings" />
+        </RelativeLayout>
+        
+		<ImageView
+			style="@style/line_image"/>
+        <RelativeLayout
+            android:id="@+id/relayout_time_loacal_video"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/athome_camera_list_listview_cell_selector" >
+			<ImageView 
+			    android:layout_width="40dp"
+			    android:layout_height="40dp"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="20dp"
+			    android:src="@drawable/local_video"/>
+            <TextView
+                style="@style/user_cell_txt"
+                android:textSize="18sp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/video_cagetory_local_recordings" />
+        </RelativeLayout>
+
+        <ImageView
+			style="@style/line_image"/>
+        
+        <RelativeLayout
+            android:id="@+id/relayout_time_loacal_pic"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/athome_camera_list_listview_cell_selector" >
+			<ImageView 
+			    android:layout_width="40dp"
+			    android:layout_height="40dp"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="20dp"
+			    android:src="@drawable/local_pic"/>
+            <TextView
+                style="@style/user_cell_txt"
+                android:textSize="18sp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/pic_cagetory_local_recordings" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

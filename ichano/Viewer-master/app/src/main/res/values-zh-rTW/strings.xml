@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">眾云監控</string>
+    <string name="wait_for_login">登陸中...</string>
+    <string name="online">在線</string>
+    <string name="pwd_wrong">密碼錯誤</string>
+    <string name="offline">離線</string>
+    <string name="add_cid">添加攝像頭</string>
+    <string name="add_cid_by_qr">掃描二維碼添加攝像頭</string>
+    <string name="help">幫助</string>
+    <string name="feedback">用戶反饋</string>
+    <string name="about">關於</string>
+    <string name="disclaimer">免責聲明</string>
+    <string name="business">聯繫眾云視頻開放平台</string>
+    <string name="mail_to">郵箱: business@ichano.com</string>
+    <string name="start">知道了</string>
+    <string name="delete_camera_dlg_title">你確定要刪除此攝像頭？</string>
+    <string name="confirm">確定</string>
+    <string name="cancel">取消</string>
+    <string name="add_camera_dlg_title">添加新攝像頭</string>
+    <string name="cid">CID</string>
+    <string name="password">新密碼：</string>
+    <string name="password_confirm">確認新密碼：</string>
+    <string name="empty_info">CID和密碼不能為空！</string>
+    <string name="short_pwd">密碼長度至少是6位！</string>
+    <string name="confirm_pwd_error">兩次輸入的密碼不一致！</string>
+    <string name="invalid_barcode">只可以掃描“眾云監控採集端”的二維碼！</string>
+    <string name="invalid_cid">CID必須為數字！</string>
+    <string name="invalid_pwd">密碼必須包含字母和數字！</string>
+    <string name="invalid_device_name">設備名只能為數字、字母和中文字符！</string>
+    <string name="change_device_name_fail">修改設備名失敗！</string>
+    <string name="change_device_name_success">修改設備名成功！</string>
+    <string name="change_password_fail">修改密碼失敗！</string>
+    <string name="change_password_success">修改密碼成功！</string>
+    <string name="exit_str">確定要退出嗎？</string>
+    <string name="camera_offline">攝像頭不在線！</string>
+    <string name="camera_link_fail">攝像頭連接失敗</string>
+    <string name="exit_camera">確定要關閉視頻嗎？</string>
+    <string name="exit">退出</string>
+    <string name="waiting">實時視頻等待中...</string>
+    <string name="device_name">設備名：</string>
+    <string name="modify_camera_info">修改採集端信息</string>
+    <string name="sound_on">打開聲音</string>
+    <string name="sound_off">關閉聲音</string>
+    <string name="record">錄製視訊</string>
+    <string name="recording">正在錄製...</string>
+    <string name="recording_saved">錄製視訊存放在 %1$s</string>
+    <string name="record_failed">錄製視訊失敗。</string>
+    <string name="hold_talk">按住說話</string>
+    
+    <string name="time_up_error">您還沒有註冊成為我們的開發者，所以只能觀看2分鐘視頻，快來註冊吧！</string>
+    <string name="wrong_package_name">如果您要創建自己的應用，請到官網註冊并獲取授權！</string>
+	<string name="about_str"> %1$s \n版本：%2$s \n南京云恩通訊科技有限公司(C)2011-2015 \ndev.ichano.cn \n開源協議：Apache License 2.0 \nQQ用户群：151981896</string>
+	
+	<string name="qq_login">QQ登陸</string>
+	<string name="wechat_login">微信登陸</string>
+	<string name="not_login">免登陸</string>
+	<string name="login_fail">登陸失敗，請檢查網路！</string>
+	<string name="logout">註銷</string>
+</resources>

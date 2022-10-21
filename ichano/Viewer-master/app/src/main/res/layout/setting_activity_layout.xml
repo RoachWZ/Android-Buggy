@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/zhongyun_viewer_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#eeeeee"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/alarm_settings_label"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/page_lable_select"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/alarm_settings_label_text"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:text="@string/menu_alarm_settings_label"
+                android:textColor="#909090"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/id_tab_line_iv_left"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/athome_title" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/scheduled_recording_label"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/page_lable_select"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/scheduled_recording_label_text"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:text="@string/menu_scheduled_recording_label"
+                android:textColor="#909090"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/id_tab_line_iv_mid"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/athome_title" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/change_password_label"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/page_lable_select"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/change_password_label_text"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:text="@string/menu_change_password_label"
+                android:textColor="#909090"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/id_tab_line_iv_right"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/athome_title" />
+        </RelativeLayout>
+    </LinearLayout>
+<android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

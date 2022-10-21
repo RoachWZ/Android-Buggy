@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loading_bg"
+    android:orientation="vertical">
+	<LinearLayout 
+	    android:layout_width="match_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1.0"
+    	android:gravity="center">
+	    <ImageView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/user_image"
+		    android:layout_centerInParent="true"/>
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="match_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1.0"
+    	android:orientation="vertical"
+    	android:gravity="center_horizontal"
+    	android:paddingLeft="@dimen/dp_60"
+    	android:paddingRight="@dimen/dp_60">
+		<Button android:id="@+id/qq_login"
+		    style="@style/login_btn"
+		    android:drawableLeft="@drawable/qq"
+		    android:text="@string/qq_login"
+            android:background="@drawable/user_login_qq_selector"/>
+		<Button android:id="@+id/wechat_login"
+		    style="@style/login_btn"
+		    android:drawableLeft="@drawable/weixin"
+		    android:text="@string/wechat_login"
+            android:background="@drawable/user_login_weixin_selector"/>
+		<Button android:id="@+id/not_login"
+		    style="@style/login_btn"
+		    android:drawableLeft="@drawable/not_login"
+		    android:text="@string/not_login"
+            android:background="@drawable/user_login_btn_selector"/>
+	</LinearLayout>"
+</LinearLayout>
