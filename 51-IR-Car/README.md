@@ -9,7 +9,7 @@ RCcar_main.C 是RC遥控车程序，安卓控制端对应选择RC car 控制模�
 + KEIL(编译软件)
 + STC_ISP(烧写软件)
 
-![super_car3](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/super_car3.png)
+![super_car3](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/super_car3.png)![rc_car](https://github.com/RoachWZ/Android-Buggy/blob/master/51-IR-Car/RCcar.png)
 
 所需的硬件清单
 
@@ -24,5 +24,4 @@ RCcar_main.C 是RC遥控车程序，安卓控制端对应选择RC car 控制模�
 + 车载手机支架（有车一族，不用的车载手机支架可以利用）
 
 ![系统框图](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/xtkt.png)
-![super_car](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/super_car.png)
-![rc_car](https://github.com/RoachWZ/Android-Buggy/blob/master/51-IR-Car/RCcar.png)
+![super_car](https://github.com/RoachWZ/AI-in-RTC_ProgrammingChallenge/blob/master/ChallengeProject/Agora-Androidcar-v1.2/photo/super_car.png)![rc_car](https://github.com/RoachWZ/Android-Buggy/blob/master/51-IR-Car/RCcar.png)
