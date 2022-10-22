@@ -132,6 +132,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+
+            <LinearLayout
                 android:layout_width="521dp"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -158,6 +163,11 @@
                             android:src="@drawable/btn_left"
                             android:text="Left" />
 
+                        <LinearLayout
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal" />
+
                         <ImageButton
                             android:id="@+id/send_button4"
                             android:layout_width="wrap_content"
@@ -170,7 +180,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="248dp"
+                    android:layout_width="303dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"></LinearLayout>
 
@@ -180,29 +190,32 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="128dp"
-                        android:layout_height="54dp"
-                        android:orientation="vertical"></LinearLayout>
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:orientation="vertical">
 
-                    <LinearLayout
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/send_button1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:src="@drawable/btn_up"
+                        android:text="Front" />
 
-                        <ImageButton
-                            android:id="@+id/send_button1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/btn_up"
-                            android:text="Front" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="22dp"
+                        android:orientation="vertical">
 
-                        <ImageButton
-                            android:id="@+id/send_button2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/btn_down"
-                            android:text="Back" />
                     </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/send_button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/btn_down"
+                        android:text="Back" />
                 </LinearLayout>
 
             </LinearLayout>
