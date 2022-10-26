@@ -11,14 +11,14 @@ typedef unsigned int u16;	  //对数据类型进行声明定义
 typedef unsigned char u8;
 
 
-sbit IRIN=P3^2;
-sbit P1_0=P0^0;    //电机A控制输出口A+
-sbit P1_1=P0^1;    //电机A控制输出口A-
-sbit P1_2=P0^2;    //电机B控制输出口B+
-sbit P1_3=P0^3;    //电机B控制输出口B-
+sbit IRIN=P3^2;	   //外部中断0	 //定义红外接收端口
+sbit P1_0=P1^2;    //电机A控制输出口A+
+sbit P1_1=P1^3;    //电机A控制输出口A-
+sbit P1_2=P1^4;    //电机B控制输出口B+
+sbit P1_3=P1^5;    //电机B控制输出口B-
 u8 ucMotorStep=0;   //被触发的电机动作编号
-sbit ENA=P0^4;		 //电机A使能端
-sbit ENB=P0^5;		 //电机B使能端
+sbit ENA=P1^6;		 //电机A使能端
+sbit ENB=P1^7;		 //电机B使能端
 u16 speed;
 u16 T;
 u8 IrValue[6];
@@ -45,8 +45,8 @@ void delay(u16 i)
 
 void IrInit()
 {
-	IT0=1;//下降沿触发
-	EX0=1;//打开中断0允许
+	IT0=1;//设定外部中断0 下降沿触发
+	EX0=1;//打开外部中断0允许
 	EA=1;	//打开总中断
 
 	IRIN=1;//初始化端口
