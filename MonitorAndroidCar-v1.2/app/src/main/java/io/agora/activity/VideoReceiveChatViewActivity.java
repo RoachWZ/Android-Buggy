@@ -19,9 +19,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import hlq.service.SendSocketService;
+import hlq.view.activity.BluetoothActivity;
 import io.agora.AgoraAPI;
 import io.agora.AgoraAPIOnlySignal;
 import io.agora.IAgoraAPI;
@@ -290,7 +291,11 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
         mRtcEngine = null;
     }
 
+    public void onSlaveLocalbluetoothClicked(View view) {
 
+        Intent intent = new Intent(VideoReceiveChatViewActivity.this, BluetoothActivity.class);
+        startActivity(intent);
+    }
 
     public void onSlaveLocalVideoMuteClicked(View view) {
         ImageView iv = (ImageView) view;
@@ -510,18 +515,25 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
                             String mstr = msg;
                             if (mstr.equals("05")) {
                                 mCIR.transmit(hz, patternS);//停
+                                SendSocketService.sendMessage("ONF");
                             } else if (mstr.equals("01")) {
                                 mCIR.transmit(hz, pattern1);//前
+                                SendSocketService.sendMessage("ONA");
                             } else if (mstr.equals("02")) {
                                 mCIR.transmit(hz, pattern2);//后
+                                SendSocketService.sendMessage("ONB");
                             } else if (mstr.equals("03")) {
                                 mCIR.transmit(hz, pattern3);//左
+                                SendSocketService.sendMessage("ONC");
                             } else if (mstr.equals("04")) {
                                 mCIR.transmit(hz, pattern4);//右
+                                SendSocketService.sendMessage("OND");
                             } else if (mstr.equals("13")) {
                                 mCIR.transmit(hz, pattern5);//左自转 rc_car前后停止
+                                SendSocketService.sendMessage("ONR");
                             } else if (mstr.equals("14")) {
                                 mCIR.transmit(hz, pattern6);//右自转 rc_car左右停止
+                                SendSocketService.sendMessage("ONL");
                             } else if (mstr.equals("s")) {
                                 mCIR.transmit(hz, speed);//全速
                             } else if (mstr.equals("s1")) {
