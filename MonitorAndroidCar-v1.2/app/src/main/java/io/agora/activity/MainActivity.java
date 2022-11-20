@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.csst.videotalk.FfmpegActivity;
+
 import io.agora.tutorials1v1vcall.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         Uri uri = Uri.parse("https://sso.agora.io/cn/signup");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    public void onLocalModelClicked(View view) {
+        Intent intent = new Intent(MainActivity.this, FfmpegActivity.class);
+        startActivity(intent);
+
     }
 
     public void onMasterRCcarModelClicked(View view) {

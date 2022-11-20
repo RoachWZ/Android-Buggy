@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.hardware.ConsumerIrManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -17,8 +21,10 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import hlq.service.SendSocketService;
@@ -26,13 +32,14 @@ import hlq.view.activity.BluetoothActivity;
 import io.agora.AgoraAPI;
 import io.agora.AgoraAPIOnlySignal;
 import io.agora.IAgoraAPI;
+import io.agora.SharedSave.SharedHelper;
 import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 import io.agora.tutorials1v1vcall.R;
 
-public class VideoReceiveChatViewActivity extends AppCompatActivity {
+public class VideoReceiveChatViewActivity extends AppCompatActivity implements SensorEventListener{
 
     private String channelName = "demoChannel1";
     private String selfName = "0";
@@ -121,6 +128,25 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
 
     private int hz = 38000;
 
+    private Sensor sensor;
+    private SensorManager sm;
+    private SensorEvent event;
+
+    private String mstr;
+    private boolean left_flag = false;
+    private boolean right_flag = false;
+    private boolean lr_stop_flag = false;
+    private boolean forward_flag = false;
+    private boolean backward_flag = false;
+    private boolean fb_stop_flag = false;
+    private boolean stop_flag = true;
+
+    private boolean SensorGYROSCOPEflag = false;
+    private TextView tv;
+    private TextView left_setValue;
+    private TextView right_setValue;
+    private SharedHelper sh;
+    private Context mContext;
 
     private static final String LOG_TAG = VideoReceiveChatViewActivity.class.getSimpleName();
 
@@ -203,6 +229,28 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
 //       Monitor m = new Monitor();
 //        m.start();
 
+        initSensorGYROSCOPE();
+        tv = (TextView) findViewById(R.id.SensorGYROSCOPE_value);
+
+
+        Button btn_saveValue = (Button) findViewById(R.id.saveValueButton);
+        left_setValue =  findViewById(R.id.left_setValue);
+        right_setValue =  findViewById(R.id.right_setValue);
+        mContext = getApplicationContext();
+        sh = new SharedHelper(mContext);
+
+        btn_saveValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String leftSetValue = left_setValue.getText().toString();
+                String rightSetValue = right_setValue.getText().toString();
+
+                sh.save("leftSetValue",leftSetValue);
+                sh.save("rightSetValue",rightSetValue);
+
+                Toast.makeText(VideoReceiveChatViewActivity.this, "信息已写入 SharedPreference 中", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -226,6 +274,64 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
         }
 
     }*/
+
+    /**
+     * 初始化陀螺仪传感器
+     */
+    private void initSensorGYROSCOPE() {
+        //获得传感器服务
+        sm=(SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        //获得陀螺仪传感器
+        sensor = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        this.event=event;
+
+        //Log.d("陀螺仪", " x:" + event.values[0] + " y:" + event.values[1]  + " z:" + event.values[2]);
+        //获得陀螺仪传感器中的数值
+        float x = event.values[0];
+
+
+        if(!fb_stop_flag && !left_flag && !right_flag && SensorGYROSCOPEflag){
+            float lSetValue = Float.parseFloat(left_setValue.getText().toString());
+            float rSetValue = Float.parseFloat(right_setValue.getText().toString());
+            tv.setText("陀螺仪 x:"+ event.values[0] );
+
+            if ( x<-rSetValue) {//向右偏移，向左回轮
+                //mCIR.transmit(hz, pattern3);//左
+                SendSocketService.sendMessage("ONC");
+            } else if ( x>lSetValue) {//向左偏移，向右回轮
+                //mCIR.transmit(hz, pattern4);//右
+                SendSocketService.sendMessage("OND");
+            } else {
+                //mCIR.transmit(hz, pattern6);//右自转 rc_car左右停止
+                SendSocketService.sendMessage("ONL");
+            }
+        }else {
+            tv.setText("陀螺仪 关闭" );
+        }
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        String leftSetValue = sh.read("leftSetValue").toString();
+        String rightSetValue = sh.read("rightSetValue").toString();
+
+        left_setValue.setText(leftSetValue);
+        right_setValue.setText(rightSetValue);
+
+    }
 
     private void initAgoraEngineAndJoinChannel() {
 
@@ -289,6 +395,8 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
         leaveChannel();
         RtcEngine.destroy();
         mRtcEngine = null;
+
+        sm.unregisterListener(this);//注销传感器的监听 别忘记注销，否则耗电贼快
     }
 
     public void onSlaveLocalbluetoothClicked(View view) {
@@ -328,7 +436,18 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
         mRtcEngine.muteLocalAudioStream(iv.isSelected());
     }
 
-
+    public void onClickedSensorGYROSCOPE(View view) {
+        ImageView iv = (ImageView) view;
+        if (iv.isSelected()) {
+            iv.setSelected(false);
+            iv.clearColorFilter();
+            SensorGYROSCOPEflag = false;
+        } else {
+            iv.setSelected(true);
+            iv.setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
+            SensorGYROSCOPEflag = true;
+        }
+    }
 
 
     public void onSlaveEncCallClicked(View view) {
@@ -512,36 +631,72 @@ public class VideoReceiveChatViewActivity extends AppCompatActivity {
                         //self message had added
                         if (!account.equals(selfName)) {
 
-                            String mstr = msg;
+                             mstr = msg;
                             if (mstr.equals("05")) {
-                                mCIR.transmit(hz, patternS);//停
+                                //mCIR.transmit(hz, patternS);//停
                                 SendSocketService.sendMessage("ONF");
+                                forward_flag = false;
+                                backward_flag = false;
+                                fb_stop_flag = true;
+                                left_flag = false;
+                                right_flag = false;
+                                lr_stop_flag = true;
+                                stop_flag = true;
+
                             } else if (mstr.equals("01")) {
-                                mCIR.transmit(hz, pattern1);//前
+                                //mCIR.transmit(hz, pattern1);//前
                                 SendSocketService.sendMessage("ONA");
+                                forward_flag = true;
+                                backward_flag = false;
+                                fb_stop_flag = false;
+                                stop_flag = false;
+
                             } else if (mstr.equals("02")) {
-                                mCIR.transmit(hz, pattern2);//后
+                                //mCIR.transmit(hz, pattern2);//后
                                 SendSocketService.sendMessage("ONB");
+                                forward_flag = false;
+                                backward_flag = true;
+                                fb_stop_flag = false;
+                                stop_flag = false;
+
                             } else if (mstr.equals("03")) {
-                                mCIR.transmit(hz, pattern3);//左
+                                //mCIR.transmit(hz, pattern3);//左
                                 SendSocketService.sendMessage("ONC");
+                                left_flag = true;
+                                right_flag = false;
+                                lr_stop_flag = false;
+                                stop_flag = false;
+
                             } else if (mstr.equals("04")) {
-                                mCIR.transmit(hz, pattern4);//右
+                                //mCIR.transmit(hz, pattern4);//右
                                 SendSocketService.sendMessage("OND");
+                                left_flag = false;
+                                right_flag = true;
+                                lr_stop_flag = false;
+                                stop_flag = false;
+
                             } else if (mstr.equals("13")) {
-                                mCIR.transmit(hz, pattern5);//左自转 rc_car前后停止
+                                //mCIR.transmit(hz, pattern5);//左自转 rc_car前后停止
                                 SendSocketService.sendMessage("ONR");
+                                forward_flag = false;
+                                backward_flag = false;
+                                fb_stop_flag = true;
+
                             } else if (mstr.equals("14")) {
-                                mCIR.transmit(hz, pattern6);//右自转 rc_car左右停止
+                                //mCIR.transmit(hz, pattern6);//右自转 rc_car左右停止
                                 SendSocketService.sendMessage("ONL");
+                                left_flag = false;
+                                right_flag = false;
+                                lr_stop_flag = true;
+
                             } else if (mstr.equals("s")) {
-                                mCIR.transmit(hz, speed);//全速
+                                //mCIR.transmit(hz, speed);//全速
                             } else if (mstr.equals("s1")) {
-                                mCIR.transmit(hz, speed1);//速度1
+                                //mCIR.transmit(hz, speed1);//速度1
                             } else if (mstr.equals("s2")) {
-                                mCIR.transmit(hz, speed2);//速度2
+                                //mCIR.transmit(hz, speed2);//速度2
                             } else if (mstr.equals("s3")) {
-                                mCIR.transmit(hz, speed3);//速度3
+                                //mCIR.transmit(hz, speed3);//速度3
                             } else if (mstr.equals("L")) {
                                 lightSwitch();				//开关闪关灯
                             } else if (mstr.equals("C")) {

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.csst.ffmpeg.views.BeCalledImageView
+            android:id="@+id/imgview2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:padding="1dp" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayout2"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="7dp"
+            android:background="@drawable/frame"
+            android:orientation="vertical" >
+
+			<LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top" >
+
+                <com.csst.ffmpeg.views.DoCalledImageView
+                    android:id="@+id/previewSV"
+                    android:layout_width="fill_parent"
+                    android:layout_height="120dp"
+                    android:layout_gravity="top" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="1dp"
+                android:textColor="#ffffffff"
+                android:textSize="1sp" />
+
+			<ImageButton
+				android:id="@+id/btn_stop"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="2dp"
+				android:src="@drawable/videotalkstop" />
+
+		</LinearLayout>
+
+	<Button
+	    android:id="@+id/send_button2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/send_button1"
+	    android:layout_alignParentBottom="true"
+	    android:layout_toLeftOf="@+id/send_button4"
+	    android:text="Back" />
+
+		<Button
+			android:id="@+id/send_button4"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignBaseline="@+id/send_button3"
+			android:layout_alignBottom="@+id/send_button3"
+			android:layout_marginLeft="-332dp"
+			android:layout_marginBottom="0dp"
+			android:layout_toRightOf="@+id/send_button1"
+			android:text="Right" />
+
+		<Button
+	    android:id="@+id/send_button1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/send_button3"
+	    android:layout_toRightOf="@+id/send_button3"
+	    android:text="Front" />
+
+		<Button
+			android:id="@+id/send_button3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_above="@+id/send_button2"
+			android:layout_marginRight="272dp"
+			android:layout_marginBottom="-1dp"
+			android:layout_toLeftOf="@+id/LinearLayout2"
+			android:text="Left" />
+
+		<Button
+	    android:id="@+id/send_button_s2"
+	    style="?android:attr/buttonStyleSmall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/send_button_s3"
+	    android:layout_alignLeft="@+id/send_button_s3"
+	    android:layout_marginBottom="23dp"
+	    android:text="Speed2" />
+
+	<Button
+	    android:id="@+id/send_button_s4"
+	    style="?android:attr/buttonStyleSmall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/send_button2"
+	    android:layout_alignBottom="@+id/send_button2"
+	    android:layout_alignParentLeft="true"
+	    android:layout_marginLeft="56dp"
+	    android:text="Speed4" />
+
+	<Button
+	    android:id="@+id/send_button_s3"
+	    style="?android:attr/buttonStyleSmall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/send_button_s4"
+	    android:layout_alignTop="@+id/send_button3"
+	    android:text="Speed3" />
+
+	<Button
+	    android:id="@+id/send_button_C"
+	    style="?android:attr/buttonStyleSmall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:text="SwitchCam" />
+
+		<Button
+			android:id="@+id/send_button_L"
+			style="?android:attr/buttonStyleSmall"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_above="@+id/send_button_s4"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="-13dp"
+			android:layout_marginBottom="14dp"
+			android:text="SwitchLight" />
+
+	</RelativeLayout>
+
+</LinearLayout>

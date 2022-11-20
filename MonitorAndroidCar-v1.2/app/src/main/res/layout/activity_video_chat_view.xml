@@ -18,6 +18,7 @@
             android:gravity="center"
             android:padding="15dp"
             android:text="@string/app_name"/>
+
         <FrameLayout
             android:id="@+id/slave_remote_video_view_container"
             android:layout_width="fill_parent"
@@ -47,14 +48,6 @@
                     android:layout_height="120dp"
                     android:layout_gravity="top" />
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="1dp"
-                android:textColor="#ffffffff"
-                android:textSize="1sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,6 +88,95 @@
                     android:onClick="onSlaveEncCallClicked"
                     android:scaleType="centerInside"
                     android:src="@drawable/btn_end_call" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:onClick="onClickedSensorGYROSCOPE"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/gyroscope" />
+
+                    <TextView
+                        android:id="@+id/SensorGYROSCOPE_value"
+                        android:layout_width="160dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="left"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@color/black"
+                        android:textColor="#ffffffff"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/setValueTextView"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        android:text="l:\nr:" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/left_setValue"
+                            android:layout_width="160dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="left"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginEnd="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:background="@color/white"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:text="0"/>
+
+                        <EditText
+                            android:id="@+id/right_setValue"
+                            android:layout_width="160dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="left"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginEnd="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:background="@color/white"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:text="0"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/saveValueButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="saveValue" />
+
             </LinearLayout>
 
         </LinearLayout>

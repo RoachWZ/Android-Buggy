@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="18dp"
+    android:orientation="horizontal" >
+    <FrameLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_weight="1"
+    >
+ 
+    	     <com.csst.ffmpeg.views.BeCalledImageView 
+        		android:id="@+id/imgview2"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"        		
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="12dp" /> 
+        <!--
+    <ImageView 
+          		android:id="@+id/imgview2"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"        		
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="12dp" /> 
+     -->
+    
+    </FrameLayout>
+     
+        
+   <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="4"
+    android:orientation="vertical" 
+    android:layout_marginLeft="12dp"
+    android:background="#22c09541"
+    android:padding="3dp"
+    android:gravity="center_horizontal"
+    >
+      <LinearLayout 
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="top">
+		       <com.csst.ffmpeg.views.DoCalledImageView 
+        		android:id="@+id/previewSV"
+                android:layout_width="fill_parent"
+                android:layout_height="155dp" 
+                android:layout_gravity="top"/>
+        </LinearLayout>
+	
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="#ffffffff"
+        android:text="与Lily视频通话中"
+        />
+
+		
+    <EditText 
+    	android:id="@+id/edit_to"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/defto"/>
+
+
+    <ImageButton
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/videotalkstop" 
+        android:layout_marginTop="12dp"/>
+    <ImageButton
+        android:id="@+id/btn_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/takephotos" 
+        android:layout_marginTop="12dp"/>
+    </LinearLayout>     
+
+</LinearLayout>
