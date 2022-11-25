@@ -1,0 +1,18 @@
+/vendor
+composer.phar
+composer.lock
+.phpunit.result.cache
+/phpunit.xml
+.DS_Store
+Thumbs.db
+wandb/
+
+# IDE's
+.idea/
+/.vscode
+.classpath
+.project
+.settings/
+
+# build
+/bin

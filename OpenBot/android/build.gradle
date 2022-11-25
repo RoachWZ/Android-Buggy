@@ -1,0 +1,44 @@
+buildscript {
+    ext.kotlin_version = '1.5.20'
+    ext.webrtc_version = '1.0.32006'
+    ext.location_version = '19.0.1'
+    ext.nearby_version = '18.0.2'
+
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'
+        classpath 'de.undercouch:gradle-download-task:4.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task checkStyle(type:Exec) {
+    workingDir 'utils'
+    commandLine './checkStyle.sh'
+}
+
+task applyStyle(type:Exec) {
+    workingDir 'utils'
+    commandLine './applyStyle.sh'
+}
