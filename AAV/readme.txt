@@ -1,5 +1,6 @@
-Ê¶±ğ×·×ÙÂÌÇò
-Android studio ¹¤³Ì
-²Î¿¼µÄÔ´Âë https://github.com/IeiuniumLux/AAV/
+è¯†åˆ«è¿½è¸ªç»¿çƒ
+Android studio å·¥ç¨‹
+å‚è€ƒçš„æºç  https://github.com/IeiuniumLux/AAV/
 
-ÎÒÃ»ÓĞioio¿ª·¢°å¡£ÎÒĞŞ¸ÄÁËÔ´ÂëÊÊÅäÎÒµÄºìÍâÒ£¿ØĞ¡³µ ºÍ bleÀ¶ÑÀÒ£¿ØĞ¡³µ¡£
+æˆ‘æ²¡æœ‰ioioå¼€å‘æ¿ã€‚æˆ‘ä¿®æ”¹äº†æºç é€‚é…æˆ‘çš„çº¢å¤–é¥æ§å°è½¦ å’Œ bleè“ç‰™é¥æ§å°è½¦ã€‚
+æˆ‘çš„è§†é¢‘åœ°å€ https://www.bilibili.com/video/BV1FN4y1L7o7
