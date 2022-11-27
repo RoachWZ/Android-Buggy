@@ -4,7 +4,9 @@
 此部分是蓝牙串口遥控小车单片机程序，安卓程序详见https://github.com/RoachWZ/Android-Buggy/tree/master/MonitorAndroidCar-v1.2
 
 RCcar_bluetooth_main 是RC遥控车身的蓝牙遥控程序，小车上的安卓手机选择小车模式，进入后点蓝牙图标连接蓝牙。安卓控制端对应选择RC car 控制模式
+
 拖动条比例调速对应的小车单片机程序https://github.com/RoachWZ/Android-Buggy/OpenBot/firmware/openbot_8051
+
 所需软件环境
 
 + KEIL(编译软件)
