@@ -1,18 +1,11 @@
 package com.csst.videotalk;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.hardware.ConsumerIrManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,17 +14,21 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.csst.ffmpeg.FFMpegIF;
 import com.csst.ffmpeg.views.BeCalledImageView;
 import com.csst.ffmpeg.views.DoCalledImageView;
 
-import hlq.view.activity.BluetoothActivity;
-import io.agora.activity.VideoReceiveChatViewActivity;
+import io.agora.customComponents.SeekBarViewHorizontal;
+import io.agora.customComponents.SeekBarViewVertical;
 import io.agora.tutorials1v1vcall.R;
 import com.csst.ir.control.ReviceCtrlThread;
 import com.csst.ir.control.SendCtrlThread;
+import com.csst.ir.control.SendMsgThread;
 
 /**
  * 可视对讲
@@ -112,22 +109,24 @@ public class VideoTalkActivity extends Activity  {
 		};
 	};
 
+	private SeekBarViewHorizontal mSeekBarHorizontal_L;
+	private SeekBarViewVertical mSeekBarVertical_L;//左边的
+	private SeekBarViewHorizontal mSeekBarHorizontal_R;
+	private SeekBarViewVertical mSeekBarVertical_R;//右边的
+	private boolean center = false;
+	private boolean isVertical = false;
+
+	private Context mContext;
+	private TextView previewSVtext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.video_talk);
+		mContext = VideoTalkActivity.this;
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);   //应用运行时，保持屏幕高亮，不锁屏
 		decodeState = RunState.RUN_STATE_IDLE;
 		encodeState = RunState.RUN_STATE_IDLE;
-
-		btn_stop = (ImageButton)findViewById(R.id.btn_stop);
-		ButtonListenser btnListener = new ButtonListenser();
-		btn_stop.setOnClickListener(btnListener);
-
-		// 获取系统的红外遥控服务
-		mCIR = (ConsumerIrManager) getSystemService(Context.CONSUMER_IR_SERVICE);
-		initViewsAndEvents();//红外遥控按钮监听初始化
 
 		//获取解码显示区
 		beCalledImageView=(BeCalledImageView)findViewById(R.id.imgview2);
@@ -137,11 +136,43 @@ public class VideoTalkActivity extends Activity  {
 		Bundle bundle = intent.getExtras();
 		connectIp=bundle.getString("CONNECTIP");
 		connectType=bundle.getString("CONNECTTYPE");
+
+
+		// 获取系统的红外遥控服务
+		mCIR = (ConsumerIrManager) getSystemService(Context.CONSUMER_IR_SERVICE);
+
+		initViewsAndEvents();//遥控按钮监听初始化
+
+		btn_stop = (ImageButton)findViewById(R.id.btn_stop);//挂断按钮
+		ButtonListenser btnListener = new ButtonListenser();
+		btn_stop.setOnClickListener(btnListener);
+
 		Thread ctrl = new ReviceCtrlThread(mCIR,handler);
 		ctrl.start();
 	}
+	public void reFlush(View view) {
+//		center = !center;//拖动条起始位置 true中间开始 false侧边开始
+//		mSeekBarVertical_L.setCenterModeEnable(center);
+//		mSeekBarVertical_R.setCenterModeEnable(center);
+
+		isVertical = !isVertical;
+		mSeekBarVertical_L.setVerticalModeEnable(isVertical);
+
+	}
 
 	private void initViewsAndEvents() {
+		//左边的拖动条
+		mSeekBarVertical_L = findViewById(R.id.seekbarVertical_l);//垂直拖动条
+		mSeekBarVertical_L.setCenterModeEnable(true);
+		mSeekBarVertical_L.setOnTouchListener(mClickListener_seekbarVertical_l);
+
+		//右边的拖动条
+		mSeekBarVertical_R = findViewById(R.id.seekbarVertical_r);//垂直拖动条
+		mSeekBarVertical_R.setCenterModeEnable(true);
+		mSeekBarVertical_R.setOnTouchListener(mClickListener_seekbarVertical_r);
+
+		previewSVtext = (TextView) findViewById(R.id.previewSVtext);
+
 		findViewById(R.id.send_button1).setOnTouchListener(mSend1ClickListener);//前进按钮
 		findViewById(R.id.send_button2).setOnTouchListener(mSend2ClickListener);//后退按钮
 		findViewById(R.id.send_button3).setOnTouchListener(mSend3ClickListener);//左拐
@@ -153,6 +184,44 @@ public class VideoTalkActivity extends Activity  {
 		findViewById(R.id.send_button_C).setOnClickListener(mSendCClickListener);//切换摄像头
 
 	}
+
+
+	View.OnTouchListener mClickListener_seekbarVertical_l = new View.OnTouchListener() {
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			int action=event.getAction();
+			if(action==MotionEvent.ACTION_DOWN){
+				new SendMsgThread(connectIp, "c0,0"+"\n").start();
+			}else if (action == MotionEvent.ACTION_MOVE) {
+				new SendMsgThread(connectIp,
+						"c"+(-(mSeekBarVertical_R.getProgress()*255/100))+
+								","+(-(mSeekBarVertical_L.getProgress()*255/100))+"\n").start();
+
+			}else if (action == MotionEvent.ACTION_UP) {
+				new SendMsgThread(connectIp, "c0,0"+"\n").start();
+			}
+			return false;
+		}
+	};
+
+	View.OnTouchListener mClickListener_seekbarVertical_r = new View.OnTouchListener() {
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			int action=event.getAction();
+			if(action==MotionEvent.ACTION_DOWN){
+				new SendMsgThread(connectIp, "c0,0"+"\n").start();
+			}else if (action == MotionEvent.ACTION_MOVE) {
+				new SendMsgThread(connectIp,
+						"c"+(-(mSeekBarVertical_R.getProgress()*255/100))+
+								","+(-(mSeekBarVertical_L.getProgress()*255/100))+"\n").start();
+
+			}else if (action == MotionEvent.ACTION_UP) {
+				new SendMsgThread(connectIp, "c0,0"+"\n").start();
+			}
+			return false;
+		}
+	};
+
 	View.OnClickListener mSendCClickListener = new View.OnClickListener() {
 
 		@Override
