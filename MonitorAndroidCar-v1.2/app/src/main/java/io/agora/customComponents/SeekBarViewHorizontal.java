@@ -25,6 +25,7 @@ import io.agora.tutorials1v1vcall.R;
 /**
  * 水平 从中间可以向两边滑动 左负右正
  * Created by slack on 2016/12/16 10:11.
+ * https://blog.csdn.net/I_do_can/article/details/53671978
  */
 public class SeekBarViewHorizontal extends View {
  

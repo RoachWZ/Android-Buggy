@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by  Huanglinqing on 2018/8/24/024.
+ * https://blog.csdn.net/huangliniqng/article/details/82185983
  * APPlication 类
  * 初始化something
  */

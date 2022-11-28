@@ -30,7 +30,12 @@ import com.onLineDetect.service.OnLineDetectService;
 
 import hlq.view.activity.BluetoothActivity;
 import io.agora.tutorials1v1vcall.R;
-
+/**
+ * Android FFmpeg 可视对讲（软编软解应用层）
+ * 代码是在手机上运行的先开启wifi 对讲的两个设备应在同一个WLAN中 输入Ip后点击通话按钮 其他的看代码吧
+ * https://download.csdn.net/download/lichao3140/8928905
+ * 测试可以用，主要功能在 ffmpegif.so 中，但ffmpegif.so 没有源码，回声消除没有做，可供学习使用
+ */
 public class FfmpegActivity extends Activity {
 	/** Called when the activity is first created. */
 	String TAG="FfmpegActivity";

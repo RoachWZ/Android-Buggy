@@ -25,8 +25,7 @@ import io.agora.tutorials1v1vcall.R;
 
 /**
  *  垂直 从中间可以向两边滑动 下负上正
- * Created by slack on 2016/12/16 10:11.
- * Modify by wz on 2022/11/27 22:07
+ * Created by wz on 2022/11/27 22:07 实现了水平和垂直的转换
  */
 public class SeekBarViewVertical extends View {
 
@@ -135,6 +134,10 @@ public class SeekBarViewVertical extends View {
      * 判断是否是 0 在中间
      */
     private boolean mIsCenterState = false;
+
+    /**
+     * 判断是否是 垂直样式
+     */
     private boolean mIsVerticalState = true;
 
     private float mThumbRadius = mThumbNormalRadius;
