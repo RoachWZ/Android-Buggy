@@ -10,7 +10,7 @@
        android:layout_weight="1"
     >
  
-    	     <com.csst.ffmpeg.views.BeCalledImageView 
+    	     <com.csst.ffmpeg.views.BeCalledImageView
         		android:id="@+id/imgview2"
         		android:layout_centerVertical="true"
         		android:layout_alignParentLeft="true"        		
@@ -44,7 +44,7 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
           android:layout_gravity="top">
-		       <com.csst.ffmpeg.views.DoCalledImageView 
+		       <com.csst.ffmpeg.views.DoCalledImageView
         		android:id="@+id/previewSV"
                 android:layout_width="fill_parent"
                 android:layout_height="155dp" 

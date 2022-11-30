@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.hardware.ConsumerIrManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -149,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
     //      Intent intent = new Intent(this, DefaultActivity.class);
     //      startActivity(intent);
     //    }
+
+    MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);//屏幕旋转
   }
 
   @Override

@@ -1,4 +1,4 @@
-package com.csst.ir.control;
+package wz.control;
 
 import java.io.IOException;
 import java.io.OutputStream;

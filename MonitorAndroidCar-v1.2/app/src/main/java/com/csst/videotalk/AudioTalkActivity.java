@@ -1,18 +1,15 @@
 package com.csst.videotalk;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
 
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.csst.ffmpeg.FFMpegIF;
 import com.csst.ffmpeg.views.BeCalledImageView;

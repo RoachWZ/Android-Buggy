@@ -2,18 +2,13 @@ package com.onLineDetect.service;
 
 import java.net.Socket;
 
-import com.csst.videotalk.FfmpegActivity;
-import com.csst.videotalk.VideoTalkActivity;
-
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Binder;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.util.Log;
 
 /**

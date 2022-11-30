@@ -2,7 +2,6 @@ package com.csst.ffmpeg.views;
 import java.util.Vector;
 
 import io.agora.tutorials1v1vcall.R;
-
 import com.csst.videotalk.VideoTalkActivity;
 
 import android.content.Context;
@@ -153,7 +152,7 @@ public class BeCalledImageView extends SurfaceView implements SurfaceHolder.Call
 		try {
 			canvas = sHolder.lockCanvas();
 
-			if(canvas!=null&&VideoTalkActivity.beCalledBitmap!=null){
+			if(canvas!=null&& VideoTalkActivity.beCalledBitmap!=null){
 				canvas.drawBitmap(VideoTalkActivity.beCalledBitmap,
 						new Rect(0, 0, VideoTalkActivity.beCalledBitmap.getWidth(), VideoTalkActivity.beCalledBitmap.getHeight()),
 //			    		   new Rect(0, 0, sHeight*4/3,sHeight),

@@ -430,7 +430,6 @@ public class Vehicle implements SensorEventListener{
     // raw control value is used
     if (noiseEnabled && noise.getDirection() > 0)
       right = (int) ((control.getRight() - noise.getValue()) * speedMultiplier);
-    sendStringToUsb(String.format(Locale.US, "c%d,%d\n", left, right));
 
     //我改了一版红外遥控的，不行太卡了，红外发送的慢，赶不上指令发送。注释掉不用了。
     //IrConnection.send( left, right);//add by wangzheng 2022-08-29
@@ -448,6 +447,7 @@ public class Vehicle implements SensorEventListener{
       right = (int) (-1 * speedMultiplier);
     }
     sendStringToUsbForIronbot( left, right);
+    sendStringToUsb(String.format(Locale.US, "c%d,%d\n", left, right));
 
   }
 

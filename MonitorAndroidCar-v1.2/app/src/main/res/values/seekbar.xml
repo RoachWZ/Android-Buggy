@@ -13,6 +13,8 @@
         <attr name="centerState" format="boolean"/>
         <!-- 水平/垂直 切换 默认垂直-->
         <attr name="VerticalState" format="boolean"/>
+        <!-- 是否 自动归0 -->
+        <attr name="AutoZero" format="boolean"/>
         <!-- 背景 拉条杆 底色 -->
         <attr name="backColor" format="color"/>
         <!-- 背景 拉条杆 Width -->

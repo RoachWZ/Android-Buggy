@@ -22,149 +22,180 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:orientation="horizontal">
+			android:orientation="vertical">
 
 			<LinearLayout
-				android:id="@+id/LinearLayout_l"
-				android:layout_width="189dp"
-				android:layout_height="match_parent"
-				android:orientation="vertical">
+				android:layout_width="match_parent"
+				android:layout_height="258dp"
+				android:orientation="horizontal">
 
 				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="80dp"
-					android:orientation="vertical"></LinearLayout>
-
-				<io.agora.customComponents.SeekBarViewVertical
-					android:id="@+id/seekbarVertical_l"
-					android:layout_width="match_parent"
-					android:layout_height="172dp"
-					android:background="#0fFFFFFF"
-					app:backColor="#FFFFFF"
-					app:backFrameColor="#C9C6C6"
-					app:backFrameSize="1dp"
-					app:backWidth="5dp"
-					app:height="100dp"
-					app:maxProgress="100"
-					app:minProgress="0"
-					app:progress="0"
-					app:progressColor="#FCB2A7"
-					app:thumbColor="#F96650"
-					app:thumbNormalRadius="10dp"
-					app:thumbPressRadius="12dp" />
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="42dp"
-					android:orientation="horizontal">
-
-					<Button
-						android:layout_width="71dp"
-						android:layout_height="41dp"
-						android:onClick="reFlush"
-						android:text="SeekBar\nmode" />
-				</LinearLayout>
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="50dp"
-					android:orientation="horizontal">
-
-					<LinearLayout
-						android:layout_width="50dp"
-						android:layout_height="match_parent"
-						android:orientation="horizontal"></LinearLayout>
-
-					<Button
-						android:id="@+id/send_button3"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Left" />
-
-					<LinearLayout
-						android:layout_width="13dp"
-						android:layout_height="match_parent"
-						android:orientation="horizontal"></LinearLayout>
-
-					<Button
-						android:id="@+id/send_button4"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Right" />
-				</LinearLayout>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_width="217dp"
-				android:layout_height="match_parent"
-				android:orientation="vertical">
-
-				<TextView
-					android:id="@+id/previewSVtext"
-					android:layout_width="match_parent"
-					android:layout_height="60dp"
-					android:layout_gravity="left"
-					android:layout_marginTop="1dp"
-					android:textColor="#ffffffff"
-					android:textSize="1sp" />
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="216dp"
-					android:orientation="vertical"></LinearLayout>
-
-				<LinearLayout
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top">
-
-					<com.csst.ffmpeg.views.DoCalledImageView
-						android:id="@+id/previewSV"
-						android:layout_width="141dp"
-						android:layout_height="78dp"
-						android:layout_gravity="top" />
-
-					<LinearLayout
-						android:id="@+id/LinearLayout2"
-						android:layout_width="78dp"
-						android:layout_height="78dp"
-						android:layout_marginStart="7dp"
-						android:layout_marginTop="7dp"
-						android:layout_marginEnd="7dp"
-						android:layout_marginBottom="7dp"
-						android:background="@drawable/frame"
-						android:orientation="vertical">
-
-						<ImageButton
-							android:id="@+id/btn_stop"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginTop="2dp"
-							android:src="@drawable/videotalkstop" />
-					</LinearLayout>
-
-				</LinearLayout>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/LinearLayout_r"
-				android:layout_width="250dp"
-				android:layout_height="match_parent"
-				android:orientation="vertical">
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="80dp"
+					android:id="@+id/LinearLayout_l"
+					android:layout_width="189dp"
+					android:layout_height="match_parent"
 					android:orientation="vertical">
 
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="80dp"
+						android:orientation="vertical">
+
+						<TextView
+							android:id="@+id/previewSVtext"
+							android:layout_width="90dp"
+							android:layout_height="60dp"
+							android:layout_gravity="left"
+							android:layout_marginTop="1dp"
+							android:background="@color/white"
+							android:textColor="@color/account_black"
+							android:textSize="11sp" />
+					</LinearLayout>
+
+					<wz.customComponents.SeekBarViewVertical
+						android:id="@+id/seekbarVertical_l"
+						android:layout_width="match_parent"
+						android:layout_height="172dp"
+						android:background="#0fFFFFFF"
+						app:backColor="#FFFFFF"
+						app:backFrameColor="#C9C6C6"
+						app:backFrameSize="1dp"
+						app:backWidth="5dp"
+						app:height="100dp"
+						app:maxProgress="100"
+						app:minProgress="0"
+						app:progress="0"
+						app:progressColor="#FCB2A7"
+						app:thumbColor="#F96650"
+						app:thumbNormalRadius="10dp"
+						app:thumbPressRadius="12dp" />
+
 				</LinearLayout>
 
-				<io.agora.customComponents.SeekBarViewVertical
-					android:id="@+id/seekbarVertical_r"
-					android:layout_width="match_parent"
-					android:layout_height="172dp"
+				<LinearLayout
+					android:layout_width="217dp"
+					android:layout_height="match_parent"
+					android:orientation="vertical">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="253dp"
+						android:orientation="vertical"></LinearLayout>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/LinearLayout_r"
+					android:layout_width="250dp"
+					android:layout_height="256dp"
+					android:orientation="vertical">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="80dp"
+						android:orientation="vertical">
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:orientation="horizontal">
+
+							<com.csst.ffmpeg.views.DoCalledImageView
+								android:id="@+id/previewSV"
+								android:layout_width="141dp"
+								android:layout_height="78dp"
+								android:layout_gravity="top" />
+
+							<ImageButton
+								android:id="@+id/btn_stop"
+								android:layout_width="match_parent"
+								android:layout_height="50dp"
+								android:layout_marginTop="2dp"
+								android:src="@drawable/videotalkstop" />
+
+						</LinearLayout>
+
+					</LinearLayout>
+
+					<wz.customComponents.SeekBarViewVertical
+						android:id="@+id/seekbarVertical_r"
+						android:layout_width="match_parent"
+						android:layout_height="172dp"
+						android:background="#0fFFFFFF"
+						app:backColor="#FFFFFF"
+						app:backFrameColor="#C9C6C6"
+						app:backFrameSize="1dp"
+						app:backWidth="5dp"
+						app:height="100dp"
+						app:maxProgress="100"
+						app:minProgress="0"
+						app:progress="0"
+						app:progressColor="#FCB2A7"
+						app:thumbColor="#F96650"
+						app:thumbNormalRadius="10dp"
+						app:thumbPressRadius="12dp" />
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal">
+
+				<LinearLayout
+					android:layout_width="216dp"
+					android:layout_height="match_parent"
+					android:orientation="vertical">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="42dp"
+						android:orientation="horizontal">
+
+						<Button
+							android:id="@+id/SeekBarStyle"
+							android:layout_width="71dp"
+							android:layout_height="41dp"
+							android:onClick="onSeekBarModeClicked"
+							android:text="vertical" />
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="50dp"
+						android:orientation="horizontal">
+
+						<LinearLayout
+							android:layout_width="50dp"
+							android:layout_height="match_parent"
+							android:orientation="horizontal"></LinearLayout>
+
+						<Button
+							android:id="@+id/send_button3"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+
+							android:text="Left" />
+
+						<LinearLayout
+							android:layout_width="13dp"
+							android:layout_height="match_parent"
+							android:orientation="horizontal"></LinearLayout>
+
+						<Button
+							android:id="@+id/send_button4"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+
+							android:text="Right" />
+					</LinearLayout>
+				</LinearLayout>
+
+				<wz.customComponents.SeekBarViewHorizontal
+					android:id="@+id/seekbarVertical_speed"
+					android:layout_width="218dp"
+					android:layout_height="99dp"
 					android:background="#0fFFFFFF"
 					app:backColor="#FFFFFF"
 					app:backFrameColor="#C9C6C6"
@@ -190,38 +221,11 @@
 						android:orientation="vertical">
 
 						<Button
-							android:id="@+id/send_button_s4"
-							style="?android:attr/buttonStyleSmall"
+							android:id="@+id/send_button1"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="Speed4" />
 
-						<Button
-							android:id="@+id/send_button_s3"
-							style="?android:attr/buttonStyleSmall"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="Speed3" />
-
-						<Button
-							android:id="@+id/send_button_s2"
-							style="?android:attr/buttonStyleSmall"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="Speed2" />
-
-					</LinearLayout>
-
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent"
-						android:orientation="vertical">
-
-						<Button
-							android:id="@+id/send_button2"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="Back" />
+							android:text="Front" />
 
 						<LinearLayout
 							android:layout_width="match_parent"
@@ -229,14 +233,16 @@
 							android:orientation="vertical"></LinearLayout>
 
 						<Button
-							android:id="@+id/send_button1"
+							android:id="@+id/send_button2"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="Front" />
+
+							android:text="Back" />
+
 					</LinearLayout>
 
 					<LinearLayout
-						android:layout_width="match_parent"
+						android:layout_width="77dp"
 						android:layout_height="match_parent"
 						android:orientation="vertical">
 
@@ -245,15 +251,49 @@
 							style="?android:attr/buttonStyleSmall"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="SwitchLight" />
+
+							android:text="Switch\nLight" />
 
 						<Button
 							android:id="@+id/send_button_C"
 							style="?android:attr/buttonStyleSmall"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="SwitchCam" />
+
+							android:text="Switch\nCam" />
 					</LinearLayout>
+
+					<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:orientation="vertical">
+
+						<Button
+							android:id="@+id/send_button_s4"
+							style="?android:attr/buttonStyleSmall"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:onClick="onSpeed4Clicked"
+							android:text="Speed4" />
+
+						<Button
+							android:id="@+id/send_button_s3"
+							style="?android:attr/buttonStyleSmall"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:onClick="onSpeed3Clicked"
+							android:text="Speed3" />
+
+						<Button
+							android:id="@+id/send_button_s2"
+							style="?android:attr/buttonStyleSmall"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:onClick="onSpeed2Clicked"
+							android:text="Speed2" />
+
+					</LinearLayout>
+
 				</LinearLayout>
 
 			</LinearLayout>

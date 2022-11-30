@@ -1,18 +1,14 @@
 package com.csst.ffmpeg.control;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.csst.videotalk.FfmpegActivity;
 import com.csst.videotalk.VideoTalkActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 
 public class ConnectListeningServer extends Thread {

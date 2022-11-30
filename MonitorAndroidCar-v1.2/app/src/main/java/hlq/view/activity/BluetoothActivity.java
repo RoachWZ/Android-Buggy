@@ -364,6 +364,7 @@ public class BluetoothActivity extends BaseActivity {
             case 11:
             case 12:
                 alertDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "connect success", Toast.LENGTH_LONG).show();
 
 //                intent = new Intent(BluetoothActivity.this, Tongxun.class);
 //                intent.putExtra("devicename", bluRxBean.getBluetoothDevice().getName());
@@ -392,11 +393,14 @@ public class BluetoothActivity extends BaseActivity {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "connect failed", Toast.LENGTH_LONG).show();
             try {
                 mBluetoothSocket.close();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+        }finally {
+            alertDialog.dismiss();
         }
     }
 

@@ -1,4 +1,4 @@
-package io.agora.customComponents;
+package wz.customComponents;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,29 +13,26 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.Toast;
-
-import com.csst.videotalk.VideoTalkActivity;
 
 import io.agora.tutorials1v1vcall.R;
 
 /**
- *  垂直 从中间可以向两边滑动 下负上正
- * Created by wz on 2022/11/27 22:07 实现了水平和垂直的转换
+ * 水平 从中间可以向两边滑动 左负右正
+ * Created by slack on 2016/12/16 10:11.
+ * https://blog.csdn.net/I_do_can/article/details/53671978
  */
-public class SeekBarViewVertical extends View {
-
+public class SeekBarViewHorizontal extends View {
+ 
     private static final int DEFAULT_TOUCH_TARGET_SIZE = 40;
     private final int DEFAULT_TEXT_PADDING = 10;
     private final int DEFAULT_THUMB_COLOR = Color.GRAY;
 
     private final Paint paint;
 
-    private float height = 400; // need <= getHeight()
+    private float width = 800; // need <= getWidth()
 
     /**
      * progress start max
@@ -54,9 +51,9 @@ public class SeekBarViewVertical extends View {
     private int progressBackColor = Color.BLACK;
 
     /**
-     * 进度条的底色 宽度
+     * 进度条的底色 高度
      */
-    private float progressBackWidth = 10;
+    private float progressBackHeight = 10;
 
     /**
      * 进度条 底色 圆角矩形边框 描边
@@ -65,9 +62,9 @@ public class SeekBarViewVertical extends View {
     private int progressFrameColor = Color.WHITE;
 
     /**
-     * 进度条圆角矩形边框 宽度
+     * 进度条圆角矩形边框 高度
      */
-    private float progressFrameWidth = 3;
+    private float progressFrameHeight = 3;
 
     /**
      * 进度条的颜色
@@ -76,9 +73,9 @@ public class SeekBarViewVertical extends View {
     private int progressColor = Color.GREEN;
 
     /**
-     * 进度条的 宽度
+     * 进度条的 高度
      */
-    private float progressWidth = 20;
+    private float progressHeight = 20;
 
     /**
      * 如果0在中间,负进度条的颜色
@@ -135,11 +132,6 @@ public class SeekBarViewVertical extends View {
      */
     private boolean mIsCenterState = false;
 
-    /**
-     * 判断是否是 垂直样式
-     */
-    private boolean mIsVerticalState = true;
-
     private float mThumbRadius = mThumbNormalRadius;
     private float progressPosition;
     private boolean isTouchLegal = false;
@@ -151,15 +143,15 @@ public class SeekBarViewVertical extends View {
     private OnSeekBarProgressListener mOnSeekBarProgressListener;
     private OnSeekBarFinishedListener mOnSeekBarFinishedListener;
 
-    public SeekBarViewVertical(Context context) {
+    public SeekBarViewHorizontal(Context context) {
         this(context, null);
     }
 
-    public SeekBarViewVertical(Context context, AttributeSet attrs) {
+    public SeekBarViewHorizontal(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SeekBarViewVertical(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SeekBarViewHorizontal(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         paint = new Paint();
@@ -170,15 +162,14 @@ public class SeekBarViewVertical extends View {
                     R.styleable.SeekBarView, 0, 0);
             maxProgress = styledAttrs.getInteger(R.styleable.SeekBarView_maxProgress, 100);
             minProgress = styledAttrs.getInteger(R.styleable.SeekBarView_minProgress, 0);
-            height = styledAttrs.getDimension(R.styleable.SeekBarView_height, 150);
+            width = styledAttrs.getDimension(R.styleable.SeekBarView_width, 400);
             mIsCenterState = styledAttrs.getBoolean(R.styleable.SeekBarView_centerState, false);
-            mIsVerticalState = styledAttrs.getBoolean(R.styleable.SeekBarView_VerticalState, true);
             progressBackColor = styledAttrs.getColor(R.styleable.SeekBarView_backColor, Color.BLACK);
-            progressBackWidth = styledAttrs.getDimension(R.styleable.SeekBarView_backWidth, 10);
+            progressBackHeight = styledAttrs.getDimension(R.styleable.SeekBarView_backHeight, 10);
             progressFrameColor = styledAttrs.getColor(R.styleable.SeekBarView_backFrameColor, Color.WHITE);
-            progressFrameWidth = styledAttrs.getDimension(R.styleable.SeekBarView_backFrameSize, 3);
+            progressFrameHeight = styledAttrs.getDimension(R.styleable.SeekBarView_backFrameSize, 3);
             progressColor = styledAttrs.getColor(R.styleable.SeekBarView_progressColor, Color.GREEN);
-            progressWidth = styledAttrs.getDimension(R.styleable.SeekBarView_progressWidth, progressBackWidth);
+            progressHeight = styledAttrs.getDimension(R.styleable.SeekBarView_progressHeight, progressBackHeight);
             progressMinusColor = styledAttrs.getColor(R.styleable.SeekBarView_progressMinusColor, Color.RED);
             progress = styledAttrs.getInteger(R.styleable.SeekBarView_progress, 50);
             mThumbNormalRadius = styledAttrs.getDimension(R.styleable.SeekBarView_thumbNormalRadius, 14);
@@ -203,11 +194,11 @@ public class SeekBarViewVertical extends View {
     }
 
     /**
-     * 设置是否是 0 在中间
+     * 设置 起始位置是否是 0 在中间
      *
      * @param enable
      */
-    public SeekBarViewVertical setCenterModeEnable(boolean enable) {
+    public SeekBarViewHorizontal setCenterModeEnable(boolean enable) {
         // 将负值 变成正值
         if (mIsCenterState) {
             if (!enable) {
@@ -221,13 +212,7 @@ public class SeekBarViewVertical extends View {
         return this;
     }
 
-    public SeekBarViewVertical setVerticalModeEnable(boolean enable) {
-        mIsVerticalState = enable;
-        invalidate();
-        return this;
-    }
-
-    public SeekBarViewVertical setProgress(int progress) {
+    public SeekBarViewHorizontal setProgress(int progress) {
         if (mIsCenterState) {
             if (progress <= maxProgress && progress >= minProgress - maxProgress) {
                 this.progress = progress;
@@ -248,7 +233,7 @@ public class SeekBarViewVertical extends View {
     /**
      * 是否可用
      */
-    public SeekBarViewVertical setProgressEnable(boolean enable) {
+    public SeekBarViewHorizontal setProgressEnable(boolean enable) {
         if (enable) {
             this.setEnabled(true);
             mThumbDrawColor = mThumbColor;
@@ -264,65 +249,59 @@ public class SeekBarViewVertical extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if(!mIsVerticalState){
-            canvas.rotate(-90);
-            canvas.translate(-getHeight(),0);
-        }
         super.onDraw(canvas);
 //        Log.i("slack","onDraw... " + mThumbRadius);
         int centerX = getWidth() / 2; // x 是center
-        int centerY = getHeight() / 2; // y 是center
-        float startY = centerY - height / 2 ;
-//        Log.d("begain first ", "startY : " + startY +" centerY :"+centerY);
+        int centerY = getHeight() / 2; // y 是 2/3 高度
+        float startX = centerX - width / 2 ;
 
         // draw background line
         paint.setColor(progressBackColor);
-        paint.setStrokeWidth(progressBackWidth);
+        paint.setStrokeWidth(progressBackHeight);
         paint.setStyle(Paint.Style.FILL); // 实心
-        mBackRectF.left = centerX;
-        mBackRectF.top = startY + height;
-        mBackRectF.right = centerX - progressBackWidth;
-        mBackRectF.bottom = startY;
+        mBackRectF.left = startX;
+        mBackRectF.top = centerY - progressBackHeight;
+        mBackRectF.right = startX + width;
+        mBackRectF.bottom = centerY;
         canvas.drawRoundRect(mBackRectF, mTextBackRadius, mTextBackRadius, paint);
         paint.setColor(progressFrameColor);
-        paint.setStrokeWidth(progressFrameWidth);
+        paint.setStrokeWidth(progressFrameHeight);
         paint.setStyle(Paint.Style.STROKE); // 空心
         canvas.drawRoundRect(mBackRectF, mTextBackRadius, mTextBackRadius, paint);
 
-//        canvas.drawLine(startY, centerX, centerY + height / 2, centerX, paint);
+//        canvas.drawLine(startX, centerY, centerX + width / 2, centerY, paint);
 
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(progressColor);
 
         // draw progress
-        paint.setStrokeWidth(progressWidth);//设置画笔宽度
+        paint.setStrokeWidth(progressHeight);
         paint.setColor(progressColor);
         if (mIsCenterState) {
 //            if (progress < 0) {
 //                paint.setColor(progressMinusColor);
 //            }
-            startY = centerY;
-            progressPosition = startY + (int) ((progress * (height / 2f) / (maxProgress - minProgress)));
+            startX = centerX;
+            progressPosition = startX + (int) ((progress * (width / 2f) / (maxProgress - minProgress)));
         } else {
-            progressPosition = startY + ((progress * height / (maxProgress - minProgress)));
+            progressPosition = startX + ((progress * width / (maxProgress - minProgress)));
         }
-        mProgressRectF.right = centerX - progressBackWidth;
-        mProgressRectF.left = centerX;
+        mProgressRectF.top = centerY - progressBackHeight;
+        mProgressRectF.bottom = centerY;
         if (progress > 0) {
-            mProgressRectF.bottom = startY;
-            mProgressRectF.top = progressPosition;
+            mProgressRectF.left = startX;
+            mProgressRectF.right = progressPosition;
         } else {
-            mProgressRectF.bottom = progressPosition;
-            mProgressRectF.top = startY;
+            mProgressRectF.left = progressPosition;
+            mProgressRectF.right = startX;
         }
         canvas.drawRoundRect(mProgressRectF, mTextBackRadius, mTextBackRadius, paint);
 
-//        canvas.drawLine(startY, centerX, progressPosition, centerX, paint);
+//        canvas.drawLine(startX, centerY, progressPosition, centerY, paint);
 
         // draw point
         paint.setColor(mThumbDrawColor);
-        canvas.drawCircle(centerX - progressBackWidth / 2 , progressPosition, mThumbRadius, paint);
-//        Log.d("begain first ", "progressPosition : " + progressPosition );
+        canvas.drawCircle(progressPosition, centerY - progressBackHeight / 2, mThumbRadius, paint);
 
         /** mThumbRadius will change
          * mThumbRadius  : mThumbNormalRadius  ----------------- mThumbPressedRadius
@@ -336,24 +315,24 @@ public class SeekBarViewVertical extends View {
         if (mTextLocation == 1) {
             paint.setColor(mTextBackColor);
             paint.setAlpha(alpha);
-            mTextRectF.left = centerX - mThumbPressedRadius - DEFAULT_TEXT_PADDING;
-            mTextRectF.top = progressPosition + mTextSize + DEFAULT_TEXT_PADDING;
-            mTextRectF.right = mTextRectF.left - mTextSize - DEFAULT_TEXT_PADDING * 3;
-            mTextRectF.bottom = progressPosition - mTextSize - DEFAULT_TEXT_PADDING;
+            mTextRectF.bottom = centerY - mThumbPressedRadius - DEFAULT_TEXT_PADDING;
+            mTextRectF.right = progressPosition + mTextSize + DEFAULT_TEXT_PADDING;
+            mTextRectF.top = mTextRectF.bottom - mTextSize - DEFAULT_TEXT_PADDING * 3;
+            mTextRectF.left = progressPosition - mTextSize - DEFAULT_TEXT_PADDING;
             canvas.drawRoundRect(mTextRectF, mTextBackRadius, mTextBackRadius, paint);
             paint.setTextSize(mTextSize);
             paint.setColor(mTextColor);
             paint.setAlpha(alpha);
             // 为了让text 在背景的中心
             paint.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText(-progress + "%",mTextRectF.left - DEFAULT_TEXT_PADDING * 2 , progressPosition, paint);
+            canvas.drawText(progress + "%", progressPosition, mTextRectF.bottom - DEFAULT_TEXT_PADDING * 2, paint);
         } else if (mTextLocation == 2) {
             // draw text in Thumb
             paint.setTextSize(mTextSize);
             paint.setColor(mTextColor);
             paint.setAlpha(alpha);
             paint.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText(-progress + "%", centerX, progressPosition, paint);
+            canvas.drawText(progress + "%", progressPosition, centerY, paint);
         }
     }
 
@@ -371,11 +350,7 @@ public class SeekBarViewVertical extends View {
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (isTouchLegal) {
-                    if(!mIsVerticalState){
-                        progress = (int) clamp((int) event.getRawX() - getLeft());
-                    }else {
-                        progress = (int) clamp((int) event.getRawY() - getTop());
-                    }
+                    progress = (int) clamp((int) event.getRawX() - getLeft());
 //                    if (mLastProgress == progress) {
 //                        // 两次一样就不需要重画
 //                        break;
@@ -398,7 +373,6 @@ public class SeekBarViewVertical extends View {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                progress = 0;//松开时归0，回到中间位置
                 invalidate();
 //                mLastProgress = -1;
                 if (isTouchLegal) {
@@ -434,17 +408,11 @@ public class SeekBarViewVertical extends View {
      * @return
      */
     private boolean isTouchingTarget(MotionEvent event) {
-        if(!mIsVerticalState){
-            float location = progressPosition + getLeft();
-            isTouchLegal = event.getRawX() > location - DEFAULT_TOUCH_TARGET_SIZE
-                    && event.getRawX() < location + DEFAULT_TOUCH_TARGET_SIZE;
-        }else {
-            float location = progressPosition + getTop();
-            isTouchLegal = event.getRawY() > location - DEFAULT_TOUCH_TARGET_SIZE
-                    && event.getRawY() < location + DEFAULT_TOUCH_TARGET_SIZE;
-        }
+        float location = progressPosition + getLeft();
+        isTouchLegal = event.getRawX() > location - DEFAULT_TOUCH_TARGET_SIZE
+                && event.getRawX() < location + DEFAULT_TOUCH_TARGET_SIZE;
         //D.i("slack", "isTouchLegal " + isTouchLegal + " "  + event.getRawX() + " " + event.getRawY() + " " + progressPosition);
-//        Log.d("slack", "isTouchLegal " + isTouchLegal + " " + event.getRawX() + " " + event.getRawY() + " " + progressPosition);
+        //Log.d("slack", "isTouchLegal " + isTouchLegal + " " + event.getRawX() + " " + event.getRawY() + " " + progressPosition);
 
         return isTouchLegal;
     }
@@ -495,53 +463,54 @@ public class SeekBarViewVertical extends View {
      */
     private float clamp(int value) {
         if (mIsCenterState) {
-            int centerY = getHeight() / 2;
-            float min = centerY - height / 2;// the start point
-            float max = centerY + height / 2;// the end point
-            if (value > centerY) {
+            int centerX = getWidth() / 2;
+            float min = centerX - width / 2;// the start point
+            float max = centerX + width / 2;// the end point
+            if (value > centerX) {
                 if (value >= max) {
                     return maxProgress;
                 } else {
-                    return (int) ((maxProgress - minProgress) * (value - centerY) / (height / 2f));
+                    return (int) ((maxProgress - minProgress) * (value - centerX) / (width / 2f));
                 }
-            } else if (value < centerY) {
+            } else if (value < centerX) {
                 if (value <= min) {
                     return -maxProgress;
                 } else {
-                    return (int) ((maxProgress - minProgress) * (value - centerY) / (height / 2f));
+                    return (int) ((maxProgress - minProgress) * (value - centerX) / (width / 2f));
                 }
             } else {
                 return minProgress;
             }
         } else {
-            int centerY = getHeight() / 2;
-            float min = centerY - height / 2;// the start point
-            float max = centerY + height / 2;// the end point
+            int centerX = getWidth() / 2;
+            float min = centerX - width / 2;// the start point
+            float max = centerX + width / 2;// the end point
             if (value >= max) {
                 return maxProgress;
             } else if (value <= min) {
                 return minProgress;
             } else {
-                return (maxProgress - minProgress) * (value - min) / height;
+                return (maxProgress - minProgress) * (value - min) / width;
             }
         }
     }
+
 
     public int getProgress() {
         return progress;
     }
 
-    public SeekBarViewVertical setOnSeekBarChangeListener(OnSeekBarChangeListener l) {
+    public SeekBarViewHorizontal setOnSeekBarChangeListener(OnSeekBarChangeListener l) {
         mOnSeekBarChangeListener = l;
         return this;
     }
 
-    public SeekBarViewVertical setOnSeekBarProgressListener(OnSeekBarProgressListener l) {
+    public SeekBarViewHorizontal setOnSeekBarProgressListener(OnSeekBarProgressListener l) {
         mOnSeekBarProgressListener = l;
         return this;
     }
 
-    public SeekBarViewVertical setOnSeekBarFinishedListener(OnSeekBarFinishedListener l) {
+    public SeekBarViewHorizontal setOnSeekBarFinishedListener(OnSeekBarFinishedListener l) {
         mOnSeekBarFinishedListener = l;
         return this;
     }
@@ -556,5 +525,5 @@ public class SeekBarViewVertical extends View {
  
     public interface OnSeekBarChangeListener extends OnSeekBarProgressListener, OnSeekBarFinishedListener {
     }
-
+ 
 }

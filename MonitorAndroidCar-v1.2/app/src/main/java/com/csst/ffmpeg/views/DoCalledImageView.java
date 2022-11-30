@@ -2,16 +2,13 @@ package com.csst.ffmpeg.views;
 import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import com.csst.ffmpeg.FFMpegIF;
 import com.csst.videotalk.VideoTalkActivity;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Canvas;
 import android.graphics.ImageFormat;
-import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
@@ -19,7 +16,6 @@ import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.Size;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -50,7 +46,7 @@ public class DoCalledImageView extends SurfaceView implements SurfaceHolder.Call
 	/*设定录像的像素大小*/
 //	private final int CAMERA_W = 640;
 //	private final int CAMERA_H = 480;
-	private int cameraId = 0;
+//	private int cameraId = 0;
 
 
 	private Boolean startEncodeNow=false;
@@ -73,8 +69,6 @@ public class DoCalledImageView extends SurfaceView implements SurfaceHolder.Call
 		getHolder().setFormat(PixelFormat.TRANSLUCENT);
 		setFocusable(true);
 	}
-
-
 
 	/**
 	 * 本构造方法可以通过资源文件来进行构造并设置样式
@@ -125,25 +119,6 @@ public class DoCalledImageView extends SurfaceView implements SurfaceHolder.Call
 		sHeight=doCalledImageViewHolder.getSurfaceFrame().height();
 		Log.d(TAG,"Surface_Width" +sWidth+"Surface_Height"+sHeight);
 
-		/*cameraId = findFrontFacingCamera();
-		Log.i(TAG, "front face id="+cameraId);*/
-		myCamera = Camera.open(cameraId);
-
-		if(myCamera == null)
-			Log.e(TAG, "Open camera failed");
-		else {
-			try {
-				myCamera.setPreviewDisplay(doCalledImageViewHolder);
-				Log.i(TAG, "SurfaceHolder.Callback: surfaceCreated!");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				if(null != myCamera){
-					myCamera.release();
-					myCamera = null;
-				}
-				e.printStackTrace();
-			}
-		}
 	}
 
 
@@ -187,7 +162,6 @@ public class DoCalledImageView extends SurfaceView implements SurfaceHolder.Call
 		myCamera.stopPreview();
 		myCamera.release();
 		myCamera = null;
-		doCalledImageViewHolder = null;
 
 	}
 
@@ -207,6 +181,25 @@ public class DoCalledImageView extends SurfaceView implements SurfaceHolder.Call
 
 	//初始化相机
 	public void initCamera() {
+		/*cameraId = findFrontFacingCamera();
+		Log.i(TAG, "front face id="+cameraId);*/
+		myCamera = Camera.open(VideoTalkActivity.cameraId);
+
+		if(myCamera == null)
+			Log.e(TAG, "Open camera failed");
+		else {
+			try {
+				myCamera.setPreviewDisplay(doCalledImageViewHolder);
+				Log.i(TAG, "SurfaceHolder.Callback: surfaceCreated!");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				if(null != myCamera){
+					myCamera.release();
+					myCamera = null;
+				}
+				e.printStackTrace();
+			}
+		}
 
 		//自动聚焦变量回调
 		myAutoFocusCallback = new AutoFocusCallback() {

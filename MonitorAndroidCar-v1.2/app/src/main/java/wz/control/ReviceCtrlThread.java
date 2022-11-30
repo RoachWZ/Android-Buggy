@@ -1,4 +1,4 @@
-package com.csst.ir.control;
+package wz.control;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,11 +8,21 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import android.hardware.ConsumerIrManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import hlq.base.bean.MessageBean;
+import hlq.base.constant.BltContant;
+import hlq.service.ReceiveSocketService;
 import hlq.service.SendSocketService;
+import hlq.utils.ToastUtil;
+import hlq.utils.factory.ThreadPoolProxyFactory;
 
 public class ReviceCtrlThread extends Thread {
 
@@ -121,9 +131,20 @@ public class ReviceCtrlThread extends Thread {
 	private Handler handler;
 	private boolean LightFlag=false;
 
+	private String bluetoothRXTmsg = "";
+
 	public ReviceCtrlThread( ConsumerIrManager mCIR,Handler handler) {
 		this.mCIR = mCIR;
 		this.handler=handler;
+
+		EventBus.getDefault().register(this);
+		//开启蓝牙消息接收端
+		ThreadPoolProxyFactory.getNormalThreadPoolProxy().execute(new Runnable() {
+			@Override
+			public void run() {
+				new ReceiveSocketService().receiveMessage();
+			}
+		});
 	}
 
 	public void run() {
@@ -209,6 +230,41 @@ public class ReviceCtrlThread extends Thread {
 			LightFlag=false;
 		}
 		handler.sendMessage(msg);
+	}
+
+	/**
+	 * RECEIVER_MESSAGE:21 收到消息
+	 * BltContant.SEND_TEXT_SUCCESS:发送消息成功
+	 *BltContant.SEND_FILE_NOTEXIT:文件不存在
+	 * BltContant.SEND_FILE_IS_FOLDER:不能发送文件夹
+	 * @param messageBean
+	 */
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	public void onMessageEvent(MessageBean messageBean) {
+		switch (messageBean.getId()) {
+			case 21:
+				Log.d("收到蓝牙消息", messageBean.getContent());
+				bluetoothRXTmsg = messageBean.getContent();
+				Bundle bundle = new Bundle();
+				bundle.putString("RXD_MSG", bluetoothRXTmsg);
+
+				Message msg = new Message();
+				msg.setData(bundle);
+				msg.what=4;//接收蓝牙消息
+				handler.sendMessage(msg);
+				break;
+			case BltContant.SEND_TEXT_SUCCESS:
+				Log.d("发送蓝牙消息", messageBean.getContent());
+				break;
+			case BltContant.SEND_FILE_NOTEXIT:
+				ToastUtil.shortShow("发送的文件不存在，内存根目录下的test.png");
+				break;
+			case BltContant.SEND_FILE_IS_FOLDER:
+				ToastUtil.shortShow("不能传送一个文件夹");
+				break;
+			default:
+				break;
+		}
 	}
 
 }
