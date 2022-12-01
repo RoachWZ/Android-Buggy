@@ -35,7 +35,7 @@ public class SendSocketService {
             OutputStream outputStream = APP.bluetoothSocket.getOutputStream();
             outputStream.write(message.getBytes("utf-8"));
             outputStream.flush();
-            EventBus.getDefault().post(new MessageBean(BltContant.SEND_TEXT_SUCCESS));
+            EventBus.getDefault().post(new MessageBean(BltContant.SEND_TEXT_SUCCESS,message));
         } catch (IOException e) {
             e.printStackTrace();
         }
