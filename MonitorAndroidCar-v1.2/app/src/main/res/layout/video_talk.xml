@@ -172,7 +172,7 @@
 							android:orientation="horizontal"></LinearLayout>
 
 						<Button
-							android:id="@+id/send_button3"
+							android:id="@+id/send_button_Left"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 
@@ -184,7 +184,7 @@
 							android:orientation="horizontal"></LinearLayout>
 
 						<Button
-							android:id="@+id/send_button4"
+							android:id="@+id/send_button_Right"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 
@@ -221,7 +221,7 @@
 						android:orientation="vertical">
 
 						<Button
-							android:id="@+id/send_button1"
+							android:id="@+id/send_button_Front"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 
@@ -233,7 +233,7 @@
 							android:orientation="vertical"></LinearLayout>
 
 						<Button
-							android:id="@+id/send_button2"
+							android:id="@+id/send_button_Back"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 

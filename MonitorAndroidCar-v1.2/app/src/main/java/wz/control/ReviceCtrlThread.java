@@ -194,7 +194,7 @@ public class ReviceCtrlThread extends Thread {
 					lightSwitch();				//开关闪关灯
 				} else if (mstr.equals("C")) {
 					cameraSwitch();			//后置摄像头
-				}else if (mstr.startsWith("c")) {
+				}else if (mstr.startsWith("c")) {//小写字母c开头的电机控制命令
 					SendSocketService.sendMessage(mstr);
 				} else {
 					System.out.println("数据错误");

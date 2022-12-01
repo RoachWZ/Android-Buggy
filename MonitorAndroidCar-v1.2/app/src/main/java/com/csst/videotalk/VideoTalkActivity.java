@@ -202,10 +202,10 @@ public class VideoTalkActivity extends Activity  {
 		mSeekBarVertical_Speeed.setProgress(speed);
 		mSeekBarVertical_Speeed.setOnTouchListener(mClickListener);
 
-		findViewById(R.id.send_button1).setOnTouchListener(mClickListener);//前进按钮
-		findViewById(R.id.send_button2).setOnTouchListener(mClickListener);//后退按钮
-		findViewById(R.id.send_button3).setOnTouchListener(mClickListener);//左拐
-		findViewById(R.id.send_button4).setOnTouchListener(mClickListener);//右拐
+		findViewById(R.id.send_button_Front).setOnTouchListener(mClickListener);//前进按钮
+		findViewById(R.id.send_button_Back).setOnTouchListener(mClickListener);//后退按钮
+		findViewById(R.id.send_button_Left).setOnTouchListener(mClickListener);//左拐
+		findViewById(R.id.send_button_Right).setOnTouchListener(mClickListener);//右拐
 
 		findViewById(R.id.send_button_L).setOnClickListener(mOnClickListener);//开关闪关灯
 		findViewById(R.id.send_button_C).setOnClickListener(mOnClickListener);//切换摄像头
@@ -223,8 +223,8 @@ public class VideoTalkActivity extends Activity  {
 					TXDmsg = "c0,0"+"\n";
 					new SendMsgThread(connectIp, TXDmsg).start();
 				}else if (action == MotionEvent.ACTION_MOVE) {
-					TXDmsg = "c"+(-(mSeekBarVertical_R.getProgress()*speed/100))+
-							","+(-(mSeekBarVertical_L.getProgress()*speed/100))+"\n";
+					TXDmsg = "c"+(-(mSeekBarVertical_L.getProgress()*speed/100))+
+							","+(-(mSeekBarVertical_R.getProgress()*speed/100))+"\n";
 					new SendMsgThread(connectIp, TXDmsg).start();
 
 				}else if (action == MotionEvent.ACTION_UP) {
@@ -242,23 +242,50 @@ public class VideoTalkActivity extends Activity  {
 			//按钮的监听
 			if(action==MotionEvent.ACTION_DOWN){
 				switch (v.getId()) {
-					case R.id.send_button1:
-						new SendCtrlThread(connectIp, 1).start();break;
-					case R.id.send_button2:
-						new SendCtrlThread(connectIp, 2).start();break;
-					case R.id.send_button3:
-						new SendCtrlThread(connectIp, 3).start();break;
-					case R.id.send_button4:
-						new SendCtrlThread(connectIp, 4).start();break;
+					case R.id.send_button_Front:
+						//new SendCtrlThread(connectIp, 1).start();break;
+						mSeekBarVertical_R.setProgress(-100);
+						TXDmsg = "c"+(-(mSeekBarVertical_L.getProgress()*speed/100))+
+								","+speed+"\n";
+						new SendMsgThread(connectIp, TXDmsg).start();
+						break;
+					case R.id.send_button_Back:
+						//new SendCtrlThread(connectIp, 2).start();break;
+						mSeekBarVertical_R.setProgress(100);
+						TXDmsg = "c"+(-(mSeekBarVertical_L.getProgress()*speed/100))+
+								","+(-speed)+"\n";
+						new SendMsgThread(connectIp, TXDmsg).start();
+						break;
+					case R.id.send_button_Left:
+						//new SendCtrlThread(connectIp, 3).start();break;
+						mSeekBarVertical_L.setProgress(-100);
+						TXDmsg = "c"+255+
+								","+(-(mSeekBarVertical_R.getProgress()*speed/100))+"\n";						new SendMsgThread(connectIp, TXDmsg).start();
+						break;
+					case R.id.send_button_Right:
+						//new SendCtrlThread(connectIp, 4).start();break;
+						mSeekBarVertical_L.setProgress(100);
+						TXDmsg = "c"+(-255)+
+								","+(-(mSeekBarVertical_R.getProgress()*speed/100))+"\n";
+						new SendMsgThread(connectIp, TXDmsg).start();
+						break;
 				}
 			}else if (action == MotionEvent.ACTION_UP) {
 				switch (v.getId()) {
-					case R.id.send_button1:
-					case R.id.send_button2:
-						new SendCtrlThread(connectIp, 13).start();break;//前后停止
-					case R.id.send_button3:
-					case R.id.send_button4:
-						new SendCtrlThread(connectIp, 14).start();break;//左右停止
+					case R.id.send_button_Front:
+					case R.id.send_button_Back:
+						//new SendCtrlThread(connectIp, 13).start();
+						mSeekBarVertical_R.setProgress(0);
+						TXDmsg = "c"+(-(mSeekBarVertical_L.getProgress()*speed/100))+",0\n";
+						new SendMsgThread(connectIp, TXDmsg).start();
+						break;//前后停止
+					case R.id.send_button_Left:
+					case R.id.send_button_Right:
+						//new SendCtrlThread(connectIp, 14).start();
+						mSeekBarVertical_L.setProgress(0);
+						TXDmsg = "c0,"+(-(mSeekBarVertical_R.getProgress()*speed/100))+"\n";
+						new SendMsgThread(connectIp, TXDmsg).start();
+						break;//左右停止
 				}
 			}
 
