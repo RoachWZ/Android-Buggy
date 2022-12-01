@@ -9,10 +9,10 @@
 #define HZ 100	// 计数 约0.1ms 一次中断
 
 //L293D引脚定义      
-sbit in3 = P1^2;	 //如果左右电机位置不对，34 和 12 互换位置
-sbit in4 = P1^3;
-sbit in1 = P1^4;
-sbit in2 = P1^5;
+sbit in1 = P1^2;	 //如果左右电机位置不对，34 和 12 互换位置
+sbit in2 = P1^3;
+sbit in3 = P1^4;
+sbit in4 = P1^5;
 //sbit ena = P0^7; 	 //	这俩我没按引脚顺序连，我说怎么分别控制2个pwm一直调不对，长个记性，下回连接引脚也检查下
 //sbit enb = P0^6;     // 就这顺序了，杜邦线已经生锈在上边了，不好换位置了   
 sbit ena = P1^6;	//引脚换了个位置
@@ -87,6 +87,7 @@ void main()
 {   
 	EA=1;
     ConfigUART(9600);  //配置波特率为9600
+	//ConfigUART(115200);  //配置波特率为115200
 	Uart_Send_String("8051 for OpenBot 1.22 \r\n");//OpenBot手机端接收未规定的命令头会报错,我解决了手机端USB接收异常数据的处理，也可以把这里的串口输出注释掉
 	in1=1;  
 	in2=1;

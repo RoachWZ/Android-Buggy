@@ -32,7 +32,10 @@ void ConfigUART(unsigned int baud)
 	SCON = 0x50;                   //´®¿Ú³õÊ¼»¯Ïà¹Ø£¬´®¿Ú¹¤×÷·½Ê½Ò»£¬ÔÊĞí½ÓÊÕ
 	TH1  = 0xFD;                   //ÉèÖÃ³õÖµ
 	TL1  = 0xFD;                   //ÉèÖÃ³õÖµ
+	if(baud == 115200){ }
+	else{
     TH1 = 256 - (11059200/12/32)/baud;  //¼ÆËã¶¨Ê±Æ÷T1ÖØÔØÖµ	ÉèÖÃ²úÉú²¨ÌØÂÊµÄ¶¨Ê±Æ÷T1
+	 }
     TL1 = TH1;     					//³õÖµµÈÓÚÖØÔØÖµ
 	TR1  = 1;                      //¿ªÆô¶¨Ê±Æ÷T1
 	
@@ -108,7 +111,7 @@ bit Deal_UART_RecData()   //´¦Àí´®¿Ú½ÓÊÕÊı¾İ°üº¯Êı£¨³É¹¦´¦ÀíÊı¾İ°üÔò·µ»Ø1£¬·ñÔò·
 	  break;
 	}
 //  	Uart_Send_String("\r\nover\r\n");
-//	memset(RX_DAT,0,sizeof(char)*MAX_MSG_SZ);//ÕâÊ±RX_DATÖĞµÄÊı¾İÈ«¶¼ÊÇ0ÁË
+	memset(RX_DAT,0,sizeof(char)*MAX_MSG_SZ);//ÕâÊ±RX_DATÖĞµÄÊı¾İÈ«¶¼ÊÇ0ÁË
 	RX_DAT[0] = '\0';
 	RX_OVER=0;
     return 0;
