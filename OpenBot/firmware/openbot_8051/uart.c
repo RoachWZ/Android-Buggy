@@ -1,5 +1,6 @@
 //可以完整接收处理字符串
-#include <reg52.h>
+#include<AT89X52.H>		      //包含51单片机头文件，内部有各种寄存器定义
+//#include <reg52.h>
 #include "uart.h"
 #include "stdlib.h"
 #include "string.h"

@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
     //      startActivity(intent);
     //    }
 
-    MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);//屏幕旋转
+//    MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);//屏幕旋转 add by wz
   }
 
   @Override

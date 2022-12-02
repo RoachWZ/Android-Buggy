@@ -36,7 +36,8 @@ carried over WebSocket. However, we already have a communication channel between
 
 class VideoViewWebRTC @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : org.webrtc.SurfaceViewRenderer(context, attrs), SdpObserver, PeerConnection.Observer {
+//) : org.webrtc.SurfaceViewRenderer(context, attrs), SdpObserver, PeerConnection.Observer {
+) : SurfaceViewRendererVertical(context, attrs), SdpObserver, PeerConnection.Observer {//modify by wz 2022-12-02
 
     private var peerConnection: PeerConnection? = null
     private var rootEglBase: EglBase? = null
@@ -298,7 +299,12 @@ class VideoViewWebRTC @JvmOverloads constructor(
                     LocalEventBus.ProgressEvents.Unmirror -> {
                         setMirror(false)
                     }
-
+                    LocalEventBus.ProgressEvents.MirrorVertical -> {//add by wz 2022-12-02
+                        setMirrorVertically(true)
+                    }
+                    LocalEventBus.ProgressEvents.UnmirrorVertical -> {//add by wz 2022-12-02
+                        setMirrorVertically(false)
+                    }
                 }
             },
             { throwable ->

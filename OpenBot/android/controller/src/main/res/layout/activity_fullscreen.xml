@@ -203,6 +203,16 @@
                     android:background="@drawable/button"
                     app:icon="@drawable/toggle_mirror" />
 
+                <!-- add by wz 2022-12-02 -->
+                <org.openbot.controller.customComponents.MirrorImageVertical
+                    android:id="@+id/mirror_image_vertical"
+                    style="@style/IconOnlyButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button"
+                    app:icon="@drawable/toggle_mirror" />
+
                 <org.openbot.controller.customComponents.SwitchCamera
                     android:id="@+id/switch_camera"
                     style="@style/IconOnlyButton"

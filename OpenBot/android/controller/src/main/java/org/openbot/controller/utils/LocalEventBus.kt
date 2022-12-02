@@ -70,5 +70,7 @@ object LocalEventBus {
         object Unmute : ProgressEvents()
         object Mirror : ProgressEvents()
         object Unmirror : ProgressEvents()
+        object MirrorVertical : ProgressEvents()    // add by wz 2022-12-02
+        object UnmirrorVertical : ProgressEvents()  // add by wz 2022-12-02
     }
 }

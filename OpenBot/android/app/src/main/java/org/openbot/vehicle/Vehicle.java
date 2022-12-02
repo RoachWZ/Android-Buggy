@@ -20,8 +20,8 @@ public class Vehicle implements SensorEventListener{
   private boolean noiseEnabled = false;
 
   private int indicator = 0;
-  //private int speedMultiplier = 192; // 128,192,255
-  private int speedMultiplier = 30; // 10,30,90 add by wangzheng 2022-08-30 适配ironbot所使用的舵机
+  private int speedMultiplier = 192; // 128,192,255
+  //private int speedMultiplier = 30; // 10,30,90 add by wangzheng 2022-08-30 适配ironbot所使用的舵机
   private Control control = new Control(0, 0);
 
   private final SensorReading batteryVoltage = new SensorReading();
@@ -446,7 +446,7 @@ public class Vehicle implements SensorEventListener{
       left = (int) (-2 * speedMultiplier);
       right = (int) (-1 * speedMultiplier);
     }
-    sendStringToUsbForIronbot( left, right);
+    //sendStringToUsbForIronbot( left, right);//modify by wz
     sendStringToUsb(String.format(Locale.US, "c%d,%d\n", left, right));
 
   }
@@ -500,7 +500,7 @@ public class Vehicle implements SensorEventListener{
 
     @Override
     public void run() {
-      sendHeartbeat(750);
+      //sendHeartbeat(750);//modify by wz
     }
   }
 
