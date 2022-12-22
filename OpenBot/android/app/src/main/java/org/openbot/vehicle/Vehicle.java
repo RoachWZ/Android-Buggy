@@ -1,5 +1,6 @@
 package org.openbot.vehicle;
 
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -20,8 +21,8 @@ public class Vehicle implements SensorEventListener{
   private boolean noiseEnabled = false;
 
   private int indicator = 0;
-  private int speedMultiplier = 192; // 128,192,255
-  //private int speedMultiplier = 30; // 10,30,90 add by wangzheng 2022-08-30 适配ironbot所使用的舵机
+//  private int speedMultiplier = 192; // 128,192,255
+  private int speedMultiplier = 30; // 10,30,90 add by wangzheng 2022-08-30 适配ironbot所使用的舵机
   private Control control = new Control(0, 0);
 
   private final SensorReading batteryVoltage = new SensorReading();
@@ -32,6 +33,9 @@ public class Vehicle implements SensorEventListener{
   private float minMotorVoltage = 2.5f;
   private float lowBatteryVoltage = 9.0f;
   private float maxBatteryVoltage = 12.6f;
+
+  private BluetoothConnection bluetoothConnection;
+  protected boolean bluetoothConnected;
 
   private UsbConnection usbConnection;
   protected boolean usbConnected;
@@ -48,6 +52,7 @@ public class Vehicle implements SensorEventListener{
   private boolean hasLedsFront = false;
   private boolean hasLedsBack = false;
   private boolean hasLedsStatus = false;
+  private boolean IndicatorsSelected = false;
 
   private Sensor sensor;
   public SensorManager sm;
@@ -206,7 +211,7 @@ public class Vehicle implements SensorEventListener{
     this.context = context;
     this.baudRate = baudRate;
     gameController = new GameController(driveMode);
-    initSensorPROXIMITY();
+//    initSensorPROXIMITY();//wz
   }
 
   public float getBatteryVoltage() {
@@ -342,17 +347,69 @@ public class Vehicle implements SensorEventListener{
     this.indicator = indicator;
     switch (indicator) {
       case -1:
-        sendStringToUsb(String.format(Locale.US, "i1,0\n"));
+//        sendStringToUsb(String.format(Locale.US, "i1,0\n"));
+        sendStringToBluetooth(String.format(Locale.US, "#B0,255,0,*"));
+        sendStringToUsb(String.format(Locale.US, "#B0,255,0,*"));
+        IndicatorsSelected = false;
         break;
       case 0:
-        sendStringToUsb(String.format(Locale.US, "i0,0\n"));
+//        sendStringToUsb(String.format(Locale.US, "i0,0\n"));
+        if(IndicatorsSelected){
+          sendStringToBluetooth(String.format(Locale.US, "#B0,0,0,*"));
+          sendStringToUsb(String.format(Locale.US, "#B0,0,0,*"));
+          IndicatorsSelected = false;
+        }else {
+          sendStringToBluetooth(String.format(Locale.US, "#B255,0,0,*"));
+          sendStringToUsb(String.format(Locale.US, "#B255,0,0,*"));
+          IndicatorsSelected = true;
+        }
         break;
       case 1:
-        sendStringToUsb(String.format(Locale.US, "i0,1\n"));
+//        sendStringToUsb(String.format(Locale.US, "i0,1\n"));
+        sendStringToBluetooth(String.format(Locale.US, "#B0,0,255,*"));
+        sendStringToUsb(String.format(Locale.US, "#B0,0,255,*"));
+        IndicatorsSelected = false;
         break;
     }
   }
 
+  /*****************************Bluetooth************************************/
+  public BluetoothConnection getBluetoothConnection() {
+    return bluetoothConnection;
+  }
+  public void connectBluetooth(Activity activity_now) {
+    if (bluetoothConnection == null) bluetoothConnection = new BluetoothConnection(context);
+    bluetoothConnection.getDeviceList(activity_now);
+
+  }
+  public void disconnectBluetooth() {
+    if (bluetoothConnection != null) {
+      stopBot();
+      stopHeartbeat();
+      bluetoothConnection.stopBluetoothConnection();
+      bluetoothConnection = null;
+      bluetoothConnected = false;
+    }
+  }
+
+  public boolean isBluetoothConnected() {
+    if (bluetoothConnection == null) bluetoothConnection = new BluetoothConnection(context);
+    bluetoothConnected = bluetoothConnection.isOpen();
+    Log.d("bluetoothConnected", bluetoothConnected?"true":"false");
+
+    if (bluetoothConnected) {
+      if (heartbeatTimer == null) {
+        startHeartbeat();
+      }
+    }
+    return bluetoothConnected;
+  }
+
+  private void sendStringToBluetooth(String message) {
+    if (bluetoothConnection != null) bluetoothConnection.send(message);
+  }
+
+  /*****************************USB************************************/
   public UsbConnection getUsbConnection() {
     return usbConnection;
   }
@@ -399,18 +456,44 @@ public class Vehicle implements SensorEventListener{
    * B表示LED灯 从左到右为红绿蓝 取值0到255
    */
   private void sendStringToUsbForIronbot(int left, int right) {
-    Log.d("sensor", left +","+ right +"\n");
+    Log.d("ironbot", left +","+ right +"\n");
+
+    int leftPwm = (100 * (90+left) / 9 + 500);
+    int rightPwm = (100 * (90-right) / 9 + 500);
+//    if (usbConnection != null) usbConnection.send(String.format(Locale.US, "#A1,%d,100,2,%d,100,*", leftPwm, rightPwm));
+//    try {
+//      Thread.sleep(100);//间隔100毫秒 再小就反应不过来了
+//    } catch (InterruptedException e) {
+//      e.printStackTrace();
+//    }//并没有起作用，得好好研究下Java线程编程。下边是成功的改法，间隔100毫秒的控制在调用的方法里。
+    new Thread()
+    {
+      public void run()
+      {
+        if (usbConnection != null) usbConnection.send(String.format(Locale.US, "#A1,%d,100,2,%d,100,*", leftPwm, rightPwm));
+
+      }
+    }.start();
+
+  }
+
+  private void sendStringToBluetoothForIronbot(int left, int right) {
+    Log.d("ironbot", left +","+ right +"\n");
 
     int leftPwm = (100 * (90+left) / 9 + 500);
     int rightPwm = (100 * (90-right) / 9 + 500);
 
-    if (usbConnection != null) usbConnection.send(String.format(Locale.US, "#A1,%d,100,2,%d,100,*", leftPwm, rightPwm));
-    try {
-      Thread.sleep(100);//间隔100毫秒 再小就反应不过来了
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+    new Thread()
+    {
+      public void run()
+      {
+        if (bluetoothConnection != null) bluetoothConnection.send(String.format(Locale.US, "#A1,%d,100,2,%d,100,*", leftPwm, rightPwm));
+
+      }
+    }.start();
+
   }
+
   public float getLeftSpeed() {
     return control.getLeft() * speedMultiplier;
   }
@@ -430,9 +513,7 @@ public class Vehicle implements SensorEventListener{
     // raw control value is used
     if (noiseEnabled && noise.getDirection() > 0)
       right = (int) ((control.getRight() - noise.getValue()) * speedMultiplier);
-
-    //我改了一版红外遥控的，不行太卡了，红外发送的慢，赶不上指令发送。注释掉不用了。
-    //IrConnection.send( left, right);//add by wangzheng 2022-08-29
+/*
     //获得距离传感器中的数值，这里只有一个距离
     float juli[]=event.values;
 //                for (float d :juli) {
@@ -445,9 +526,12 @@ public class Vehicle implements SensorEventListener{
       Log.d("sensor", "默认距离："+sensor.getMaximumRange()+" 当前距离："+distance+"\n");
       left = (int) (-2 * speedMultiplier);
       right = (int) (-1 * speedMultiplier);
-    }
-    //sendStringToUsbForIronbot( left, right);//modify by wz
-    sendStringToUsb(String.format(Locale.US, "c%d,%d\n", left, right));
+    }*/
+    //我改了一版红外遥控的，不行太卡了，红外发送的慢，赶不上指令发送。注释掉不用了。
+    //IrConnection.send( left, right);//add by wangzheng 2022-08-29
+    sendStringToUsbForIronbot( left, right);//modify by wz 解决了赶不上指令发送的问题，间隔100毫秒，期间的指令都舍弃。
+    sendStringToBluetoothForIronbot( left, right);
+//    sendStringToUsb(String.format(Locale.US, "c%d,%d\n", left, right));
 
   }
 

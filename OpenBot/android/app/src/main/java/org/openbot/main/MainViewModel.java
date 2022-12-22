@@ -47,4 +47,15 @@ public class MainViewModel extends ViewModel {
   public LiveData<Boolean> getUsbStatus() {
     return usbStatus;
   }
+
+  private final MutableLiveData<Boolean> bluetoothStatus = new MutableLiveData<>();
+
+  public void setBluetoothStatus(Boolean data) {
+    bluetoothStatus.setValue(data);
+  }
+
+  public LiveData<Boolean> getBluetoothStatus() {
+    return bluetoothStatus;
+  }
+
 }

@@ -16,6 +16,14 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/bluetooth_connection">
+
+        <SwitchPreferenceCompat
+            app:key="bluetooth_connection"
+            app:title="No Device"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/permissions">
 
         <SwitchPreferenceCompat
@@ -33,6 +41,10 @@
         <SwitchPreferenceCompat
             app:key="mic"
             app:title="Microphone" />
+
+        <SwitchPreferenceCompat
+            app:key="bluetooth"
+            app:title="Bluetooth" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Video Streaming">

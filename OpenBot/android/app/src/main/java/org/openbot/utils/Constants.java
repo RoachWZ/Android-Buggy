@@ -45,7 +45,17 @@ public class Constants {
   public static final String CMD_SPEED_UP = "SPEED_UP";
   public static final String CMD_SPEED_DOWN = "SPEED_DOWN";
   // endregion
-  
+
+  //add by wangzheng 2022-12-22
+  public static final int OBJ_DETECTED = 0;
+  public static final int BT_CONNECTED_FAILED = 1;
+  public static final int BT_CONNECTED = 2;
+  public static final int BT_DISCONNECTED = 3;
+  public static final int SCENE_IDLE = 4;
+  public static final int SCENE_COLOR = 5;
+  public static final int SCENE_FACE = 6;
+  public static final int SOCKET_MSG = 7;
+
   //add by wangzheng 2022-08-29
   //下面的数组是一种交替的载波序列模式，通过毫秒测量
   //引导码，地址码，地址码，数据码，数据反码

@@ -15,6 +15,8 @@ import android.hardware.SensorManager;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -23,6 +25,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.navigation.NavController;
@@ -36,6 +40,9 @@ import org.openbot.utils.Constants;
 import org.openbot.vehicle.IrConnection;
 import org.openbot.vehicle.UsbConnection;
 import org.openbot.vehicle.Vehicle;
+
+import java.util.List;
+
 import timber.log.Timber;
 
 // For a library module, uncomment the following line
@@ -50,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
 
   private IrConnection irConnection;
   private static ConsumerIrManager mCIR;
+
+  public static Handler mHandler;
+
+  public void setHandler(Handler handler) {
+    mHandler = handler;
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
                   }
                   Timber.i("USB device attached");
                   break;
+//                case ACTION_USB_DEVICE_ATTACHED:
+//                  viewModel.setUsbStatus(vehicle.isBluetoothConnected());
+//                  Timber.i("Bluetooth device connected");
+//                  break;
 
                   // Case activated when app is not set to open default when usb is connected
                 case UsbConnection.ACTION_USB_PERMISSION:
@@ -154,6 +171,56 @@ public class MainActivity extends AppCompatActivity {
 //    MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);//屏幕旋转 add by wz
   }
 
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    super.onActivityResult(requestCode, resultCode, data);
+
+    Log.i(getClass().getName(), " onActivityResult");
+
+    FragmentManager fragmentManager = getSupportFragmentManager();
+
+    for (int i = 0; i < fragmentManager.getFragments().size(); i++) {
+
+      Fragment fragment = fragmentManager.getFragments().get(i);
+
+      if (fragment == null) {
+
+        Log.i(getClass().getName(), Integer.toHexString(requestCode));
+
+      } else {
+
+        handleResult(fragment, requestCode, resultCode, data);
+
+      }
+
+    }
+
+  }
+
+  private void handleResult(Fragment fragment, int requestCode, int resultCode, Intent data) {
+
+    fragment.onActivityResult(requestCode, resultCode, data);//调用每个Fragment的onActivityResult
+
+    List<Fragment> childFragment = fragment.getChildFragmentManager().getFragments(); //找到第二层Fragment
+
+    if (childFragment != null)
+
+      for (Fragment f : childFragment)
+
+        if (f != null) {
+
+          handleResult(f, requestCode, resultCode, data);
+
+        }
+
+    if (childFragment == null) {
+
+      Log.i(getClass().getName(), "MyBaseFragmentActivity is null");
+
+    } }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -209,14 +276,14 @@ public class MainActivity extends AppCompatActivity {
     if (localBroadcastReceiver != null) localBroadcastReceiver = null;
     if (!isChangingConfigurations()) vehicle.disconnectUsb();
     super.onDestroy();
-    vehicle.sm.unregisterListener(vehicle);//注销传感器的监听
+//    vehicle.sm.unregisterListener(vehicle);//注销传感器的监听 wz
   }
 
   @Override
   protected void onResume() {
     super.onResume();
-    //注册距离传感器监听
-    vehicle.sm.registerListener(vehicle,vehicle.sm.getDefaultSensor(Sensor.TYPE_PROXIMITY),SensorManager.SENSOR_DELAY_UI);
+    //注册距离传感器监听 wz
+//    vehicle.sm.registerListener(vehicle,vehicle.sm.getDefaultSensor(Sensor.TYPE_PROXIMITY),SensorManager.SENSOR_DELAY_UI);
   }
 
 }

@@ -14,6 +14,10 @@ android {
         applicationId "ioio.aav"
         minSdkVersion 21
         targetSdkVersion 29
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+
         //......
 //        externalNativeBuild {
 //            cmake {

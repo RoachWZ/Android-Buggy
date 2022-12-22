@@ -292,6 +292,16 @@
 
 
         <CheckBox
+            android:id="@+id/bluetoothToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:button="@drawable/bluetooth_toggle"
+            app:layout_constraintBottom_toBottomOf="@+id/usbToggle"
+            app:layout_constraintEnd_toStartOf="@+id/usbToggle"
+            app:layout_constraintTop_toTopOf="@+id/usbToggle" />
+
+        <CheckBox
             android:id="@+id/usbToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

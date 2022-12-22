@@ -97,6 +97,19 @@ public class FreeRoamFragment extends ControlsFragment {
           binding.usbToggle.setChecked(vehicle.isUsbConnected());
           Navigation.findNavController(requireView()).navigate(R.id.open_settings_fragment);
         });
+
+
+    mViewModel
+            .getBluetoothStatus()
+            .observe(getViewLifecycleOwner(), status -> binding.bluetoothToggle.setChecked(status));
+
+    binding.bluetoothToggle.setChecked(vehicle.isBluetoothConnected());
+
+    binding.bluetoothToggle.setOnClickListener(
+            v -> {
+              binding.bluetoothToggle.setChecked(vehicle.isBluetoothConnected());
+              Navigation.findNavController(requireView()).navigate(R.id.open_settings_fragment);
+            });
   }
 
   @Override

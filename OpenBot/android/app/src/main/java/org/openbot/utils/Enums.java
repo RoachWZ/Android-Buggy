@@ -82,12 +82,12 @@ public class Enums {
   }
 
   public enum SpeedMode {
-    SLOW(128),
-    NORMAL(192),
-    FAST(255);
-//    SLOW(10),
-//    NORMAL(30),
-//    FAST(90);//add by wangzheng 2022-08-30 适配ironbot所使用的舵机
+//    SLOW(128),
+//    NORMAL(192),
+//    FAST(255);
+    SLOW(10),
+    NORMAL(30),
+    FAST(90);//add by wangzheng 2022-08-30 适配ironbot所使用的舵机
 
     private final int value;
 

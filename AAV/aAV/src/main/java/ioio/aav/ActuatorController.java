@@ -65,126 +65,126 @@ public class ActuatorController {
 	boolean _wasMoving = false;
 
 	Point _lastCenterPoint = new Point(0, 0);
-	//ÏÂÃæµÄÊı×éÊÇÒ»ÖÖ½»ÌæµÄÔØ²¨ĞòÁĞÄ£Ê½£¬Í¨¹ıºÁÃë²âÁ¿
-		//Òıµ¼Âë£¬µØÖ·Âë£¬µØÖ·Âë£¬Êı¾İÂë£¬Êı¾İ·´Âë
-		//µÚÈıĞĞÊı¾İÂë·´ÖÃ£¬±ÈÈç0x12=0001 0010·´ÖÃÎª 0100 1000
-//ÒÔÏÂ ·½Ïò ÊÇÒÔÇ°ÖÃÉãÏñÍ·Îª×¼ ±¾³ÌĞòÊÇÓÃºóÖÃÉãÏñÍ·½øĞĞÑÕÉ«Ê¶±ğ×·×Ù£¬µ÷ÓÃÊ±×¢Òâ·½Ïò
-		//Í£Ö¹ 0x10
-		int[] patternS = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-	/*0000 1000*/560, 560,	560, 560, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//Ç°½ø 0x12
-		int[] pattern1 = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
-	/*0100 1000*/560, 560,	560, 1690, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560,1690, 	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//ºóÍË 0x18
-		int[] pattern2 = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-	/*0001 1000*/560, 560,	560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//×ó×ª 0x14
-		int[] pattern3 = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-	/*0010 1000*/560, 560,	560, 560, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//ÓÒ×ª 0x16
-		int[] pattern4 = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
-	/*0110 1000*/560, 560,	560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 	
-				560, 1690, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 1690,	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//×ó×Ô×ª 0x17
-		int[] pattern5 = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-	/*1110 1000*/560, 1690,	560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 
-				560, 560, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//ÓÒ×Ô×ª 0x19
-		int[] pattern6 = { 9000, 4500, 
-				560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 
-				560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
-	/*1001 1000*/560, 1690,	560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560, 560, 
-				560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560,1690, 	560, 1690, 	560, 1690, 
-				560, 42020, 9000, 2250, 560, 98190 };
-		//È«ËÙ  0x01
-			int[] speed = { 9000, 4500, 
-					560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560, 
-					560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-		/*1000 0000*/560,1690,	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 
-					560,  560, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-					560, 42020, 9000, 2250, 560, 98190 };
-			//ËÙ¶È1 0x00
-			int[] speed1 = { 9000, 4500, 
-					560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560, 
-					560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-		/*0000 0000*/560, 560,	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 
-					560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-					560, 42020, 9000, 2250, 560, 98190 };
-			//ËÙ¶È2 0x02
-			int[] speed2 = { 9000, 4500, 
-					560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
-					560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 
-		/*0100 0000*/560, 560,	560, 1690, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	
-					560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 
-					560, 42020, 9000, 2250, 560, 98190 };
-			//ËÙ¶È3 0x03
-			int[] speed3 = { 9000, 4500, 
-					560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
-					560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
-		/*1100 0000*/560, 1690,	560, 1690, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	
-					560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 
-					560, 42020, 9000, 2250, 560, 98190 };
+	//ä¸‹é¢çš„æ•°ç»„æ˜¯ä¸€ç§äº¤æ›¿çš„è½½æ³¢åºåˆ—æ¨¡å¼ï¼Œé€šè¿‡æ¯«ç§’æµ‹é‡
+	//å¼•å¯¼ç ï¼Œåœ°å€ç ï¼Œåœ°å€ç ï¼Œæ•°æ®ç ï¼Œæ•°æ®åç 
+	//ç¬¬ä¸‰è¡Œæ•°æ®ç åç½®ï¼Œæ¯”å¦‚0x12=0001 0010åç½®ä¸º 0100 1000
+//ä»¥ä¸‹ æ–¹å‘ æ˜¯ä»¥å‰ç½®æ‘„åƒå¤´ä¸ºå‡† æœ¬ç¨‹åºæ˜¯ç”¨åç½®æ‘„åƒå¤´è¿›è¡Œé¢œè‰²è¯†åˆ«è¿½è¸ªï¼Œè°ƒç”¨æ—¶æ³¨æ„æ–¹å‘
+	//åœæ­¢ 0x10
+	int[] patternS = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0000 1000*/560, 560,	560, 560, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//å‰è¿› 0x12
+	int[] pattern1 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0100 1000*/560, 560,	560, 1690, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560,1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//åé€€ 0x18
+	int[] pattern2 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0001 1000*/560, 560,	560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//å·¦è½¬ 0x14
+	int[] pattern3 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0010 1000*/560, 560,	560, 560, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//å³è½¬ 0x16
+	int[] pattern4 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0110 1000*/560, 560,	560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 1690,	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//å·¦è‡ªè½¬ 0x17
+	int[] pattern5 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*1110 1000*/560, 1690,	560, 1690, 	560, 1690, 	560, 560, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 560, 	560, 560, 	560, 560, 	560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//å³è‡ªè½¬ 0x19
+	int[] pattern6 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*1001 1000*/560, 1690,	560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560, 560,
+			560, 560, 	560, 1690, 	560, 1690, 	560, 560, 	560, 560, 	560,1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//å…¨é€Ÿ  0x01
+	int[] speed = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*1000 0000*/560,1690,	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560,  560, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//é€Ÿåº¦1 0x00
+	int[] speed1 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0000 0000*/560, 560,	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//é€Ÿåº¦2 0x02
+	int[] speed2 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560,560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*0100 0000*/560, 560,	560, 1690, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
+	//é€Ÿåº¦3 0x03
+	int[] speed3 = { 9000, 4500,
+			560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,
+			/*1100 0000*/560, 1690,	560, 1690, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560, 	560, 560,
+			560, 560, 	560, 560, 	560, 1690, 	560, 1690, 	560, 1690, 	560, 1690,	560, 1690, 	560, 1690,
+			560, 42020, 9000, 2250, 560, 98190 };
 
 
-		private int hz = 38000;
-		private ConsumerIrManager mCIR;
-		private double screenX = 175.5;
-		private double screenY = 143.5;
+	private int hz = 38000;
+	private ConsumerIrManager mCIR;
+	private double screenX = 175.5;
+	private double screenY = 143.5;
 
 
-	//1500 = 100 * t / 9 + 500  t=90 ÆäÖĞtÎª½Ç¶È  ËÙ¶Èµç»ú ½Ç¶È´ú±íËÙ¶È 90-0¶È ´ú±íË³Ê±Õë 90-180 ´ú±íÄæÊ±Õë
-	int BleCarSpeed = 15;//·¶Î§ 0-90
-	/** Ç°½ø */
+	//1500 = 100 * t / 9 + 500  t=90 å…¶ä¸­tä¸ºè§’åº¦  é€Ÿåº¦ç”µæœº è§’åº¦ä»£è¡¨é€Ÿåº¦ 90-0åº¦ ä»£è¡¨é¡ºæ—¶é’ˆ 90-180 ä»£è¡¨é€†æ—¶é’ˆ
+	int BleCarSpeed = 15;//èŒƒå›´ 0-90
+	/** å‰è¿› */
 	String commandF1 = "#A3,"+(100 * (90-BleCarSpeed) / 9 + 500)+",100,";
 	String commandF2 = "4,"+(100 * (90+BleCarSpeed) / 9 + 500)+",100,*";
-	/** ºóÍË */
+	/** åé€€ */
 	String commandB1 = "#A3,"+(100 * (90+BleCarSpeed) / 9 + 500)+",100,";
 	String commandB2 = "4,"+(100 * (90-BleCarSpeed) / 9 + 500)+",100,*";
-	/**×ó×ª	 */
+	/**å·¦è½¬	 */
 	String commandL1 = "#A3,"+(100 * (90-BleCarSpeed) / 9 + 500)+",100," ;
 	String commandL2 = "4,"+(100 * (90-BleCarSpeed) / 9 + 500)+",100,*";
-	/**ÓÒ×ª	 */
+	/**å³è½¬	 */
 	String commandR1 = "#A3,"+(100 * (90+BleCarSpeed) / 9 + 500)+",100," ;
 	String commandR2 =	"4,"+(100 * (90+BleCarSpeed) / 9 + 500)+",100,*";
-	/**Í£	 */
+	/**åœ	 */
 	String commandS1 = "#A3,1500,100," ;
 	String commandS2 = "4,1500,100,*";
 
 
-	int sleeptime = 100;//µ¥Î»ºÁÃë
+	int sleeptime = 100;//å•ä½æ¯«ç§’
 
 	public ActuatorController(ConsumerIrManager mCIR) {
 		// set the pulse width to be exactly the middle
-		// ÉèÖÃÊÊµ±µÄpwm
+		// è®¾ç½®é€‚å½“çš„pwm
 		_lastPanPWM = _pwmPan = MID_PAN_PWM;
 		_pwmTilt = MID_TILT_PWM;
 		_lastMotorPWM = _pwmMotor = MOTOR_NEUTRAL_PWM;
 		_pwmFrontWheels = CENTER_FRONT_WHEELS_PWM;
 
 		_irSensors = new IRSensors();
-		
+
 		this.mCIR = mCIR;
 	}
 
@@ -193,15 +193,15 @@ public class ActuatorController {
 	}
 
 	public void updateMotorPWM(double currentContourArea ,BluetoothGatt bluetoothGatt) throws InterruptedException {
-		// ¸ù¾İµ±Ç°ÂÖÀªÃæ»ıcurrentContourAreaÈ·¶¨ÏÂÒ»²½ÔË¶¯×´Ì¬
+		// æ ¹æ®å½“å‰è½®å»“é¢ç§¯currentContourAreaç¡®å®šä¸‹ä¸€æ­¥è¿åŠ¨çŠ¶æ€
 		updateWheelsPWM();
 		if (currentContourArea > MIN_NEUTRAL_CONTOUR_AREA && currentContourArea < MAX_NEUTRAL_CONTOUR_AREA) {
 			Log.i(_TAG, "stop");
 			_pwmMotor = (_wasMoving) ? MOTOR_REVERSE_PWM - 250 : MOTOR_NEUTRAL_PWM;
-			
-			//·¢ËÍÍ£Ö¹ºìÍâĞÅºÅ
-			////mCIR.transmit(hz, patternS);//Í£
-			
+
+			//å‘é€åœæ­¢çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, patternS);//åœ
+
 			_wasMoving = false;
 			_pulseCounter = 2;
 		} else if (currentContourArea < MIN_NEUTRAL_CONTOUR_AREA) {
@@ -209,10 +209,10 @@ public class ActuatorController {
 
 
 			_pwmMotor = MOTOR_FORWARD_PWM;
-			
-			//·¢ËÍÇ°½øºìÍâĞÅºÅ
-			////mCIR.transmit(hz, pattern2);//Ç°
-			
+
+			//å‘é€å‰è¿›çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, pattern2);//å‰
+
 			_wasMoving = true;
 			_pulseCounter = 2;
 		} else if (currentContourArea > MAX_NEUTRAL_CONTOUR_AREA) {
@@ -222,11 +222,11 @@ public class ActuatorController {
 			if (_pulseCounter > 0)
 				_pulseCounter--;
 
-			//·¢ËÍºóÍËºìÍâĞÅºÅ
-			////mCIR.transmit(hz, pattern1);//ºóÍË
-			//·¢ËÍÍ£Ö¹ºìÍâĞÅºÅ
-			////mCIR.transmit(hz, patternS);//Í£
-			
+			//å‘é€åé€€çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, pattern1);//åé€€
+			//å‘é€åœæ­¢çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, patternS);//åœ
+
 			_wasMoving = false;
 		}
 		_lastMotorPWM = _pwmMotor;
@@ -286,11 +286,11 @@ public class ActuatorController {
 	// ------------------------------------------------------------------------------------------------------------------------------------
 
 	Point increment = new Point(0, 0);
-	double target_tilt_position = 0.0;//tiltÇãĞ±
+	double target_tilt_position = 0.0;//tiltå€¾æ–œ
 
 	static final double kD_X = 0.8;// 003901;//018; // Derivative gain (Kd)
 
-	static final int MID_SCREEN_BOUNDARY = 15;//boundary±ß½ç
+	static final int MID_SCREEN_BOUNDARY = 15;//boundaryè¾¹ç•Œ
 
 	public boolean updatePanTiltPWM(Point screenCenterPoint, Point currentCenterPoint) {
 		boolean reverse = false;
@@ -322,11 +322,11 @@ public class ActuatorController {
 			// }
 
 			_lastCenterPoint.x = currentCenterPoint.x;
-			
-//			·¢ËÍ×ó×Ô×ªºìÍâĞÅºÅ
-//			//mCIR.transmit(hz, pattern6);//×ó×Ô×ª
-			//·¢ËÍ×ó×ªºìÍâĞÅºÅ
-			////mCIR.transmit(hz, pattern3);//×ó×ª
+
+//			å‘é€å·¦è‡ªè½¬çº¢å¤–ä¿¡å·
+//			//mCIR.transmit(hz, pattern6);//å·¦è‡ªè½¬
+			//å‘é€å·¦è½¬çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, pattern3);//å·¦è½¬
 		}
 
 		setpoint.y = (currentCenterPoint.y - screenCenterPoint.y) * 0.8;
@@ -357,107 +357,107 @@ public class ActuatorController {
 			_pwmTilt = constrain(_pwmTilt, MIN_TILT_PWM, MAX_TILT_PWM);
 
 			_lastCenterPoint.y = currentCenterPoint.y;
-			
-			//·¢ËÍÓÒ×Ô×ªºìÍâĞÅºÅ
-			////mCIR.transmit(hz, pattern5);//ÓÒ×Ô×ª
-			//·¢ËÍÓÒ×ªºìÍâĞÅºÅ
-			////mCIR.transmit(hz, pattern4);//ÓÒ×ª
+
+			//å‘é€å³è‡ªè½¬çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, pattern5);//å³è‡ªè½¬
+			//å‘é€å³è½¬çº¢å¤–ä¿¡å·
+			////mCIR.transmit(hz, pattern4);//å³è½¬
 		}
 
 		return reverse;
 	}
-	
+
 	public void updatePanTiltPWM( Point currentCenterPoint,BluetoothGatt bluetoothGatt) {
-		 double faceX=0;
-		 double faceY=0;
-		boolean fMoveFlag = false;//ÉèÖÃ±êÖ¾Î»,Ö»Ö´ĞĞÒ»´Î,²»Á¬Ğø·¢ËÍ
+		double faceX=0;
+		double faceY=0;
+		boolean fMoveFlag = false;//è®¾ç½®æ ‡å¿—ä½,åªæ‰§è¡Œä¸€æ¬¡,ä¸è¿ç»­å‘é€
 		boolean bMoveFlag = false;
 		boolean lMoveFlag = false;
 		boolean rMoveFlag = false;
 		boolean stopFlag = false;
-	if (true){
-		faceX=currentCenterPoint.x;
-		faceY=currentCenterPoint.y;
-		Log.i(_TAG, "boll detected: Location X: " + (faceX-screenX) +	" Y: " + (faceY-screenY) );
-		if((faceY-screenY)<-50&&!fMoveFlag){
+		if (true){
+			faceX=currentCenterPoint.x;
+			faceY=currentCenterPoint.y;
+			Log.i(_TAG, "boll detected: Location X: " + (faceX-screenX) +	" Y: " + (faceY-screenY) );
+			if((faceY-screenY)<-50&&!fMoveFlag){
 
-			//À¶ÑÀ·¢ËÍÖ¸Áî
-			BleHelper.sendCommand(bluetoothGatt, commandF1, true);
-			sendCommndSleep();
-			BleHelper.sendCommand(bluetoothGatt, commandF2, true);
-			sendCommndSleep();
-
-			//mCIR.transmit(hz, pattern2);
-			fMoveFlag=true;
-			bMoveFlag=false;
-			stopFlag=false;
-			////mCIR.transmit(hz, pattern);
-		}
-		else if((faceY-screenY)>50&&!bMoveFlag){
-
-//À¶ÑÀ·¢ËÍÖ¸Áî
-			BleHelper.sendCommand(bluetoothGatt, commandB1, true);
-			sendCommndSleep();
-			BleHelper.sendCommand(bluetoothGatt, commandB2, true);
-			sendCommndSleep();
-
-			//mCIR.transmit(hz, pattern1);
-			bMoveFlag=true;
-			fMoveFlag=false;
-			stopFlag=false;
-			////mCIR.transmit(hz, pattern);
-		}
-		else if((faceX-screenX)<-25&&!lMoveFlag){
-
-//À¶ÑÀ·¢ËÍÖ¸Áî
-			BleHelper.sendCommand(bluetoothGatt, commandL1, true);
-			sendCommndSleep();
-			BleHelper.sendCommand(bluetoothGatt, commandL2, true);
-			sendCommndSleep();
-
-			// ÔÚ38KHzÌõ¼şÏÂ½øĞĞÄ£Ê½×ª»»
-			//mCIR.transmit(hz, pattern3);
-			lMoveFlag=true;
-			rMoveFlag=false;
-			stopFlag=false;
-			
-		}
-		else if((faceX-screenX)>25&&!rMoveFlag){
-
-			//À¶ÑÀ·¢ËÍÖ¸Áî
-			BleHelper.sendCommand(bluetoothGatt, commandR1, true);
-			sendCommndSleep();
-			BleHelper.sendCommand(bluetoothGatt, commandR2, true);
-			sendCommndSleep();
-
-			//mCIR.transmit(hz, pattern4);
-			rMoveFlag=true;
-			lMoveFlag=false;
-			stopFlag=false;
-			
-		}
-		else if((faceX-screenX)<25&&(faceX-screenX)>-25&&(faceY-screenY)<50&&(faceY-screenY)>-50){
-
-			if(!stopFlag){
-				//À¶ÑÀ·¢ËÍÖ¸Áî
-				BleHelper.sendCommand(bluetoothGatt, commandS1, true);
+				//è“ç‰™å‘é€æŒ‡ä»¤
+				BleHelper.sendCommand(bluetoothGatt, commandF1, true);
 				sendCommndSleep();
-				BleHelper.sendCommand(bluetoothGatt, commandS2, true);
+				BleHelper.sendCommand(bluetoothGatt, commandF2, true);
 				sendCommndSleep();
 
-				//mCIR.transmit(hz, patternS);
-				stopFlag=true;
-				rMoveFlag=false;
-				lMoveFlag=false;
+				//mCIR.transmit(hz, pattern2);
+				fMoveFlag=true;
 				bMoveFlag=false;
-				fMoveFlag=false;
-				////mCIR.transmit(hz, patternS);
+				stopFlag=false;
+				////mCIR.transmit(hz, pattern);
 			}
-		}
-	}/*else{
+			else if((faceY-screenY)>50&&!bMoveFlag){
+
+//è“ç‰™å‘é€æŒ‡ä»¤
+				BleHelper.sendCommand(bluetoothGatt, commandB1, true);
+				sendCommndSleep();
+				BleHelper.sendCommand(bluetoothGatt, commandB2, true);
+				sendCommndSleep();
+
+				//mCIR.transmit(hz, pattern1);
+				bMoveFlag=true;
+				fMoveFlag=false;
+				stopFlag=false;
+				////mCIR.transmit(hz, pattern);
+			}
+			else if((faceX-screenX)<-25&&!lMoveFlag){
+
+//è“ç‰™å‘é€æŒ‡ä»¤
+				BleHelper.sendCommand(bluetoothGatt, commandL1, true);
+				sendCommndSleep();
+				BleHelper.sendCommand(bluetoothGatt, commandL2, true);
+				sendCommndSleep();
+
+				// åœ¨38KHzæ¡ä»¶ä¸‹è¿›è¡Œæ¨¡å¼è½¬æ¢
+				//mCIR.transmit(hz, pattern3);
+				lMoveFlag=true;
+				rMoveFlag=false;
+				stopFlag=false;
+
+			}
+			else if((faceX-screenX)>25&&!rMoveFlag){
+
+				//è“ç‰™å‘é€æŒ‡ä»¤
+				BleHelper.sendCommand(bluetoothGatt, commandR1, true);
+				sendCommndSleep();
+				BleHelper.sendCommand(bluetoothGatt, commandR2, true);
+				sendCommndSleep();
+
+				//mCIR.transmit(hz, pattern4);
+				rMoveFlag=true;
+				lMoveFlag=false;
+				stopFlag=false;
+
+			}
+			else if((faceX-screenX)<25&&(faceX-screenX)>-25&&(faceY-screenY)<50&&(faceY-screenY)>-50){
+
+				if(!stopFlag){
+					//è“ç‰™å‘é€æŒ‡ä»¤
+					BleHelper.sendCommand(bluetoothGatt, commandS1, true);
+					sendCommndSleep();
+					BleHelper.sendCommand(bluetoothGatt, commandS2, true);
+					sendCommndSleep();
+
+					//mCIR.transmit(hz, patternS);
+					stopFlag=true;
+					rMoveFlag=false;
+					lMoveFlag=false;
+					bMoveFlag=false;
+					fMoveFlag=false;
+					////mCIR.transmit(hz, patternS);
+				}
+			}
+		}/*else{
 		System.currentTimeMillis();
 		if(!stopFlag){
-			
+
 			//mCIR.transmit(hz, patternS);
 			stopFlag=true;
 			rMoveFlag=false;
@@ -467,19 +467,19 @@ public class ActuatorController {
 			////mCIR.transmit(hz, patternS);
 		}
 	}*/
-}
+	}
 	private void sendCommndSleep() {
 		try {
 			Thread.sleep(sleeptime);
-			Log.e("TAG", "¼ä¸ô"+sleeptime);
+			Log.e("TAG", "é—´éš”"+sleeptime);
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			Log.e("TAG", "¼ä¸ôÊ§°Ü");
+			Log.e("TAG", "é—´éš”å¤±è´¥");
 		}
 	}
 	private void sendCommndAction(BluetoothGatt bluetoothGatt,int angle) {
-		//À¶ÑÀ·¢ËÍÖ¸Áî
+		//è“ç‰™å‘é€æŒ‡ä»¤
 		BleHelper.sendCommand(bluetoothGatt, commandS1, true);
 	}
 }

@@ -9,6 +9,7 @@
   <string name="storage_permission_denied">External storage permission is necessary</string>
   <string name="location_permission_denied">Location permission is necessary</string>
   <string name="record_audio_permission_denied">Recording audio permission is necessary</string>
+  <string name="bluetooth_permission_denied">Bluetooth permission is necessary</string>
   <string name="permission_reason_logging"> to log datasets.</string>
   <string name="permission_reason_ai"> to run AI models.</string>
   <string name="permission_reason_ar_core"> to run AR Core.</string>
@@ -42,6 +43,8 @@
   <string name="data_log">Data Log</string>
 
   <string name="usb_connection">USB Connection</string>
+
+  <string name="bluetooth_connection">Bluetooth Connection</string>
 
   <string name="camera">Camera</string>
 

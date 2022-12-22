@@ -17,22 +17,40 @@ import android.util.Log;
 
 class AsyncServiceHelper
 {
+    //java.lang.IllegalArgumentException:Service Intent must be explicit:Intent{act=org.opencv.engine.BIND
+    //这是由于Android到了5.0版本也就是api>=21以后的一些新特性造成的。
+    // 这时只需要改一下你的opencv library工程的org.opencv.android.AsyncServiceHelper的initOpenCV方法为如下：
     public static boolean initOpenCV(String Version, final Context AppContext,
-            final LoaderCallbackInterface Callback)
-    {
-        AsyncServiceHelper helper = new AsyncServiceHelper(Version, AppContext, Callback);
-        if (AppContext.bindService(new Intent("org.opencv.engine.BIND"),
-                helper.mServiceConnection, Context.BIND_AUTO_CREATE))
-        {
+                                     final LoaderCallbackInterface Callback) {
+        AsyncServiceHelper helper = new AsyncServiceHelper(Version, AppContext,
+                Callback);
+        Intent intent = new Intent("org.opencv.engine.BIND");
+        intent.setPackage("org.opencv.engine");
+        if (AppContext.bindService(intent, helper.mServiceConnection,
+                Context.BIND_AUTO_CREATE)) {
             return true;
-        }
-        else
-        {
+        } else {
             AppContext.unbindService(helper.mServiceConnection);
             InstallService(AppContext, Callback);
             return false;
         }
     }
+//    public static boolean initOpenCV(String Version, final Context AppContext,
+//            final LoaderCallbackInterface Callback)
+//    {
+//        AsyncServiceHelper helper = new AsyncServiceHelper(Version, AppContext, Callback);
+//        if (AppContext.bindService(new Intent("org.opencv.engine.BIND"),
+//                helper.mServiceConnection, Context.BIND_AUTO_CREATE))
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            AppContext.unbindService(helper.mServiceConnection);
+//            InstallService(AppContext, Callback);
+//            return false;
+//        }
+//    }
 
     protected AsyncServiceHelper(String Version, Context AppContext, LoaderCallbackInterface Callback)
     {

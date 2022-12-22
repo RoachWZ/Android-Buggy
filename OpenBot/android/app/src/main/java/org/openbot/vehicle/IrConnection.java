@@ -46,8 +46,8 @@ public class IrConnection {
 
   }
 
+  //发送红外信号
   public static void stop(){
-    //发送红外信号
     mCIR.transmit(hz, Constants.patternS);
   }
   public static void forward(){
@@ -63,10 +63,10 @@ public class IrConnection {
     mCIR.transmit(hz, Constants.pattern4);
   }
   public static void left_0(){
-    mCIR.transmit(hz, Constants.pattern3);
+    mCIR.transmit(hz, Constants.pattern5);
   }
   public static void right_0(){
-    mCIR.transmit(hz, Constants.pattern4);
+    mCIR.transmit(hz, Constants.pattern6);
   }
   public static void speed_0(){
     mCIR.transmit(hz, Constants.speed0);

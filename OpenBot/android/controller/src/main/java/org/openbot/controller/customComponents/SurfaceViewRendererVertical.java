@@ -9,7 +9,6 @@ import org.webrtc.EglBase;
 import org.webrtc.GlRectDrawer;
 import org.webrtc.Logging;
 import org.webrtc.SurfaceEglRenderer;
-import org.webrtc.SurfaceViewRenderer;
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.Point;
@@ -25,9 +24,13 @@ import org.webrtc.RendererCommon.ScalingType;
 import org.webrtc.RendererCommon.VideoLayoutMeasure;
 import org.webrtc.ThreadUtils;
 import org.webrtc.VideoFrame;
+import org.webrtc.VideoSink;
+//import org.webrtc.SurfaceViewRenderer;
 
-public class SurfaceViewRendererVertical extends SurfaceViewRenderer {
-    private static final String TAG = "SurfaceViewRenderer";
+//public class SurfaceViewRendererVertical extends SurfaceViewRenderer {
+public class SurfaceViewRendererVertical extends SurfaceView implements Callback, VideoSink, RendererEvents {
+
+    private static final String TAG = "SurfaceViewRendererVertical";
     private final String resourceName = this.getResourceName();
     private final VideoLayoutMeasure videoLayoutMeasure = new VideoLayoutMeasure();
     private final SurfaceEglRenderer eglRenderer;
@@ -221,6 +224,6 @@ public class SurfaceViewRendererVertical extends SurfaceViewRenderer {
     }
 
     private void logD(String string) {
-        Logging.d("SurfaceViewRenderer", this.resourceName + ": " + string);
+        Logging.d(TAG, this.resourceName + ": " + string);
     }
 }

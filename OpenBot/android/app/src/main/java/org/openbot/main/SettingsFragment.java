@@ -1,14 +1,18 @@
 package org.openbot.main;
 
 import static org.openbot.utils.Constants.PERMISSION_AUDIO;
+import static org.openbot.utils.Constants.PERMISSION_BLUETOOTH;
 import static org.openbot.utils.Constants.PERMISSION_CAMERA;
 import static org.openbot.utils.Constants.PERMISSION_LOCATION;
 import static org.openbot.utils.Constants.PERMISSION_STORAGE;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
@@ -24,16 +28,55 @@ import org.openbot.R;
 import org.openbot.utils.Constants;
 import org.openbot.utils.PermissionUtils;
 import org.openbot.vehicle.Vehicle;
+
+import app.akexorcist.bluetotohspp.library.BluetoothState;
 import timber.log.Timber;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
   private MainViewModel mViewModel;
   private SwitchPreferenceCompat connection;
+  private SwitchPreferenceCompat bluetoothConnection;
   private Vehicle vehicle;
   private SwitchPreferenceCompat camera;
   private SwitchPreferenceCompat storage;
   private SwitchPreferenceCompat location;
   private SwitchPreferenceCompat mic;
+  private SwitchPreferenceCompat bluetooth;
+  private MainActivity mActivity;
+
+    public Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case Constants.BT_CONNECTED:
+                    bluetoothConnection.setChecked(true);
+                    mViewModel.setBluetoothStatus(vehicle.isBluetoothConnected());
+                    break;
+
+                case Constants.BT_CONNECTED_FAILED:
+                case Constants.BT_DISCONNECTED:
+                    bluetoothConnection.setChecked(false);
+                    mViewModel.setBluetoothStatus(vehicle.isBluetoothConnected());
+                    break;
+            }
+        };
+
+    };
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (MainActivity) activity;
+        mActivity.setHandler(mHandler);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (MainActivity) context;
+        mActivity.setHandler(mHandler);
+    }
 
   private final ActivityResultLauncher<String[]> requestPermissionLauncher =
       registerForActivityResult(
@@ -70,6 +113,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                           PermissionUtils.showAudioPermissionSettingsToast(requireActivity());
                         }
                         break;
+                        case PERMISSION_BLUETOOTH:
+                            if (granted) bluetooth.setChecked(true);
+                            else {
+                                bluetooth.setChecked(false);
+                                PermissionUtils.showBluetoothPermissionLoggingToast(requireActivity());
+                            }
+                            break;
                     }
                   }));
 
@@ -116,6 +166,33 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return true;
           });
     }
+
+      bluetoothConnection = findPreference("bluetooth_connection");
+      if (bluetoothConnection != null) {
+          bluetoothConnection.setTitle("No Device");
+          if (vehicle != null && vehicle.isBluetoothConnected()) {
+              bluetoothConnection.setChecked(true);
+              bluetoothConnection.setTitle(vehicle.getBluetoothConnection().getProductName());
+          } else {
+              bluetoothConnection.setTitle("No Device");
+              bluetoothConnection.setChecked(false);
+          }
+          bluetoothConnection.setOnPreferenceClickListener(
+                  preference -> {
+                      Timber.d(String.valueOf(bluetoothConnection.isChecked()));
+                      if (vehicle != null) {
+                          if (bluetoothConnection.isChecked()) {
+                              vehicle.connectBluetooth(getActivity());
+
+                          } else {
+                              vehicle.disconnectBluetooth();
+                              bluetoothConnection.setTitle("No Device");
+                          }
+                          mViewModel.setBluetoothStatus(vehicle.isBluetoothConnected());
+                      }
+                      return true;
+                  });
+      }
 
     camera = findPreference("camera");
     if (camera != null) {
@@ -190,6 +267,23 @@ public class SettingsFragment extends PreferenceFragmentCompat {
           });
     }
 
+      bluetooth = findPreference("bluetooth");
+      if (bluetooth != null) {
+          bluetooth.setChecked(PermissionUtils.hasBluetoothPermissions(requireActivity()));
+          bluetooth.setOnPreferenceChangeListener(
+                  (preference, newValue) -> {
+                      if (bluetooth.isChecked())
+                          PermissionUtils.startInstalledAppDetailsActivity(requireActivity());
+                      else {
+                          if (!PermissionUtils.shouldShowRational(
+                                  requireActivity(), PERMISSION_BLUETOOTH)) {
+                              PermissionUtils.startInstalledAppDetailsActivity(requireActivity());
+                          } else requestPermissionLauncher.launch(new String[] {PERMISSION_BLUETOOTH});
+                      }
+                      return false;
+                  });
+      }
+
     ListPreference streamMode = findPreference("video_server");
 
     if (streamMode != null)
@@ -211,6 +305,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return false;
           });
   }
+
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        vehicle.getBluetoothConnection().onDeviceListReturn(requestCode, resultCode, intent);
+        if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
+            if (resultCode == Activity.RESULT_OK)
+                mViewModel.setBluetoothStatus(true);
+        }else
+            mViewModel.setBluetoothStatus(false);
+    }
 
   private void restartApp() {
     new Handler()
@@ -240,5 +345,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     status ? vehicle.getUsbConnection().getProductName() : "No Device");
               }
             });
+
+      mViewModel
+              .getBluetoothStatus()
+              .observe(
+                      getViewLifecycleOwner(),
+                      status -> {
+                          if (bluetoothConnection != null) {
+                              bluetoothConnection.setChecked(status);
+                              if(vehicle.isBluetoothConnected())
+                              bluetoothConnection.setTitle(
+                                      status ? vehicle.getBluetoothConnection().getProductName() : "No Device");
+                              else bluetoothConnection.setTitle( status ? "connecting, please wait" : "No Device");
+                          }
+                      });
+
   }
 }

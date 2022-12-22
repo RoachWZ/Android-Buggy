@@ -65,23 +65,23 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 	static final double MIN_CONTOUR_AREA = 100;
 
 	private Mat _rgbaImage;
-	
-	// Android4.4Ö®ºó ºìÍâÒ£¿ØConsumerIrManager add by wangzheng 
+
+	// Android4.4ä¹‹å çº¢å¤–é¥æ§ConsumerIrManager add by wangzheng
 	private ConsumerIrManager mCIR;
-	
+
 	private JavaCameraView _opencvCameraView;
 	private ActuatorController _mainController;
 
 	volatile double _contourArea = 7;
 	volatile Point _centerPoint = new Point(-1, -1);
-	Point _screenCenterCoordinates = new Point(-1, -1);//Coordinates×ø±ê
+	Point _screenCenterCoordinates = new Point(-1, -1);//Coordinatesåæ ‡
 	int _countOutOfFrame = 0;
 
 	Mat _hsvMat;
 	Mat _processedMat;
 	Mat _dilatedMat;
-	Scalar _lowerThreshold;//scalar±êÁ¿
-	Scalar _upperThreshold;//ThresholdÃÅ¼÷Öµ
+	Scalar _lowerThreshold;//scalaræ ‡é‡
+	Scalar _upperThreshold;//Thresholdé—¨æ§›å€¼
 	final List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
 
 	SharedPreferences _sharedPreferences;
@@ -89,11 +89,11 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 	static int _trackingColor = 0;
 
 	private boolean _showContourEnable = false;
-	
+
 	private Thread thread;
 
 	/**
-	 * Gatt»Øµ÷
+	 * Gattå›è°ƒ
 	 */
 	private BleCallback bleCallback;
 	/**
@@ -113,16 +113,16 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 		@Override
 		public void onManagerConnected(int status) {
 			switch (status) {
-			case LoaderCallbackInterface.SUCCESS: {
-				_opencvCameraView.enableView();
-				_hsvMat = new Mat();
-				_processedMat = new Mat();
-				_dilatedMat = new Mat();
-			}
+				case LoaderCallbackInterface.SUCCESS: {
+					_opencvCameraView.enableView();
+					_hsvMat = new Mat();
+					_processedMat = new Mat();
+					_dilatedMat = new Mat();
+				}
 				break;
-			default: {
-				super.onManagerConnected(status);
-			}
+				default: {
+					super.onManagerConnected(status);
+				}
 				break;
 			}
 		}
@@ -132,15 +132,15 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		Log.i(_TAG, "onCreate");
-		
+
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.main);
-		
-		// »ñÈ¡ÏµÍ³µÄºìÍâÒ£¿Ø·şÎñ
+
+		// è·å–ç³»ç»Ÿçš„çº¢å¤–é¥æ§æœåŠ¡
 		mCIR = (ConsumerIrManager) getSystemService(Context.CONSUMER_IR_SERVICE);
 
 		PreferenceManager.setDefaultValues(this, R.xml.settings, false);
@@ -148,7 +148,7 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 		_trackingColor = Integer.parseInt(_sharedPreferences.getString(getString(R.string.color_key), "0"));
 
 		if (_trackingColor == 0) {
-			//ThresholdÃÅ¼÷Öµ
+			//Thresholdé—¨æ§›å€¼
 			_lowerThreshold = new Scalar(60, 100, 30); // Green
 			_upperThreshold = new Scalar(130, 255, 255);
 		} else if (_trackingColor == 1) {
@@ -174,15 +174,15 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 			}
 		});
 
-		//³õÊ¼»¯
+		//åˆå§‹åŒ–
 		bleCallback = new BleCallback();
-		//»ñÈ¡ÉÏ¸öÒ³Ãæ´«µİ¹ıÀ´µÄÉè±¸
-		//»ñÈ¡ÉÏ¸öÒ³Ãæ´«µİ¹ıÀ´µÄÉè±¸
+		//è·å–ä¸Šä¸ªé¡µé¢ä¼ é€’è¿‡æ¥çš„è®¾å¤‡
+		//è·å–ä¸Šä¸ªé¡µé¢ä¼ é€’è¿‡æ¥çš„è®¾å¤‡
 		BluetoothDevice device = getIntent().getParcelableExtra("device");
-		//Á¬½Ógatt ÉèÖÃGatt»Øµ÷
+		//è¿æ¥gatt è®¾ç½®Gattå›è°ƒ
 		bluetoothGatt = device.connectGatt(this, false, bleCallback);
 
-		//ÎªÁË²»×è¶ÏÆô¶¯ ·Åµ½Ïß³ÌÀïÈ¥Ö´ĞĞ add by wangzheng
+		//ä¸ºäº†ä¸é˜»æ–­å¯åŠ¨ æ”¾åˆ°çº¿ç¨‹é‡Œå»æ‰§è¡Œ add by wangzheng
 		thread = new Thread(new IR_Task());
 		thread.start();
 
@@ -195,42 +195,49 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 		_trackingColor = Integer.parseInt(_sharedPreferences.getString(getString(R.string.color_key), "0"));
 
 		switch (_trackingColor) {
-		case 0: // Green
-			_lowerThreshold.set(new double[] { 60, 100, 30, 0 });
-			_upperThreshold.set(new double[] { 130, 255, 255, 0 });
-			break;
-		case 1: // Purple
-			_lowerThreshold.set(new double[] { 160, 50, 90 });
-			_upperThreshold.set(new double[] { 255, 255, 255, 0 });
-			break;
-		case 2: // Orange
-			_lowerThreshold.set(new double[] { 1, 50, 150 });
-			_upperThreshold.set(new double[] { 60, 255, 255, 0 });
-			break;
-		default:
-			_lowerThreshold.set(new double[] { 60, 100, 30, 0 });
-			_upperThreshold.set(new double[] { 130, 255, 255, 0 });
-			break;
+			case 0: // Green
+				_lowerThreshold.set(new double[] { 60, 100, 30, 0 });
+				_upperThreshold.set(new double[] { 130, 255, 255, 0 });
+				break;
+			case 1: // Purple
+				_lowerThreshold.set(new double[] { 160, 50, 90 });
+				_upperThreshold.set(new double[] { 255, 255, 255, 0 });
+				break;
+			case 2: // Orange
+				_lowerThreshold.set(new double[] { 1, 50, 150 });
+				_upperThreshold.set(new double[] { 60, 255, 255, 0 });
+				break;
+			default:
+				_lowerThreshold.set(new double[] { 60, 100, 30, 0 });
+				_upperThreshold.set(new double[] { 130, 255, 255, 0 });
+				break;
 		}
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		Log.i(_TAG, "onResume");
 
-//		 if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_11, this, mLoaderCallback)) {
-//		 Log.e(_TAG, "Cannot connect to OpenCV Manager");
-//		 }
-		mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+		if (!OpenCVLoader.initDebug()) {
+			Log.d(_TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+			if (!OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_11, this, mLoaderCallback)) {
+				Log.e(_TAG, "Cannot connect to OpenCV Manager");
+			}
+		} else {
+			Log.d(_TAG, "OpenCV library found inside package. Using it!");
+			mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+		}
+
 		hideNavigationBar();
+
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		
+
 		Log.i(_TAG, "onPause");
 
 		if (_opencvCameraView != null)
@@ -242,7 +249,7 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 		super.onDestroy();
 
 		Log.i(_TAG, "onDestroy");
-		
+
 		if (_opencvCameraView != null)
 			_opencvCameraView.disableView();
 	}
@@ -341,11 +348,11 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 
 		/**
 		 * Called every time a connection with IOIO has been established. Typically used to open pins.
-		 * 
+		 *
 		 * @throws ConnectionLostException
 		 *             When IOIO connection is lost.
 		 * @throws InterruptedException
-		 * 
+		 *
 		 * see ioio.lib.util.AbstractIOIOActivity.IOIOThread#setup()
 		 */
 		@Override
@@ -452,13 +459,13 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 		public void run() {
 
 			while(true){
-//				Log.i(_TAG, "begin loop");¿ÉÒÔ×ßµ½Õâ²½
+//				Log.i(_TAG, "begin loop");å¯ä»¥èµ°åˆ°è¿™æ­¥
 
 				try {
 					synchronized (_mainController) {
 
 						if (_contourArea > MIN_CONTOUR_AREA) {
-//							Log.i(_TAG, "begin moving");¿ÉÒÔ×ßµ½Õâ²½
+//							Log.i(_TAG, "begin moving");å¯ä»¥èµ°åˆ°è¿™æ­¥
 							_mainController.updatePanTiltPWM( _centerPoint,bluetoothGatt);//wangzheng add by 2022-08-11
 
 							//_mainController.updatePanTiltPWM(_screenCenterCoordinates, _centerPoint);
@@ -491,5 +498,5 @@ public class AAVActivity extends IOIOActivity implements CvCameraViewListener2 {
 
 		}
 	}
-	
+
 }

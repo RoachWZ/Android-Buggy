@@ -194,7 +194,20 @@ public class UsbConnection {
     if (isOpen() && !isBusy()) {
       busy = true;
       serialDevice.write(msg.getBytes(UTF_8));
-      busy = false;
+      LOGGER.d("Serial data send: " + msg);
+
+      long start = System.currentTimeMillis( );//LOGGER.i("start time is "+ start);
+      long end ;
+      while(busy){
+        end = System.currentTimeMillis( );
+        if(end - start >100) {
+          busy = false;//Ironbot要间隔100毫秒 再小就反应不过来了
+          //LOGGER.i("end time is "+ end);
+        }
+      }//并没有起作用，得好好研究下Java线程编程。知道咋回事了，在上一层调用加线程控制，配合此处修改可间隔100毫秒。
+//      busy = false;
+    }else if (isBusy()) {
+      LOGGER.d("Serial is busy !");
     }
   }
 

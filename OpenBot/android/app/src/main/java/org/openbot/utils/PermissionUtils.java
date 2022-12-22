@@ -1,6 +1,7 @@
 package org.openbot.utils;
 
 import static org.openbot.utils.Constants.PERMISSION_AUDIO;
+import static org.openbot.utils.Constants.PERMISSION_BLUETOOTH;
 import static org.openbot.utils.Constants.PERMISSION_CAMERA;
 import static org.openbot.utils.Constants.PERMISSION_LOCATION;
 import static org.openbot.utils.Constants.PERMISSION_STORAGE;
@@ -71,6 +72,11 @@ public class PermissionUtils {
         == PackageManager.PERMISSION_GRANTED;
   }
 
+  public static boolean hasBluetoothPermissions(Activity activity) {
+    return ContextCompat.checkSelfPermission(activity, PERMISSION_BLUETOOTH)
+            == PackageManager.PERMISSION_GRANTED;
+  }
+
   public static boolean hasLoggingPermissions(Activity activity) {
     return hasPermissions(
         activity, new String[] {PERMISSION_CAMERA, PERMISSION_STORAGE, PERMISSION_LOCATION});
@@ -101,6 +107,11 @@ public class PermissionUtils {
   public static void requestAudioPermission(Activity activity) {
     requestPermissions(
         activity, new String[] {PERMISSION_AUDIO}, Constants.REQUEST_AUDIO_PERMISSION);
+  }
+
+  public static void requestBluetoothPermission(Activity activity) {
+    requestPermissions(
+            activity, new String[] {PERMISSION_BLUETOOTH}, Constants.REQUEST_BLUETOOTH_PERMISSION);
   }
 
   public static void requestLoggingPermissions(Activity activity) {
@@ -287,5 +298,10 @@ public class PermissionUtils {
   public static void showLocationPermissionLoggingToast(Activity activity) {
     showPermissionsLoggingToast(
         activity, activity.getResources().getString(R.string.location_permission_denied));
+  }
+
+  public static void showBluetoothPermissionLoggingToast(Activity activity) {
+    showPermissionsLoggingToast(
+            activity, activity.getResources().getString(R.string.bluetooth_permission_denied));
   }
 }

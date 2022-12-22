@@ -184,6 +184,19 @@ public class ObjectNavFragment extends CameraFragment {
           Navigation.findNavController(requireView()).navigate(R.id.open_settings_fragment);
         });
 
+
+    mViewModel
+            .getBluetoothStatus()
+            .observe(getViewLifecycleOwner(), status -> binding.bluetoothToggle.setChecked(status));
+
+    binding.bluetoothToggle.setChecked(vehicle.isBluetoothConnected());
+
+    binding.bluetoothToggle.setOnClickListener(
+            v -> {
+              binding.bluetoothToggle.setChecked(vehicle.isBluetoothConnected());
+              Navigation.findNavController(requireView()).navigate(R.id.open_settings_fragment);
+            });
+
     setSpeedMode(Enums.SpeedMode.getByID(preferencesManager.getSpeedMode()));
     setControlMode(Enums.ControlMode.getByID(preferencesManager.getControlMode()));
     setDriveMode(Enums.DriveMode.getByID(preferencesManager.getDriveMode()));
