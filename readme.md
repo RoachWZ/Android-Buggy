@@ -1,25 +1,26 @@
 
-51-IR-Car ����ң��С����Ƭ������
+51-IR-Car 红外遥控小车单片机程序
 
-AAV ʶ��׷������
+AAV 识别追踪绿球
 
-Android-Car-duino-master Pegasus�ŶӴ�����һ���Զ���ʻ�����������û����Ӿ��㷨�ͼ����Լ����Գ��ش����������ݣ�����ѭ�ֵ�������ִ��ͣ����������Խ�赲��·�����ϰ�������Ŀ�Ĵ���֮����������ʹ�ð�׿�ֻ���Ϊʵ��ͼ�����;��ߵĵ�Ԫ��������ָ�����ߴ��䵽���Ƴ��� https://platis.solutions/blog/2015/06/29/worlds-first-android-autonomous-vehicle/
+Android-Car-duino-master Pegasus团队创造了一种自动驾驶汽车，它利用机器视觉算法和技术以及来自车载传感器的数据，以遵循街道车道、执行停车操作并超越阻挡其路径的障碍物。这个项目的创新之处，首先是使用安卓手机作为实现图像处理和决策的单元。它负责将指令无线传输到控制车辆 https://platis.solutions/blog/2015/06/29/worlds-first-android-autonomous-vehicle/
+我适配了ironbot的电机控制格式。
 
-BuggyWakeCtrl ����ʶ�� ���빤��ʱѡ����ߵ�sample\mscV5PlusDemo�ļ���
+BuggyWakeCtrl 语音识别 导入工程时选择里边的sample\mscV5PlusDemo文件夹
 
-FaceDetectIrCtrl ����׷��
+FaceDetectIrCtrl 人脸追踪
 
-HandGestureApp-master ����ʶ��
+HandGestureApp-master 手势识别
 
-ichano ���Ͽ��� �ٷ�ʾ��demo
+ichano 掌上看家 官方示例demo
 
-ipCameraTest ������ͨ��������Ƶң�� 
+ipCameraTest 局域网通过电脑视频遥控 
 
-irctrl ����ң����demo
+irctrl 红外遥控器demo
 
-IRofVideoTalk0823 ������ͨ���ֻ���Ƶң��
+IRofVideoTalk0823 局域网通过手机视频遥控
 
-MonitorAndroidCar-v1.2 Զ����Ƶң�� ���빤��ʱѡ����ߵ�app�ļ���
+MonitorAndroidCar-v1.2 远程视频遥控 导入工程时选择里边的app文件夹
 
-Openbot һ��Intel�Ŀ�Դ��Ŀ�����ð�׿�ֻ�������Arduino����С�������������Լ���51��Ƭ��С�������빤��ʱѡ����ߵ�android�ļ���
+Openbot 一个Intel的开源项目，利用安卓手机制作的Arduino智能小车。我适配了自己的51单片机小车。导入工程时选择里边的android文件夹
 
