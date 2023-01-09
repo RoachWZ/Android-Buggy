@@ -4,5 +4,5 @@
       android:versionCode="24110"
       android:versionName="2.4.11">
 
-    <uses-sdk android:minSdkVersion="8" />
+<!--    <uses-sdk android:minSdkVersion="14" />-->
 </manifest>
